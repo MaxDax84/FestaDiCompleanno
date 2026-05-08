@@ -210,8 +210,8 @@
             transform-origin:bottom center;
         }
         .dino-char--lungo  { height:185px; filter:drop-shadow(2px 6px 12px rgba(93,58,26,.18)); animation:dino-breathe-flip 3.5s ease-in-out infinite; }
-        .dino-char--rex    { height:165px; filter:drop-shadow(2px 6px 12px rgba(93,58,26,.18)); }
-        .dino-char--raptor { height:145px; filter:drop-shadow(2px 6px 12px rgba(93,58,26,.18)); }
+        .dino-char--rex    { height:185px; filter:drop-shadow(2px 6px 12px rgba(93,58,26,.18)); }
+        .dino-char--raptor { height:116px; filter:drop-shadow(2px 6px 12px rgba(93,58,26,.18)); }
         @keyframes dino-breathe {
             0%,100%{transform:scaleY(1) translateY(0);} 50%{transform:scaleY(1.04) translateY(-5px);}
         }
@@ -317,6 +317,36 @@
         @keyframes slide-down { from{opacity:0;transform:translateY(-8px);} to{opacity:1;transform:translateY(0);} }
         @keyframes shake { 0%,100%{transform:translateX(0);} 20%,60%{transform:translateX(-8px);} 40%,80%{transform:translateX(8px);} }
 
+        /* ── Balloons ── */
+        #balloons-root { position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden; }
+        .balloon {
+            position:absolute; bottom:-90px;
+            border-radius:50% 50% 46% 46% / 56% 56% 44% 44%;
+            background:radial-gradient(circle at 36% 30%, #FF7070 0%, #CC1818 55%, #980E0E 100%);
+            pointer-events:none;
+            animation:balloon-rise linear forwards;
+        }
+        .balloon::before {
+            content:''; position:absolute;
+            bottom:-8px; left:50%; transform:translateX(-50%);
+            border-left:4px solid transparent; border-right:4px solid transparent;
+            border-top:8px solid #9A0E0E;
+        }
+        .balloon::after {
+            content:''; position:absolute;
+            top:calc(100% + 7px); left:50%; transform:translateX(-50%);
+            width:1px; height:36px; background:#9A0E0E;
+        }
+        @keyframes balloon-rise {
+            0%   { opacity:0;    transform:translateY(0) translateX(0) rotate(-3deg); }
+            6%   { opacity:0.70; }
+            25%  { transform:translateY(-25vh) translateX(var(--sway)) rotate(3deg); opacity:0.70; }
+            50%  { transform:translateY(-50vh) translateX(calc(var(--sway)*-.7)) rotate(-2deg); opacity:0.70; }
+            75%  { transform:translateY(-75vh) translateX(calc(var(--sway)*.85)) rotate(2deg); opacity:0.60; }
+            92%  { opacity:0.35; }
+            100% { opacity:0;    transform:translateY(-120vh) translateX(0) rotate(0deg); }
+        }
+
         /* ── Music button ── */
         .music-btn {
             position:fixed; bottom:24px; right:24px; z-index:500;
@@ -356,8 +386,8 @@
             .map-iframe        { height:250px; }
             .map-address       { font-size:.80rem; }
             .dino-char--lungo  { height:150px; }
-            .dino-char--rex    { height:132px; }
-            .dino-char--raptor { height:116px; }
+            .dino-char--rex    { height:150px; }
+            .dino-char--raptor { height:93px; }
             .dino-bubble       { font-size:.9rem; padding:7px 14px; }
             .music-btn         { bottom:max(16px, env(safe-area-inset-bottom, 16px)); right:16px; width:50px; height:50px; font-size:1.3rem; }
             .cd-block          { min-width:116px; padding:10px 12px; }
@@ -494,6 +524,7 @@
 <div class="ambient" style="top:62%; left:1%; font-size:1.9rem; animation-delay:-4s;">🎈</div>
 
 <div id="confetti-root"></div>
+<div id="balloons-root"></div>
 <button class="music-btn" id="musicBtn" onclick="toggleMusic()" title="Musica">🎵</button>
 
 <!-- Garland / Bunting -->
@@ -1005,6 +1036,26 @@ document.addEventListener('mouseleave', () => {
     const w = document.getElementById('wrapRex');
     if (w && !dinoLocked.rex) w.style.transform = '';
 });
+
+/* ══════════════════════════════════════════
+   BALLOONS
+══════════════════════════════════════════ */
+(function(){
+    const root = document.getElementById('balloons-root');
+    function spawnBalloon() {
+        const el  = document.createElement('div');
+        el.className = 'balloon';
+        const left = Math.random() * 88 + 4;
+        const w    = Math.random() * 12 + 20;
+        const dur  = Math.random() * 9  + 13;
+        const sway = (Math.random() * 2 - 1) * 22;
+        el.style.cssText = `left:${left}%;width:${w}px;height:${(w*1.35).toFixed(1)}px;animation-duration:${dur}s;--sway:${sway}px`;
+        root.appendChild(el);
+        el.addEventListener('animationend', () => { el.remove(); spawnBalloon(); });
+    }
+    for (let i = 0; i < 10; i++) setTimeout(spawnBalloon, Math.random() * 9000);
+    setInterval(spawnBalloon, 2200);
+})();
 
 /* ══════════════════════════════════════════
    CONFETTI
