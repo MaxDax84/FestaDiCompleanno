@@ -3,8 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>🦕 1° Compleanno di Edoardo! 🦖</title>
-    <meta name="description" content="Sei invitato alla festa di compleanno di Edoardo! 13 Giugno 2026 - Pioltello">
+    <meta name="description" content="Sabato 13 Giugno 2026 · Seconda Strada 11, Pioltello · Unisciti a noi per festeggiare!">
+
+    <!-- Open Graph (WhatsApp, Facebook, Telegram) -->
+    <meta property="og:type"        content="website">
+    <meta property="og:title"       content="🦕 Festa di Compleanno di Edoardo! 🦖">
+    <meta property="og:description" content="Sabato 13 Giugno 2026 · Seconda Strada 11, Pioltello · Conferma la tua presenza!">
+    <meta property="og:locale"      content="it_IT">
+
+    <!-- Twitter card -->
+    <meta name="twitter:card"        content="summary">
+    <meta name="twitter:title"       content="🦕 Festa di Compleanno di Edoardo!">
+    <meta name="twitter:description" content="Sabato 13 Giugno 2026 · Seconda Strada 11, Pioltello">
+
+    <!-- Favicon emoji SVG -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦕</text></svg>">
+
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
@@ -54,7 +70,7 @@
         }
 
         /* ── Container ── */
-        .container { max-width:860px; margin:0 auto; padding:20px 16px 60px; position:relative; z-index:1; }
+        .container { max-width:860px; margin:0 auto; padding:20px 16px 100px; position:relative; z-index:1; }
 
         /* ── Hero ── */
         .hero { text-align:center; padding:50px 16px 30px; }
@@ -103,6 +119,23 @@
             50%     {box-shadow:0 8px 30px rgba(244,162,97,.5),0 0 0 16px rgba(244,162,97,.1);}
         }
         .hero-sub   { font-size:1.2rem; color:var(--green-pale); font-weight:700; margin-bottom:18px; }
+
+        /* ── Countdown ── */
+        .countdown-wrap { margin:14px 0 20px; }
+        .countdown {
+            display:inline-flex; align-items:center; gap:10px; flex-wrap:wrap; justify-content:center;
+            background:rgba(255,255,255,.1); border:2px solid rgba(255,214,10,.3);
+            backdrop-filter:blur(6px); color:var(--yellow);
+            font-family:'Fredoka One',cursive; font-size:1.05rem;
+            padding:10px 22px; border-radius:50px;
+        }
+        .cd-num {
+            background:var(--yellow); color:var(--green-dark);
+            padding:2px 12px; border-radius:8px; font-size:1.2rem;
+            min-width:40px; text-align:center;
+        }
+        .cd-sep { opacity:.5; font-size:.85rem; }
+
         .footprints { font-size:1.4rem; letter-spacing:14px; opacity:.35; animation:steps 2s steps(3) infinite; }
         @keyframes steps { 0%{opacity:.2;} 50%{opacity:.5;} 100%{opacity:.2;} }
 
@@ -135,7 +168,7 @@
         .card-title { font-family:'Fredoka One',cursive; font-size:1.9rem; color:var(--green-dark); margin-bottom:6px; }
         .card-sub   { color:#777; font-size:.98rem; margin-bottom:24px; line-height:1.5; }
 
-        /* ── Map card ── */
+        /* ── Map ── */
         .card--map { padding-bottom:0; }
         .card--map::before {
             content:''; position:absolute; top:0; left:0; right:0; height:5px;
@@ -163,14 +196,10 @@
             gap:16px; flex-wrap:wrap; padding:10px 0 4px;
         }
         .dino-unit { display:flex; flex-direction:column; align-items:center; gap:0; }
-        .dino-name {
-            font-family:'Fredoka One',cursive; font-size:.9rem;
-            color:var(--green-mid); margin-top:6px;
-        }
+        .dino-name { font-family:'Fredoka One',cursive; font-size:.9rem; color:var(--green-mid); margin-top:6px; }
         .dino-wrap {
             position:relative; cursor:pointer; display:inline-block;
-            -webkit-tap-highlight-color:transparent; outline:none;
-            transition:transform .08s ease;
+            -webkit-tap-highlight-color:transparent; outline:none; transition:transform .08s ease;
         }
         .dino-char {
             display:block; user-select:none;
@@ -181,24 +210,15 @@
         .dino-char--rex    { font-size:8rem; }
         .dino-char--lungo  { font-size:9rem; }
         .dino-char--raptor { font-size:5.5rem; }
-
         @keyframes dino-breathe {
-            0%,100%{transform:scaleY(1)    translateY(0);}
-            50%     {transform:scaleY(1.04) translateY(-5px);}
+            0%,100%{transform:scaleY(1) translateY(0);} 50%{transform:scaleY(1.04) translateY(-5px);}
         }
-
-        /* Rex — scuote e si ingrandisce */
         .dino-wrap.roaring .dino-char { animation:anim-roar .65s ease forwards; }
         @keyframes anim-roar {
-            0%  {transform:scale(1)    rotate(0deg);}
-            15% {transform:scale(1.4)  rotate(-6deg);}
-            30% {transform:scale(1.38) rotate(6deg);}
-            50% {transform:scale(1.35) rotate(-4deg);}
-            70% {transform:scale(1.25) rotate(3deg);}
-            100%{transform:scale(1)    rotate(0deg);}
+            0%  {transform:scale(1)    rotate(0deg);} 15%{transform:scale(1.4)  rotate(-6deg);}
+            30% {transform:scale(1.38) rotate(6deg);} 50%{transform:scale(1.35) rotate(-4deg);}
+            70% {transform:scale(1.25) rotate(3deg);} 100%{transform:scale(1)   rotate(0deg);}
         }
-
-        /* Lungo — si allunga verso l'alto */
         .dino-wrap.honking .dino-char { animation:anim-honk .9s ease forwards; }
         @keyframes anim-honk {
             0%  {transform:scale(1);}
@@ -207,8 +227,6 @@
             70% {transform:scaleY(1.08) scaleX(.96);}
             100%{transform:scale(1);}
         }
-
-        /* Raptor — dash laterale rapido */
         .dino-wrap.dashing .dino-char { animation:anim-dash .55s ease forwards; }
         @keyframes anim-dash {
             0%  {transform:translateX(0)    rotate(0deg);}
@@ -218,8 +236,6 @@
             68% {transform:translateX(6px)   rotate(2deg);}
             100%{transform:translateX(0)    rotate(0deg);}
         }
-
-        /* Speech bubble (comune) */
         .dino-bubble {
             position:absolute; bottom:calc(100% + 8px); left:50%;
             transform:translateX(-50%) scale(0); transform-origin:bottom center;
@@ -237,7 +253,6 @@
         .dino-wrap.roaring .dino-bubble,
         .dino-wrap.honking .dino-bubble,
         .dino-wrap.dashing .dino-bubble { transform:translateX(-50%) scale(1); opacity:1; }
-
         .dino-hint-row { text-align:center; margin-top:12px; }
         .dino-hint { font-size:.88rem; color:#aaa; font-weight:700; animation:hint-fade 2s ease-in-out infinite; }
         @keyframes hint-fade { 0%,100%{opacity:.5;} 50%{opacity:1;} }
@@ -263,19 +278,34 @@
             color:#fff; border:none; border-radius:var(--radius-md);
             font-family:'Fredoka One',cursive; font-size:1.1rem; cursor:pointer;
             white-space:nowrap; position:relative; overflow:hidden;
-            box-shadow:0 4px 18px rgba(82,183,136,.45);
-            transition:transform .25s,box-shadow .25s;
+            box-shadow:0 4px 18px rgba(82,183,136,.45); transition:transform .25s,box-shadow .25s;
         }
         .rsvp-btn::after { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(255,255,255,.2),transparent); pointer-events:none; }
         .rsvp-btn:hover  { transform:translateY(-3px); box-shadow:0 8px 28px rgba(82,183,136,.55); }
         .rsvp-btn:active { transform:translateY(0); }
-
         .feedback { display:none; align-items:center; gap:10px; padding:13px 18px; border-radius:var(--radius-sm); margin-top:14px; font-weight:700; font-size:.97rem; }
         .feedback.show { display:flex; }
         .feedback--ok  { background:linear-gradient(135deg,var(--green-pale),#b7e4c7); border:2px solid var(--green-bright); color:var(--green-dark); animation:slide-down .35s ease; }
         .feedback--err { background:#ffebee; border:2px solid #ef9a9a; color:#b71c1c; animation:shake .45s ease; }
         @keyframes slide-down { from{opacity:0;transform:translateY(-8px);} to{opacity:1;transform:translateY(0);} }
         @keyframes shake { 0%,100%{transform:translateX(0);} 20%,60%{transform:translateX(-8px);} 40%,80%{transform:translateX(8px);} }
+
+        /* ── Music button ── */
+        .music-btn {
+            position:fixed; bottom:24px; right:24px; z-index:500;
+            width:56px; height:56px; border-radius:50%; border:none; cursor:pointer;
+            background:linear-gradient(135deg,var(--green-bright),var(--green-mid));
+            font-size:1.55rem; display:flex; align-items:center; justify-content:center;
+            box-shadow:0 4px 20px rgba(82,183,136,.55); transition:transform .2s,box-shadow .2s;
+            animation:music-pulse 3s ease-in-out infinite;
+        }
+        .music-btn:hover  { transform:scale(1.12); box-shadow:0 6px 28px rgba(82,183,136,.65); animation:none; }
+        .music-btn:active { transform:scale(.96); }
+        @keyframes music-pulse {
+            0%,100%{box-shadow:0 4px 20px rgba(82,183,136,.55);}
+            50%     {box-shadow:0 4px 30px rgba(82,183,136,.8),0 0 0 8px rgba(82,183,136,.12);}
+        }
+        .music-btn.playing { animation:none; }
 
         /* ── Confetti ── */
         #confetti-root { position:fixed; inset:0; pointer-events:none; z-index:9999; }
@@ -290,16 +320,17 @@
 
         /* ── Responsive ── */
         @media (max-width:480px) {
-            .card           { padding:28px 18px; }
-            .card-title     { font-size:1.6rem; }
-            .rsvp-form      { flex-direction:column; }
-            .rsvp-btn       { text-align:center; }
-            .map-iframe     { height:250px; }
-            .map-address    { font-size:.82rem; }
+            .card              { padding:28px 18px; }
+            .card-title        { font-size:1.6rem; }
+            .rsvp-form         { flex-direction:column; }
+            .rsvp-btn          { text-align:center; }
+            .map-iframe        { height:250px; }
+            .map-address       { font-size:.82rem; }
             .dino-char--rex    { font-size:6rem; }
             .dino-char--lungo  { font-size:7rem; }
             .dino-char--raptor { font-size:4.5rem; }
-            .dino-bubble    { font-size:.95rem; padding:7px 14px; }
+            .dino-bubble       { font-size:.95rem; padding:7px 14px; }
+            .music-btn         { bottom:16px; right:16px; width:48px; height:48px; font-size:1.3rem; }
         }
     </style>
 </head>
@@ -311,6 +342,9 @@
 <div class="ambient-dino" style="top:75%; right:1%; font-size:3rem;   animation-delay:-5s;">🍃</div>
 
 <div id="confetti-root"></div>
+
+<!-- Music toggle button -->
+<button class="music-btn" id="musicBtn" onclick="toggleMusic()" title="Musica Jurassic Park">🎵</button>
 
 <div class="container">
 
@@ -328,6 +362,9 @@
         </h1>
         <div class="age-badge">1</div>
         <p class="hero-sub">🎉 Unisciti a noi per festeggiare questo grande giorno! 🎉</p>
+        <div class="countdown-wrap">
+            <div class="countdown" id="countdown"></div>
+        </div>
         <div class="footprints">🐾🐾🐾🐾🐾</div>
     </section>
 
@@ -351,17 +388,13 @@
     <section class="card card--map">
         <h2 class="card-title">🗺️ Come arrivare</h2>
         <div class="map-address">
-            <span>📍</span>
-            <span>Seconda Strada 11</span>
-            <span>–</span>
-            <span>20096 Pioltello (MI)</span>
+            <span>📍</span><span>Seconda Strada 11</span>
+            <span>–</span><span>20096 Pioltello (MI)</span>
         </div>
         <iframe
             class="map-iframe"
             src="https://maps.google.com/maps?q=Seconda+Strada+11,+20096+Pioltello+MI+Italia&output=embed&hl=it&z=16"
-            loading="lazy"
-            allowfullscreen
-            referrerpolicy="no-referrer-when-downgrade"
+            loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"
             title="Mappa festa di Edoardo"
         ></iframe>
     </section>
@@ -370,10 +403,7 @@
     <section class="card card--dino">
         <h2 class="card-title">🦕 Incontra la banda!</h2>
         <p class="card-sub">Tre dinosauri ti aspettano — dagli un tocco e scopri cosa combinano!</p>
-
         <div class="dino-trio">
-
-            <!-- Lungo (Brontosaurus) -->
             <div class="dino-unit">
                 <div class="dino-wrap" id="wrapLungo" onclick="interactDino('lungo')"
                      role="button" aria-label="Saluta Lungo">
@@ -382,18 +412,14 @@
                 </div>
                 <div class="dino-name">Lungo</div>
             </div>
-
-            <!-- Rex (T-Rex) -->
             <div class="dino-unit">
                 <div class="dino-wrap" id="wrapRex" onclick="interactDino('rex')"
                      role="button" aria-label="Fai ruggire Rex">
                     <div class="dino-bubble" id="bubbleRex"></div>
-                    <span class="dino-char dino-char--rex" id="charRex">🦖</span>
+                    <span class="dino-char dino-char--rex">🦖</span>
                 </div>
                 <div class="dino-name">Rex</div>
             </div>
-
-            <!-- Raptor (Velociraptor) -->
             <div class="dino-unit">
                 <div class="dino-wrap" id="wrapRaptor" onclick="interactDino('raptor')"
                      role="button" aria-label="Saluta Raptor">
@@ -402,7 +428,6 @@
                 </div>
                 <div class="dino-name">Raptor</div>
             </div>
-
         </div>
         <div class="dino-hint-row">
             <span class="dino-hint">👆 Clicca su ognuno di loro!</span>
@@ -417,310 +442,368 @@
             Non lasciare Edoardo solo con i dinosauri! 🦖
         </p>
         <div class="rsvp-form">
-            <input
-                type="text"
-                class="rsvp-input"
-                id="nameInput"
-                placeholder="Il tuo nome..."
-                maxlength="50"
-                autocomplete="off"
-            >
+            <input type="text" class="rsvp-input" id="nameInput"
+                   placeholder="Il tuo nome..." maxlength="50" autocomplete="off">
             <button class="rsvp-btn" onclick="confirmRsvp()">🎉 Ci sarò!</button>
         </div>
-        <div class="feedback feedback--ok" id="feedbackOk">
-            <span>🦕</span><span id="feedbackOkText"></span>
-        </div>
-        <div class="feedback feedback--err" id="feedbackErr">
-            <span>🦖</span><span id="feedbackErrText"></span>
-        </div>
+        <div class="feedback feedback--ok" id="feedbackOk"><span>🦕</span><span id="feedbackOkText"></span></div>
+        <div class="feedback feedback--err" id="feedbackErr"><span>🦖</span><span id="feedbackErrText"></span></div>
     </section>
 
     <footer class="footer">
         <div class="footprints">🐾🐾🐾🐾🐾</div>
         <p style="margin-top:8px;">Con amore per Edoardo 🦕❤️</p>
     </footer>
-
 </div>
 
 <script>
-    /* ══════════════════════════════════════════
-       RSVP
-    ══════════════════════════════════════════ */
-    const RSVP_KEY      = 'edoardo_rsvp_v1';
-    const FORMSPREE_URL = 'https://formspree.io/f/xjgleqka';
+/* ══════════════════════════════════════════
+   RSVP
+══════════════════════════════════════════ */
+const RSVP_KEY      = 'edoardo_rsvp_v1';
+const FORMSPREE_URL = 'https://formspree.io/f/xjgleqka';
 
-    async function confirmRsvp() {
-        const input = document.getElementById('nameInput');
-        const btn   = document.querySelector('.rsvp-btn');
-        const name  = input.value.trim();
-        clearFeedback();
+async function confirmRsvp() {
+    const input = document.getElementById('nameInput');
+    const btn   = document.querySelector('.rsvp-btn');
+    const name  = input.value.trim();
+    clearFeedback();
+    if (!name) { showErr('Inserisci il tuo nome prima di confermare! 🦖'); input.focus(); return; }
+    const confirmed = JSON.parse(localStorage.getItem(RSVP_KEY) || '[]');
+    if (confirmed.includes(name.toLowerCase())) { showErr(`${name} ha già confermato la presenza! 🦕`); input.select(); return; }
+    btn.disabled = true; btn.textContent = '⏳ Invio…';
+    try {
+        const res = await fetch(FORMSPREE_URL, {
+            method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
+            body: JSON.stringify({ name, _subject:`RSVP Festa Edoardo — ${name}` })
+        });
+        if (res.ok) {
+            confirmed.push(name.toLowerCase()); localStorage.setItem(RSVP_KEY, JSON.stringify(confirmed));
+            showOk(`Evviva ${name}! A presto alla festa! 🎉`);
+            input.value = ''; input.focus(); launchConfetti();
+        } else { showErr('Ops, qualcosa è andato storto. Riprova! 🦖'); }
+    } catch(_) { showErr('Errore di rete. Controlla la connessione e riprova! 🦖'); }
+    finally { btn.disabled = false; btn.textContent = '🎉 Ci sarò!'; }
+}
+function showOk(msg) {
+    const el = document.getElementById('feedbackOk');
+    document.getElementById('feedbackOkText').textContent = msg;
+    el.classList.add('show'); setTimeout(() => el.classList.remove('show'), 5000);
+}
+function showErr(msg) {
+    const el = document.getElementById('feedbackErr');
+    document.getElementById('feedbackErrText').textContent = msg;
+    el.style.animation='none'; el.offsetHeight; el.style.animation='';
+    el.classList.add('show'); setTimeout(() => el.classList.remove('show'), 3500);
+}
+function clearFeedback() {
+    document.getElementById('feedbackOk').classList.remove('show');
+    document.getElementById('feedbackErr').classList.remove('show');
+}
+document.getElementById('nameInput').addEventListener('keydown', e => { if (e.key==='Enter') confirmRsvp(); });
 
-        if (!name) { showErr('Inserisci il tuo nome prima di confermare! 🦖'); input.focus(); return; }
+/* ══════════════════════════════════════════
+   COUNTDOWN
+══════════════════════════════════════════ */
+const PARTY_DATE = new Date('2026-06-13T00:00:00');
 
-        const confirmed = JSON.parse(localStorage.getItem(RSVP_KEY) || '[]');
-        if (confirmed.includes(name.toLowerCase())) {
-            showErr(`${name} ha già confermato la presenza! 🦕`);
-            input.select(); return;
+function updateCountdown() {
+    const el   = document.getElementById('countdown');
+    if (!el) return;
+    const diff = PARTY_DATE - new Date();
+    if (diff <= 0) {
+        el.innerHTML = '🎉 Oggi è la festa di Edoardo! 🎊';
+        return;
+    }
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+
+    if (d > 1) {
+        el.innerHTML = `🦕 Mancano <span class="cd-num">${d}</span> giorni! 🎂`;
+    } else if (d === 1) {
+        el.innerHTML = `🦖 Domani è la festa! <span class="cd-num">${pad(h)}:${pad(m)}:${pad(s)}</span>`;
+    } else {
+        el.innerHTML = `🔥 Oggi! <span class="cd-num">${pad(h)}:${pad(m)}:${pad(s)}</span> alla festa!`;
+    }
+}
+function pad(n) { return String(n).padStart(2,'0'); }
+setInterval(updateCountdown, 1000);
+updateCountdown();
+
+/* ══════════════════════════════════════════
+   AUDIO CORE (condiviso da dino + musica)
+══════════════════════════════════════════ */
+let _ctx      = null;
+let _noiseBuf = null;
+
+function _initAudio() {
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) return false;
+    if (!_ctx) {
+        _ctx = new AC();
+        const sr = _ctx.sampleRate;
+        _noiseBuf = _ctx.createBuffer(1, sr * 2, sr);
+        const d = _noiseBuf.getChannelData(0);
+        for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
+    }
+    if (_ctx.state === 'suspended') _ctx.resume();
+    return true;
+}
+
+/* ══════════════════════════════════════════
+   JURASSIC PARK THEME (sintetizzato)
+══════════════════════════════════════════ */
+// Note frequencies in Hz — E major, A4=440
+const N = {
+    E4:329.63,'F#4':369.99,'G#4':415.30,A4:440,'A#4':466.16,
+    B4:493.88,C5:523.25,'C#5':554.37,D5:587.33,'D#5':622.25,
+    E5:659.25,'F#5':739.99,'G#5':830.61,A5:880,B5:987.77,
+    E3:164.81,A3:220,B3:246.94
+};
+const BT = 1.18; // ~51 BPM — maestoso
+
+// [frequency | 0=rest, beats]
+const JP = [
+    // ── Phrase 1 ──────────────────────────────
+    [N.B4,    3  ], [N['D#5'],1  ], [N.E5,  2  ],
+    [N.E5,    0.5], [N['F#5'],0.5], [N.E5,  0.5],
+    [N['D#5'],1.5], [N.B4,    1  ], [N['G#4'],1.5],
+    [N.A4,    0.5], [N.B4,    2  ], [N.E4,  2  ], [0, 0.5],
+    // ── Phrase 2 (chiusura più alta) ──────────
+    [N.B4,    3  ], [N['D#5'],1  ], [N.E5,  2  ],
+    [N.E5,    0.5], [N['F#5'],0.5], [N.E5,  0.5],
+    [N['D#5'],1.5], [N.B4,    1  ], [N['G#4'],1.5],
+    [N.A4,    0.5], [N.E5,    2  ], [N.A4,  2  ], [0, 0.5],
+    // ── Phrase 3 — climax ─────────────────────
+    [N['G#5'],2  ], [N.E5,    1  ], [N['F#5'],2  ],
+    [N['D#5'],1  ], [N.E5,    3  ], [N.B4,   1  ],
+    [N.A4,    2  ], [N.B4,    1  ], [N.E5,   4  ],
+    [0,       2  ]
+];
+
+let _musicGain   = null;
+let _musicOn     = false;
+let _musicMuted  = false;
+let _loopTimer   = null;
+
+function toggleMusic() {
+    _initAudio(); // crea AudioContext nel click (user gesture)
+
+    const btn = document.getElementById('musicBtn');
+    if (!_musicOn) {
+        // Prima apertura: crea gain master e avvia il loop
+        if (!_musicGain) {
+            _musicGain = _ctx.createGain();
+            _musicGain.gain.value = 0.10;
+            _musicGain.connect(_ctx.destination);
         }
-
-        btn.disabled = true; btn.textContent = '⏳ Invio…';
-        try {
-            const res = await fetch(FORMSPREE_URL, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                body: JSON.stringify({ name, _subject: `RSVP Festa Edoardo — ${name}` })
-            });
-            if (res.ok) {
-                confirmed.push(name.toLowerCase());
-                localStorage.setItem(RSVP_KEY, JSON.stringify(confirmed));
-                showOk(`Evviva ${name}! A presto alla festa! 🎉`);
-                input.value = ''; input.focus(); launchConfetti();
-            } else { showErr('Ops, qualcosa è andato storto. Riprova! 🦖'); }
-        } catch (_) { showErr('Errore di rete. Controlla la connessione e riprova! 🦖'); }
-        finally { btn.disabled = false; btn.textContent = '🎉 Ci sarò!'; }
-    }
-
-    function showOk(msg) {
-        const el = document.getElementById('feedbackOk');
-        document.getElementById('feedbackOkText').textContent = msg;
-        el.classList.add('show'); setTimeout(() => el.classList.remove('show'), 5000);
-    }
-    function showErr(msg) {
-        const el = document.getElementById('feedbackErr');
-        document.getElementById('feedbackErrText').textContent = msg;
-        el.style.animation = 'none'; el.offsetHeight; el.style.animation = '';
-        el.classList.add('show'); setTimeout(() => el.classList.remove('show'), 3500);
-    }
-    function clearFeedback() {
-        document.getElementById('feedbackOk').classList.remove('show');
-        document.getElementById('feedbackErr').classList.remove('show');
-    }
-    document.getElementById('nameInput').addEventListener('keydown', e => {
-        if (e.key === 'Enter') confirmRsvp();
-    });
-
-    /* ══════════════════════════════════════════
-       AUDIO — AudioContext condiviso, lazy
-    ══════════════════════════════════════════ */
-    let _ctx         = null;
-    let _noiseBuf    = null;
-
-    /* Chiamato SINCRONO nel click (user gesture) così il browser
-       autorizza l'AudioContext anche su iOS Safari. */
-    function _initAudio() {
-        const AC = window.AudioContext || window.webkitAudioContext;
-        if (!AC) return false;
-        if (!_ctx) {
-            _ctx = new AC();
-            const sr  = _ctx.sampleRate;
-            _noiseBuf = _ctx.createBuffer(1, sr * 2, sr);
-            const d   = _noiseBuf.getChannelData(0);
-            for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
+        _musicOn    = true;
+        _musicMuted = false;
+        _scheduleMelody();
+        btn.textContent = '🔊';
+        btn.classList.add('playing');
+        btn.title = 'Musica attiva — clicca per silenziare';
+    } else {
+        _musicMuted = !_musicMuted;
+        if (_musicMuted) {
+            _musicGain.gain.setTargetAtTime(0, _ctx.currentTime, 0.4);
+            btn.textContent = '🔇';
+            btn.title = 'Musica silenziata — clicca per riattivare';
+        } else {
+            _musicGain.gain.setTargetAtTime(0.10, _ctx.currentTime, 0.4);
+            btn.textContent = '🔊';
+            btn.title = 'Musica attiva — clicca per silenziare';
         }
-        /* resume() obbligatorio dopo interruzioni (es. schermata di blocco) */
-        if (_ctx.state === 'suspended') _ctx.resume();
-        return true;
     }
+}
 
-    /* ── Rex: ruggito (rumore bianco + formanti + sub-basso) ── */
-    function _playRoar() {
-        if (!_ctx) return;
-        try {
-            const t = _ctx.currentTime;
-            const src = _ctx.createBufferSource(); src.buffer = _noiseBuf;
+function _scheduleMelody() {
+    if (!_musicOn || !_ctx || !_musicGain) return;
 
-            const f1 = _ctx.createBiquadFilter(); f1.type='bandpass'; f1.Q.value=7;
-            const f2 = _ctx.createBiquadFilter(); f2.type='bandpass'; f2.Q.value=5;
-            const f3 = _ctx.createBiquadFilter(); f3.type='bandpass'; f3.Q.value=3;
+    const t0 = _ctx.currentTime + 0.1;
+    let t = t0, total = 0;
 
-            f1.frequency.setValueAtTime(100,t); f1.frequency.linearRampToValueAtTime(210,t+.2);  f1.frequency.linearRampToValueAtTime(80, t+1.1);
-            f2.frequency.setValueAtTime(380,t); f2.frequency.linearRampToValueAtTime(640,t+.25); f2.frequency.linearRampToValueAtTime(260,t+1.1);
-            f3.frequency.setValueAtTime(1400,t);f3.frequency.linearRampToValueAtTime(2100,t+.1); f3.frequency.exponentialRampToValueAtTime(700,t+.5);
-
-            const g1=_ctx.createGain(); g1.gain.value=0.65;
-            const g2=_ctx.createGain(); g2.gain.value=0.55;
-            const g3=_ctx.createGain(); g3.gain.value=0.15;
-
-            const sub=_ctx.createOscillator(); sub.type='sawtooth';
-            sub.frequency.setValueAtTime(42,t); sub.frequency.linearRampToValueAtTime(72,t+.18); sub.frequency.linearRampToValueAtTime(28,t+1.1);
-            const sg=_ctx.createGain(); sg.gain.value=0.35;
-
-            const master=_ctx.createGain();
-            master.gain.setValueAtTime(0,t); master.gain.linearRampToValueAtTime(.8,t+.06);
-            master.gain.setValueAtTime(.8,t+.45); master.gain.exponentialRampToValueAtTime(.001,t+1.2);
-
-            src.connect(f1); f1.connect(g1); g1.connect(master);
-            src.connect(f2); f2.connect(g2); g2.connect(master);
-            src.connect(f3); f3.connect(g3); g3.connect(master);
-            sub.connect(sg); sg.connect(master); master.connect(_ctx.destination);
-
-            src.start(t); sub.start(t); src.stop(t+1.2); sub.stop(t+1.2);
-        } catch(_) {}
+    for (const [freq, beats] of JP) {
+        const dur = beats * BT;
+        if (freq > 0) _playNote(freq, t, dur);
+        t += dur; total += dur;
     }
+    // Richiama sé stesso prima della fine per un loop senza lacune
+    _loopTimer = setTimeout(_scheduleMelody, Math.max(100, (total - 1.5) * 1000));
+}
 
-    /* ── Lungo: MHOOOOO (tono sinusoidale con vibrato — morbido e divertente) ── */
-    function _playHonk() {
-        if (!_ctx) return;
-        try {
-            const t = _ctx.currentTime;
+function _playNote(freq, startT, dur) {
+    if (!_musicGain) return;
+    try {
+        const g = _ctx.createGain();
+        const atk = Math.min(0.22, dur * 0.18);
+        const rel = Math.min(0.45, dur * 0.28);
 
-            const osc=_ctx.createOscillator(); osc.type='sine';
-            osc.frequency.setValueAtTime(110,t);
-            osc.frequency.linearRampToValueAtTime(230,t+.35);
-            osc.frequency.setValueAtTime(230,t+.4);
-            osc.frequency.linearRampToValueAtTime(95,t+1.0);
+        g.gain.setValueAtTime(0,    startT);
+        g.gain.linearRampToValueAtTime(1, startT + atk);
+        g.gain.setValueAtTime(1,    startT + dur - rel);
+        g.gain.linearRampToValueAtTime(0, startT + dur);
+        g.connect(_musicGain);
 
-            /* Vibrato LFO */
-            const lfo=_ctx.createOscillator(); lfo.frequency.value=7;
-            const lfoG=_ctx.createGain(); lfoG.gain.value=14;
-            lfo.connect(lfoG); lfoG.connect(osc.frequency);
+        // Voce principale — sine (tono puro, imitazione archi/fiati)
+        const o1 = _ctx.createOscillator();
+        o1.type = 'sine'; o1.frequency.value = freq;
+        o1.connect(g); o1.start(startT); o1.stop(startT + dur + 0.05);
 
-            /* Armonica superiore per calore */
-            const osc2=_ctx.createOscillator(); osc2.type='triangle';
-            osc2.frequency.setValueAtTime(220,t);
-            osc2.frequency.linearRampToValueAtTime(460,t+.35);
-            osc2.frequency.linearRampToValueAtTime(190,t+1.0);
-            const g2=_ctx.createGain(); g2.gain.value=0.12;
+        // Armonica morbida — triangle all'ottava sotto
+        const o2 = _ctx.createOscillator();
+        const g2 = _ctx.createGain(); g2.gain.value = 0.14;
+        o2.type = 'triangle'; o2.frequency.value = freq / 2;
+        o2.connect(g2); g2.connect(g);
+        o2.start(startT); o2.stop(startT + dur + 0.05);
+    } catch(_) {}
+}
 
-            const master=_ctx.createGain();
-            master.gain.setValueAtTime(0,t); master.gain.linearRampToValueAtTime(.55,t+.08);
-            master.gain.setValueAtTime(.55,t+.55); master.gain.exponentialRampToValueAtTime(.001,t+1.1);
+/* ══════════════════════════════════════════
+   SUONI DINO
+══════════════════════════════════════════ */
+function _playRoar() {
+    if (!_ctx) return;
+    try {
+        const t = _ctx.currentTime;
+        const src = _ctx.createBufferSource(); src.buffer = _noiseBuf;
+        const f1=_ctx.createBiquadFilter(); f1.type='bandpass'; f1.Q.value=7;
+        const f2=_ctx.createBiquadFilter(); f2.type='bandpass'; f2.Q.value=5;
+        const f3=_ctx.createBiquadFilter(); f3.type='bandpass'; f3.Q.value=3;
+        f1.frequency.setValueAtTime(100,t); f1.frequency.linearRampToValueAtTime(210,t+.2);  f1.frequency.linearRampToValueAtTime(80, t+1.1);
+        f2.frequency.setValueAtTime(380,t); f2.frequency.linearRampToValueAtTime(640,t+.25); f2.frequency.linearRampToValueAtTime(260,t+1.1);
+        f3.frequency.setValueAtTime(1400,t);f3.frequency.linearRampToValueAtTime(2100,t+.1); f3.frequency.exponentialRampToValueAtTime(700,t+.5);
+        const g1=_ctx.createGain(); g1.gain.value=0.65;
+        const g2=_ctx.createGain(); g2.gain.value=0.55;
+        const g3=_ctx.createGain(); g3.gain.value=0.15;
+        const sub=_ctx.createOscillator(); sub.type='sawtooth';
+        sub.frequency.setValueAtTime(42,t); sub.frequency.linearRampToValueAtTime(72,t+.18); sub.frequency.linearRampToValueAtTime(28,t+1.1);
+        const sg=_ctx.createGain(); sg.gain.value=0.35;
+        const master=_ctx.createGain();
+        master.gain.setValueAtTime(0,t); master.gain.linearRampToValueAtTime(.8,t+.06);
+        master.gain.setValueAtTime(.8,t+.45); master.gain.exponentialRampToValueAtTime(.001,t+1.2);
+        src.connect(f1);f1.connect(g1);g1.connect(master);
+        src.connect(f2);f2.connect(g2);g2.connect(master);
+        src.connect(f3);f3.connect(g3);g3.connect(master);
+        sub.connect(sg);sg.connect(master); master.connect(_ctx.destination);
+        src.start(t);sub.start(t); src.stop(t+1.2);sub.stop(t+1.2);
+    } catch(_) {}
+}
 
-            osc.connect(master); osc2.connect(g2); g2.connect(master);
-            master.connect(_ctx.destination);
+function _playHonk() {
+    if (!_ctx) return;
+    try {
+        const t = _ctx.currentTime;
+        const osc=_ctx.createOscillator(); osc.type='sine';
+        osc.frequency.setValueAtTime(110,t); osc.frequency.linearRampToValueAtTime(230,t+.35);
+        osc.frequency.setValueAtTime(230,t+.4); osc.frequency.linearRampToValueAtTime(95,t+1.0);
+        const lfo=_ctx.createOscillator(); lfo.frequency.value=7;
+        const lfoG=_ctx.createGain(); lfoG.gain.value=14;
+        lfo.connect(lfoG); lfoG.connect(osc.frequency);
+        const osc2=_ctx.createOscillator(); osc2.type='triangle';
+        osc2.frequency.setValueAtTime(220,t); osc2.frequency.linearRampToValueAtTime(460,t+.35);
+        osc2.frequency.linearRampToValueAtTime(190,t+1.0);
+        const g2=_ctx.createGain(); g2.gain.value=0.12;
+        const master=_ctx.createGain();
+        master.gain.setValueAtTime(0,t); master.gain.linearRampToValueAtTime(.55,t+.08);
+        master.gain.setValueAtTime(.55,t+.55); master.gain.exponentialRampToValueAtTime(.001,t+1.1);
+        osc.connect(master); osc2.connect(g2); g2.connect(master);
+        master.connect(_ctx.destination);
+        lfo.start(t);osc.start(t);osc2.start(t);
+        lfo.stop(t+1.1);osc.stop(t+1.1);osc2.stop(t+1.1);
+    } catch(_) {}
+}
 
-            lfo.start(t); osc.start(t); osc2.start(t);
-            lfo.stop(t+1.1); osc.stop(t+1.1); osc2.stop(t+1.1);
-        } catch(_) {}
-    }
-
-    /* ── Raptor: kek-kek-kek + screech finale ── */
-    function _playChirps() {
-        if (!_ctx) return;
-        try {
-            const t = _ctx.currentTime;
-            const master=_ctx.createGain(); master.gain.value=0.55;
-            master.connect(_ctx.destination);
-
-            /* 4 click rapidi */
-            for (let i=0; i<4; i++) {
-                const onset = t + i * 0.1;
-                const o=_ctx.createOscillator(); o.type='square';
-                o.frequency.setValueAtTime(1300-i*60, onset);
-                o.frequency.exponentialRampToValueAtTime(500, onset+.08);
-                const g=_ctx.createGain();
-                g.gain.setValueAtTime(0,onset); g.gain.linearRampToValueAtTime(.6,onset+.008);
-                g.gain.exponentialRampToValueAtTime(.001,onset+.1);
-                o.connect(g); g.connect(master); o.start(onset); o.stop(onset+.11);
-            }
-
-            /* Screech finale */
-            const t2 = t + 0.48;
-            const sc=_ctx.createOscillator(); sc.type='sawtooth';
-            sc.frequency.setValueAtTime(900,t2);
-            sc.frequency.linearRampToValueAtTime(1700,t2+.1);
-            sc.frequency.exponentialRampToValueAtTime(380,t2+.4);
-            const sg=_ctx.createGain();
-            sg.gain.setValueAtTime(0,t2); sg.gain.linearRampToValueAtTime(.35,t2+.02);
-            sg.gain.exponentialRampToValueAtTime(.001,t2+.45);
-            sc.connect(sg); sg.connect(master); sc.start(t2); sc.stop(t2+.46);
-        } catch(_) {}
-    }
-
-    /* ══════════════════════════════════════════
-       DINO INTERACTION
-    ══════════════════════════════════════════ */
-    const DINO_CFG = {
-        rex:    {
-            anim:    'roaring',
-            play:    _playRoar,
-            speeches:['ROAAAR! 🦖','Ciao Edoardo! 🎂','Buon Compleanno! 🎉',
-                      'Vieni alla festa! 🥳','GRRRRR! 🦕','Un anno già! ✨',
-                      'Ti voglio bene! ❤️','Sono Rex il feroce! 🦖']
-        },
-        lungo:  {
-            anim:    'honking',
-            play:    _playHonk,
-            speeches:['MHOOOOO! 🦕','Il mio collo è ENORME! 🦕','Ciao piccolo Edoardo! 🎂',
-                      'Sono il più alto! 🏔️','Foglie! 🌿','Buon compleanno! 🎉',
-                      'Guarda in sù! ☁️','Un anno! Che bello! 🎈']
-        },
-        raptor: {
-            anim:    'dashing',
-            play:    _playChirps,
-            speeches:['kek-kek-kek! 🦖','Veloce come il vento! ⚡','Non scappare! 🏃',
-                      'Sono il più furbo! 🧠','KRRRR! 🎉','Festa! Festa! 🥳',
-                      'Surprise! 😈','Ci vediamo il 13! 📅']
+function _playChirps() {
+    if (!_ctx) return;
+    try {
+        const t = _ctx.currentTime;
+        const master=_ctx.createGain(); master.gain.value=0.55;
+        master.connect(_ctx.destination);
+        for (let i=0;i<4;i++) {
+            const onset=t+i*.1;
+            const o=_ctx.createOscillator(); o.type='square';
+            o.frequency.setValueAtTime(1300-i*60,onset);
+            o.frequency.exponentialRampToValueAtTime(500,onset+.08);
+            const g=_ctx.createGain();
+            g.gain.setValueAtTime(0,onset);g.gain.linearRampToValueAtTime(.6,onset+.008);
+            g.gain.exponentialRampToValueAtTime(.001,onset+.1);
+            o.connect(g);g.connect(master);o.start(onset);o.stop(onset+.11);
         }
-    };
+        const t2=t+.48;
+        const sc=_ctx.createOscillator(); sc.type='sawtooth';
+        sc.frequency.setValueAtTime(900,t2); sc.frequency.linearRampToValueAtTime(1700,t2+.1);
+        sc.frequency.exponentialRampToValueAtTime(380,t2+.4);
+        const sg=_ctx.createGain();
+        sg.gain.setValueAtTime(0,t2);sg.gain.linearRampToValueAtTime(.35,t2+.02);
+        sg.gain.exponentialRampToValueAtTime(.001,t2+.45);
+        sc.connect(sg);sg.connect(master);sc.start(t2);sc.stop(t2+.46);
+    } catch(_) {}
+}
 
-    const dinoIdx     = { rex:0, lungo:0, raptor:0 };
-    const dinoLocked  = { rex:false, lungo:false, raptor:false };
+/* ══════════════════════════════════════════
+   DINO INTERACTION
+══════════════════════════════════════════ */
+const DINO_CFG = {
+    rex:   { anim:'roaring', play:_playRoar,   speeches:['ROAAAR! 🦖','Ciao Edoardo! 🎂','Buon Compleanno! 🎉','Vieni alla festa! 🥳','GRRRRR! 🦕','Un anno già! ✨','Ti voglio bene! ❤️','Sono Rex il feroce! 🦖'] },
+    lungo: { anim:'honking', play:_playHonk,   speeches:['MHOOOOO! 🦕','Il mio collo è ENORME! 🦕','Ciao piccolo Edoardo! 🎂','Sono il più alto! 🏔️','Foglie! 🌿','Buon compleanno! 🎉','Guarda in sù! ☁️','Un anno! Che bello! 🎈'] },
+    raptor:{ anim:'dashing', play:_playChirps, speeches:['kek-kek-kek! 🦖','Veloce come il vento! ⚡','Non scappare! 🏃','Sono il più furbo! 🧠','KRRRR! 🎉','Festa! Festa! 🥳','Surprise! 😈','Ci vediamo il 13! 📅'] }
+};
+const dinoIdx    = {rex:0, lungo:0, raptor:0};
+const dinoLocked = {rex:false, lungo:false, raptor:false};
 
-    function interactDino(id) {
-        if (dinoLocked[id]) return;
+function interactDino(id) {
+    if (dinoLocked[id]) return;
+    _initAudio();
+    dinoLocked[id] = true;
+    const cfg    = DINO_CFG[id];
+    const cap    = id.charAt(0).toUpperCase() + id.slice(1);
+    const wrap   = document.getElementById('wrap'   + cap);
+    const bubble = document.getElementById('bubble' + cap);
+    bubble.textContent = cfg.speeches[dinoIdx[id]++ % cfg.speeches.length];
+    wrap.classList.add(cfg.anim);
+    requestAnimationFrame(() => setTimeout(cfg.play, 0));
+    setTimeout(() => { wrap.classList.remove(cfg.anim); dinoLocked[id] = false; }, 1800);
+}
 
-        /* Crea/riprende AudioContext nel click (user gesture) */
-        _initAudio();
+document.addEventListener('mousemove', e => {
+    if (dinoLocked.rex) return;
+    const w = document.getElementById('wrapRex'); if (!w) return;
+    const r = w.getBoundingClientRect();
+    const dx = (e.clientX - r.left - r.width /2) / window.innerWidth;
+    const dy = (e.clientY - r.top  - r.height/2) / window.innerHeight;
+    w.style.transform = `rotate(${dx*12}deg) translateY(${dy*-8}px)`;
+});
+document.addEventListener('mouseleave', () => {
+    const w = document.getElementById('wrapRex');
+    if (w && !dinoLocked.rex) w.style.transform = '';
+});
 
-        dinoLocked[id] = true;
-
-        const cfg    = DINO_CFG[id];
-        const wrap   = document.getElementById('wrap'   + id.charAt(0).toUpperCase() + id.slice(1));
-        const bubble = document.getElementById('bubble' + id.charAt(0).toUpperCase() + id.slice(1));
-
-        bubble.textContent = cfg.speeches[dinoIdx[id] % cfg.speeches.length];
-        dinoIdx[id]++;
-
-        wrap.classList.add(cfg.anim);
-
-        /* Suono dopo il paint — no blocco INP */
-        requestAnimationFrame(() => setTimeout(cfg.play, 0));
-
+/* ══════════════════════════════════════════
+   CONFETTI
+══════════════════════════════════════════ */
+function launchConfetti() {
+    const root   = document.getElementById('confetti-root');
+    const colors = ['#ffd60a','#52b788','#e76f51','#e63946','#ffffff','#95d5b2','#f4a261'];
+    for (let i=0;i<90;i++) {
         setTimeout(() => {
-            wrap.classList.remove(cfg.anim);
-            dinoLocked[id] = false;
-        }, 1800);
+            const p = document.createElement('div'); p.className='cp';
+            p.style.cssText=[
+                `left:${Math.random()*100}vw`,
+                `background:${colors[Math.floor(Math.random()*colors.length)]}`,
+                `width:${Math.random()*10+6}px`,
+                `height:${Math.random()*10+6}px`,
+                `border-radius:${Math.random()>.5?'50%':'2px'}`,
+                `animation-duration:${Math.random()*2+2}s`,
+                `animation-delay:${Math.random()*.4}s`
+            ].join(';');
+            root.appendChild(p);
+            p.addEventListener('animationend', () => p.remove());
+        }, i*18);
     }
-
-    /* Mouse tracking — solo Rex segue il cursore */
-    document.addEventListener('mousemove', e => {
-        if (dinoLocked.rex) return;
-        const w = document.getElementById('wrapRex');
-        if (!w) return;
-        const r  = w.getBoundingClientRect();
-        const dx = (e.clientX - r.left - r.width  / 2) / window.innerWidth;
-        const dy = (e.clientY - r.top  - r.height / 2) / window.innerHeight;
-        w.style.transform = `rotate(${dx*12}deg) translateY(${dy*-8}px)`;
-    });
-    document.addEventListener('mouseleave', () => {
-        const w = document.getElementById('wrapRex');
-        if (w && !dinoLocked.rex) w.style.transform = '';
-    });
-
-    /* ══════════════════════════════════════════
-       CONFETTI
-    ══════════════════════════════════════════ */
-    function launchConfetti() {
-        const root   = document.getElementById('confetti-root');
-        const colors = ['#ffd60a','#52b788','#e76f51','#e63946','#ffffff','#95d5b2','#f4a261'];
-        for (let i=0; i<90; i++) {
-            setTimeout(() => {
-                const p = document.createElement('div'); p.className = 'cp';
-                p.style.cssText = [
-                    `left:${Math.random()*100}vw`,
-                    `background:${colors[Math.floor(Math.random()*colors.length)]}`,
-                    `width:${Math.random()*10+6}px`,
-                    `height:${Math.random()*10+6}px`,
-                    `border-radius:${Math.random()>.5?'50%':'2px'}`,
-                    `animation-duration:${Math.random()*2+2}s`,
-                    `animation-delay:${Math.random()*.4}s`
-                ].join(';');
-                root.appendChild(p);
-                p.addEventListener('animationend', () => p.remove());
-            }, i*18);
-        }
-    }
+}
 </script>
 </body>
 </html>
