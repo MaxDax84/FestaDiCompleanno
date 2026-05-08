@@ -613,68 +613,32 @@ function _initAudio() {
 }
 
 /* ══════════════════════════════════════════
-   JURASSIC PARK — Journey to the Island
-   Sintesi orchestrale: archi + ottoni + riverbero
+   BABY SHARK — xilofono + percussioni
 ══════════════════════════════════════════ */
-// B♭ maggiore, ♩ ≈ 72 BPM
-const JP_N = {
-    Bb3:233.08,
-    C4:261.63, D4:293.66, Eb4:311.13, F4:349.23,
-    G4:392.00, Ab4:415.30,
-    Bb4:466.16, C5:523.25, D5:587.33, Eb5:622.25,
-    F5:698.46,  G5:783.99, Ab5:830.61,
-    Bb5:932.33
-};
-const JP_BT = 0.845;
-
-// [freq | 0=pausa, beats]  —  grande tema orchestrale da circa min 1:00
-const JP = [
-    // ── Frase 1: I I → V (lungo) → III II I ─────
-    [JP_N.Bb4, 1  ], [JP_N.Bb4, 1  ],
-    [JP_N.F5,  4  ],
-    [JP_N.D5,  2  ], [JP_N.C5,  1  ], [JP_N.Bb4, 3  ],
-    [0, 1],
-    // ── Frase 2: ♭VII ♭VII → IV (lungo) → VI V IV
-    [JP_N.Ab4, 1  ], [JP_N.Ab4, 1  ],
-    [JP_N.Eb5, 4  ],
-    [JP_N.G5,  2  ], [JP_N.F5,  1  ], [JP_N.Eb5, 3  ],
-    [0, 1],
-    // ── Frase 3 (climax): V V → I8va → discesa ──
-    [JP_N.F5,  1  ], [JP_N.F5,  1  ],
-    [JP_N.Bb5, 4  ],
-    [JP_N.Ab5, 1.5], [JP_N.G5,  1  ], [JP_N.F5,  1  ], [JP_N.Eb5, 1.5],
-    [0, 1],
-    // ── Risoluzione ──────────────────────────────
-    [JP_N.Bb4, 5  ],
-    [0, 3],
-];
+// Costruisce un verso "Baby Shark, doo doo doo" (×3) + finale
+function _bsVerse(r, t, f) {
+    return [
+        [r,.5],[t,.5],[f,1.0],[f,.25],[f,.25],[f,.25],[f,.25],[f,.25],[f,.25],
+        [r,.5],[t,.5],[f,1.0],[f,.25],[f,.25],[f,.25],[f,.25],[f,.25],[f,.25],
+        [r,.5],[t,.5],[f,1.0],[f,.25],[f,.25],[f,.25],[f,.25],[f,.25],[f,.25],
+        [r,.5],[t,.5],[f,2.0],[0,.75],
+    ];
+}
+// Do maggiore — Baby(C-E-G), Mommy(E-G-C5), Daddy(G-B-E5)
+const _C4=261.63,_E4=329.63,_G4=392.00,_B4=493.88,_C5=523.25,_E5=659.25;
+const MELODY    = [..._bsVerse(_C4,_E4,_G4), ..._bsVerse(_E4,_G4,_C5), ..._bsVerse(_G4,_B4,_E5), [0,2]];
+const MELODY_BT = 0.46; // ≈ 130 BPM
 
 let _musicGain  = null;
-let _reverbSend = null;
 let _musicOn    = false;
 let _musicMuted = false;
 let _loopTimer  = null;
 
-function _buildReverb() {
-    const dur = 2.8, decay = 2.1, len = Math.floor(_ctx.sampleRate * dur);
-    const buf = _ctx.createBuffer(2, len, _ctx.sampleRate);
-    for (let c = 0; c < 2; c++) {
-        const d = buf.getChannelData(c);
-        for (let i = 0; i < len; i++)
-            d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, decay);
-    }
-    const conv = _ctx.createConvolver(); conv.buffer = buf; return conv;
-}
-
 function _ensureMusic() {
     if (_musicGain) return;
     _musicGain = _ctx.createGain();
-    _musicGain.gain.value = 0.16;
+    _musicGain.gain.value = 0.22;
     _musicGain.connect(_ctx.destination);
-    const conv = _buildReverb();
-    const rvOut = _ctx.createGain(); rvOut.gain.value = 0.40;
-    conv.connect(rvOut); rvOut.connect(_musicGain);
-    _reverbSend = conv;
 }
 
 function toggleMusic() {
@@ -688,10 +652,10 @@ function toggleMusic() {
     } else {
         _musicMuted = !_musicMuted;
         if (_musicMuted) {
-            _musicGain.gain.setTargetAtTime(0, _ctx.currentTime, 0.4);
+            _musicGain.gain.setTargetAtTime(0, _ctx.currentTime, 0.3);
             btn.textContent = '🔇'; btn.title = 'Musica silenziata — clicca per riattivare';
         } else {
-            _musicGain.gain.setTargetAtTime(0.16, _ctx.currentTime, 0.4);
+            _musicGain.gain.setTargetAtTime(0.22, _ctx.currentTime, 0.3);
             btn.textContent = '🔊'; btn.title = 'Musica attiva — clicca per silenziare';
         }
     }
@@ -699,70 +663,67 @@ function toggleMusic() {
 
 function _scheduleMelody() {
     if (!_musicOn || !_ctx) return;
-    const t0 = _ctx.currentTime + 0.06; let t = t0, total = 0;
-    for (const [freq, beats] of JP) {
-        const dur = beats * JP_BT;
-        if (freq > 0) {
-            _playString(freq, t, dur);
-            if (beats >= 3) _playBrass(freq, t, Math.min(dur, 2.2));
-        }
+    const t0 = _ctx.currentTime + 0.06;
+    let t = t0, total = 0;
+    for (const [freq, beats] of MELODY) {
+        const dur = beats * MELODY_BT;
+        if (freq > 0) _playXylo(freq, t, dur);
         t += dur; total += dur;
     }
-    _loopTimer = setTimeout(_scheduleMelody, Math.max(200, (total - 2.0) * 1000));
+    // Percussioni: kick ogni 2 beat, hi-hat ogni beat
+    const numBeats = Math.ceil(total);
+    for (let b = 0; b < numBeats; b++) {
+        const bt = t0 + b * MELODY_BT;
+        _playHat(bt);
+        if (b % 2 === 0) _playKick(bt);
+    }
+    _loopTimer = setTimeout(_scheduleMelody, Math.max(200, (total - 1.5) * 1000));
 }
 
-/* Archi: sawtooth + vibrato LFO + filtro LP + riverbero */
-function _playString(freq, startT, dur) {
+/* Xilofono/glockenspiel: sine + parziale inarmonica per il "ding" */
+function _playXylo(freq, startT, dur) {
     try {
+        const osc = _ctx.createOscillator(); osc.type = 'sine'; osc.frequency.value = freq;
         const env = _ctx.createGain();
-        const atk = Math.min(0.18, dur * 0.18), rel = Math.min(0.65, dur * 0.38);
-        env.gain.setValueAtTime(0, startT);
-        env.gain.linearRampToValueAtTime(1, startT + atk);
-        env.gain.setValueAtTime(0.88, startT + dur - rel);
-        env.gain.linearRampToValueAtTime(0, startT + dur + 0.12);
+        env.gain.setValueAtTime(0.9, startT);
+        env.gain.exponentialRampToValueAtTime(0.001, startT + Math.min(dur * 1.5, 0.6));
+        osc.connect(env); env.connect(_musicGain);
+        osc.start(startT); osc.stop(startT + Math.min(dur * 1.6, 0.7));
 
-        const osc = _ctx.createOscillator(); osc.type = 'sawtooth'; osc.frequency.value = freq;
-        const lfo = _ctx.createOscillator(); lfo.frequency.value = 5.6;
-        const lfoG = _ctx.createGain();
-        lfoG.gain.setValueAtTime(0, startT);
-        lfoG.gain.linearRampToValueAtTime(freq * 0.007, startT + atk + 0.14);
-        lfo.connect(lfoG); lfoG.connect(osc.frequency);
-
-        const osc2 = _ctx.createOscillator(); osc2.type = 'sawtooth'; osc2.frequency.value = freq * 2;
-        const g2 = _ctx.createGain(); g2.gain.value = 0.15;
-        const osc3 = _ctx.createOscillator(); osc3.type = 'triangle'; osc3.frequency.value = freq * 3;
-        const g3 = _ctx.createGain(); g3.gain.value = 0.06;
-
-        const lpf = _ctx.createBiquadFilter(); lpf.type = 'lowpass'; lpf.frequency.value = 2100; lpf.Q.value = 0.5;
-        osc.connect(lpf); osc2.connect(g2); g2.connect(lpf); osc3.connect(g3); g3.connect(lpf); lpf.connect(env);
-
-        const dryG = _ctx.createGain(); dryG.gain.value = 0.60; env.connect(dryG); dryG.connect(_musicGain);
-        const wetG = _ctx.createGain(); wetG.gain.value = 0.40; env.connect(wetG); wetG.connect(_reverbSend);
-
-        const end = startT + dur + 0.18;
-        lfo.start(startT); osc.start(startT); osc2.start(startT); osc3.start(startT);
-        lfo.stop(end); osc.stop(end); osc2.stop(end); osc3.stop(end);
+        // Parziale alta inarmonica (caratteristica degli xilofoni)
+        const osc2 = _ctx.createOscillator(); osc2.type = 'sine'; osc2.frequency.value = freq * 2.76;
+        const env2 = _ctx.createGain();
+        env2.gain.setValueAtTime(0.26, startT);
+        env2.gain.exponentialRampToValueAtTime(0.001, startT + 0.08);
+        osc2.connect(env2); env2.connect(_musicGain);
+        osc2.start(startT); osc2.stop(startT + 0.1);
     } catch(_) {}
 }
 
-/* Ottoni: sawtooth ottava bassa + bandpass + riverbero */
-function _playBrass(freq, startT, dur) {
+/* Cassa: sine sweep 140→38 Hz */
+function _playKick(t) {
     try {
+        const osc = _ctx.createOscillator();
+        osc.frequency.setValueAtTime(140, t);
+        osc.frequency.exponentialRampToValueAtTime(38, t + 0.12);
         const env = _ctx.createGain();
-        const atk = Math.min(0.09, dur * 0.12);
-        env.gain.setValueAtTime(0, startT);
-        env.gain.linearRampToValueAtTime(0.52, startT + atk);
-        env.gain.setValueAtTime(0.42, startT + dur * 0.55);
-        env.gain.linearRampToValueAtTime(0, startT + dur + 0.06);
+        env.gain.setValueAtTime(0.85, t);
+        env.gain.exponentialRampToValueAtTime(0.001, t + 0.20);
+        osc.connect(env); env.connect(_musicGain);
+        osc.start(t); osc.stop(t + 0.22);
+    } catch(_) {}
+}
 
-        const osc = _ctx.createOscillator(); osc.type = 'sawtooth'; osc.frequency.value = freq * 0.5;
-        const bpf = _ctx.createBiquadFilter(); bpf.type = 'bandpass'; bpf.frequency.value = 680; bpf.Q.value = 1.4;
-        osc.connect(bpf); bpf.connect(env);
-
-        const dryG = _ctx.createGain(); dryG.gain.value = 0.55; env.connect(dryG); dryG.connect(_musicGain);
-        const wetG = _ctx.createGain(); wetG.gain.value = 0.45; env.connect(wetG); wetG.connect(_reverbSend);
-
-        osc.start(startT); osc.stop(startT + dur + 0.10);
+/* Hi-hat: noise filtrato highpass */
+function _playHat(t) {
+    try {
+        const src = _ctx.createBufferSource(); src.buffer = _noiseBuf;
+        const hpf = _ctx.createBiquadFilter(); hpf.type = 'highpass'; hpf.frequency.value = 7500;
+        const env = _ctx.createGain();
+        env.gain.setValueAtTime(0.10, t);
+        env.gain.exponentialRampToValueAtTime(0.001, t + 0.045);
+        src.connect(hpf); hpf.connect(env); env.connect(_musicGain);
+        src.start(t); src.stop(t + 0.06);
     } catch(_) {}
 }
 
