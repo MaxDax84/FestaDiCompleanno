@@ -235,9 +235,12 @@
             animation:dino-breathe 3.5s ease-in-out infinite;
             transform-origin:bottom center;
         }
-        .dino-char--rex    { font-size:8rem; }
-        .dino-char--lungo  { font-size:9rem; }
-        .dino-char--raptor { font-size:5.5rem; filter:drop-shadow(3px 3px 0 rgba(0,0,0,.4)) hue-rotate(175deg) saturate(1.4) brightness(1.1); }
+        /* Max (lungo) = verde scuro — colore naturale emoji 🦕 */
+        .dino-char--lungo  { font-size:9rem; filter:drop-shadow(3px 3px 0 rgba(0,0,0,.4)) hue-rotate(15deg) saturate(1.3) brightness(0.88); }
+        /* Ele (rex) = rosa */
+        .dino-char--rex    { font-size:8rem; filter:drop-shadow(3px 3px 0 rgba(0,0,0,.4)) hue-rotate(295deg) saturate(1.7) brightness(1.15); }
+        /* Edo (raptor) = giallo ocra */
+        .dino-char--raptor { font-size:5.5rem; filter:drop-shadow(3px 3px 0 rgba(0,0,0,.4)) hue-rotate(35deg) saturate(1.5) brightness(1.1); }
         @keyframes dino-breathe {
             0%,100%{transform:scaleY(1) translateY(0);} 50%{transform:scaleY(1.04) translateY(-5px);}
         }
@@ -460,19 +463,19 @@
         <div class="dino-trio">
             <div class="dino-unit">
                 <div class="dino-wrap" id="wrapLungo" onclick="interactDino('lungo')"
-                     role="button" aria-label="Saluta Ele">
+                     role="button" aria-label="Saluta Max">
                     <div class="dino-bubble" id="bubbleLungo"></div>
                     <span class="dino-char dino-char--lungo">🦕</span>
                 </div>
-                <div class="dino-name">Ele</div>
+                <div class="dino-name">Max</div>
             </div>
             <div class="dino-unit">
                 <div class="dino-wrap" id="wrapRex" onclick="interactDino('rex')"
-                     role="button" aria-label="Fai ruggire Max">
+                     role="button" aria-label="Saluta Ele">
                     <div class="dino-bubble" id="bubbleRex"></div>
                     <span class="dino-char dino-char--rex">🦖</span>
                 </div>
-                <div class="dino-name">Max</div>
+                <div class="dino-name">Ele</div>
             </div>
             <div class="dino-unit">
                 <div class="dino-wrap" id="wrapRaptor" onclick="interactDino('raptor')"
@@ -610,96 +613,156 @@ function _initAudio() {
 }
 
 /* ══════════════════════════════════════════
-   JURASSIC PARK THEME (sintetizzato)
+   JURASSIC PARK — Journey to the Island
+   Sintesi orchestrale: archi + ottoni + riverbero
 ══════════════════════════════════════════ */
-const N = {
-    E4:329.63,'F#4':369.99,'G#4':415.30,A4:440,'A#4':466.16,
-    B4:493.88,C5:523.25,'C#5':554.37,D5:587.33,'D#5':622.25,
-    E5:659.25,'F#5':739.99,'G#5':830.61,A5:880,B5:987.77,
-    E3:164.81,A3:220,B3:246.94
+// B♭ maggiore, ♩ ≈ 72 BPM
+const JP_N = {
+    Bb3:233.08,
+    C4:261.63, D4:293.66, Eb4:311.13, F4:349.23,
+    G4:392.00, Ab4:415.30,
+    Bb4:466.16, C5:523.25, D5:587.33, Eb5:622.25,
+    F5:698.46,  G5:783.99, Ab5:830.61,
+    Bb5:932.33
 };
-const BT = 1.18;
+const JP_BT = 0.845;
 
+// [freq | 0=pausa, beats]  —  grande tema orchestrale da circa min 1:00
 const JP = [
-    [N.B4,    3  ], [N['D#5'],1  ], [N.E5,  2  ],
-    [N.E5,    0.5], [N['F#5'],0.5], [N.E5,  0.5],
-    [N['D#5'],1.5], [N.B4,    1  ], [N['G#4'],1.5],
-    [N.A4,    0.5], [N.B4,    2  ], [N.E4,  2  ], [0, 0.5],
-    [N.B4,    3  ], [N['D#5'],1  ], [N.E5,  2  ],
-    [N.E5,    0.5], [N['F#5'],0.5], [N.E5,  0.5],
-    [N['D#5'],1.5], [N.B4,    1  ], [N['G#4'],1.5],
-    [N.A4,    0.5], [N.E5,    2  ], [N.A4,  2  ], [0, 0.5],
-    [N['G#5'],2  ], [N.E5,    1  ], [N['F#5'],2  ],
-    [N['D#5'],1  ], [N.E5,    3  ], [N.B4,   1  ],
-    [N.A4,    2  ], [N.B4,    1  ], [N.E5,   4  ],
-    [0,       2  ]
+    // ── Frase 1: I I → V (lungo) → III II I ─────
+    [JP_N.Bb4, 1  ], [JP_N.Bb4, 1  ],
+    [JP_N.F5,  4  ],
+    [JP_N.D5,  2  ], [JP_N.C5,  1  ], [JP_N.Bb4, 3  ],
+    [0, 1],
+    // ── Frase 2: ♭VII ♭VII → IV (lungo) → VI V IV
+    [JP_N.Ab4, 1  ], [JP_N.Ab4, 1  ],
+    [JP_N.Eb5, 4  ],
+    [JP_N.G5,  2  ], [JP_N.F5,  1  ], [JP_N.Eb5, 3  ],
+    [0, 1],
+    // ── Frase 3 (climax): V V → I8va → discesa ──
+    [JP_N.F5,  1  ], [JP_N.F5,  1  ],
+    [JP_N.Bb5, 4  ],
+    [JP_N.Ab5, 1.5], [JP_N.G5,  1  ], [JP_N.F5,  1  ], [JP_N.Eb5, 1.5],
+    [0, 1],
+    // ── Risoluzione ──────────────────────────────
+    [JP_N.Bb4, 5  ],
+    [0, 3],
 ];
 
-let _musicGain   = null;
-let _musicOn     = false;
-let _musicMuted  = false;
-let _loopTimer   = null;
+let _musicGain  = null;
+let _reverbSend = null;
+let _musicOn    = false;
+let _musicMuted = false;
+let _loopTimer  = null;
+
+function _buildReverb() {
+    const dur = 2.8, decay = 2.1, len = Math.floor(_ctx.sampleRate * dur);
+    const buf = _ctx.createBuffer(2, len, _ctx.sampleRate);
+    for (let c = 0; c < 2; c++) {
+        const d = buf.getChannelData(c);
+        for (let i = 0; i < len; i++)
+            d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, decay);
+    }
+    const conv = _ctx.createConvolver(); conv.buffer = buf; return conv;
+}
+
+function _ensureMusic() {
+    if (_musicGain) return;
+    _musicGain = _ctx.createGain();
+    _musicGain.gain.value = 0.16;
+    _musicGain.connect(_ctx.destination);
+    const conv = _buildReverb();
+    const rvOut = _ctx.createGain(); rvOut.gain.value = 0.40;
+    conv.connect(rvOut); rvOut.connect(_musicGain);
+    _reverbSend = conv;
+}
 
 function toggleMusic() {
-    _initAudio();
+    _initAudio(); _ensureMusic();
     const btn = document.getElementById('musicBtn');
     if (!_musicOn) {
-        if (!_musicGain) {
-            _musicGain = _ctx.createGain();
-            _musicGain.gain.value = 0.10;
-            _musicGain.connect(_ctx.destination);
-        }
-        _musicOn    = true;
-        _musicMuted = false;
+        _musicOn = true; _musicMuted = false;
         _scheduleMelody();
-        btn.textContent = '🔊';
-        btn.classList.add('playing');
+        btn.textContent = '🔊'; btn.classList.add('playing');
         btn.title = 'Musica attiva — clicca per silenziare';
     } else {
         _musicMuted = !_musicMuted;
         if (_musicMuted) {
             _musicGain.gain.setTargetAtTime(0, _ctx.currentTime, 0.4);
-            btn.textContent = '🔇';
-            btn.title = 'Musica silenziata — clicca per riattivare';
+            btn.textContent = '🔇'; btn.title = 'Musica silenziata — clicca per riattivare';
         } else {
-            _musicGain.gain.setTargetAtTime(0.10, _ctx.currentTime, 0.4);
-            btn.textContent = '🔊';
-            btn.title = 'Musica attiva — clicca per silenziare';
+            _musicGain.gain.setTargetAtTime(0.16, _ctx.currentTime, 0.4);
+            btn.textContent = '🔊'; btn.title = 'Musica attiva — clicca per silenziare';
         }
     }
 }
 
 function _scheduleMelody() {
-    if (!_musicOn || !_ctx || !_musicGain) return;
-    const t0 = _ctx.currentTime + 0.1;
-    let t = t0, total = 0;
+    if (!_musicOn || !_ctx) return;
+    const t0 = _ctx.currentTime + 0.06; let t = t0, total = 0;
     for (const [freq, beats] of JP) {
-        const dur = beats * BT;
-        if (freq > 0) _playNote(freq, t, dur);
+        const dur = beats * JP_BT;
+        if (freq > 0) {
+            _playString(freq, t, dur);
+            if (beats >= 3) _playBrass(freq, t, Math.min(dur, 2.2));
+        }
         t += dur; total += dur;
     }
-    _loopTimer = setTimeout(_scheduleMelody, Math.max(100, (total - 1.5) * 1000));
+    _loopTimer = setTimeout(_scheduleMelody, Math.max(200, (total - 2.0) * 1000));
 }
 
-function _playNote(freq, startT, dur) {
-    if (!_musicGain) return;
+/* Archi: sawtooth + vibrato LFO + filtro LP + riverbero */
+function _playString(freq, startT, dur) {
     try {
-        const g = _ctx.createGain();
-        const atk = Math.min(0.22, dur * 0.18);
-        const rel = Math.min(0.45, dur * 0.28);
-        g.gain.setValueAtTime(0,    startT);
-        g.gain.linearRampToValueAtTime(1, startT + atk);
-        g.gain.setValueAtTime(1,    startT + dur - rel);
-        g.gain.linearRampToValueAtTime(0, startT + dur);
-        g.connect(_musicGain);
-        const o1 = _ctx.createOscillator();
-        o1.type = 'sine'; o1.frequency.value = freq;
-        o1.connect(g); o1.start(startT); o1.stop(startT + dur + 0.05);
-        const o2 = _ctx.createOscillator();
-        const g2 = _ctx.createGain(); g2.gain.value = 0.14;
-        o2.type = 'triangle'; o2.frequency.value = freq / 2;
-        o2.connect(g2); g2.connect(g);
-        o2.start(startT); o2.stop(startT + dur + 0.05);
+        const env = _ctx.createGain();
+        const atk = Math.min(0.18, dur * 0.18), rel = Math.min(0.65, dur * 0.38);
+        env.gain.setValueAtTime(0, startT);
+        env.gain.linearRampToValueAtTime(1, startT + atk);
+        env.gain.setValueAtTime(0.88, startT + dur - rel);
+        env.gain.linearRampToValueAtTime(0, startT + dur + 0.12);
+
+        const osc = _ctx.createOscillator(); osc.type = 'sawtooth'; osc.frequency.value = freq;
+        const lfo = _ctx.createOscillator(); lfo.frequency.value = 5.6;
+        const lfoG = _ctx.createGain();
+        lfoG.gain.setValueAtTime(0, startT);
+        lfoG.gain.linearRampToValueAtTime(freq * 0.007, startT + atk + 0.14);
+        lfo.connect(lfoG); lfoG.connect(osc.frequency);
+
+        const osc2 = _ctx.createOscillator(); osc2.type = 'sawtooth'; osc2.frequency.value = freq * 2;
+        const g2 = _ctx.createGain(); g2.gain.value = 0.15;
+        const osc3 = _ctx.createOscillator(); osc3.type = 'triangle'; osc3.frequency.value = freq * 3;
+        const g3 = _ctx.createGain(); g3.gain.value = 0.06;
+
+        const lpf = _ctx.createBiquadFilter(); lpf.type = 'lowpass'; lpf.frequency.value = 2100; lpf.Q.value = 0.5;
+        osc.connect(lpf); osc2.connect(g2); g2.connect(lpf); osc3.connect(g3); g3.connect(lpf); lpf.connect(env);
+
+        const dryG = _ctx.createGain(); dryG.gain.value = 0.60; env.connect(dryG); dryG.connect(_musicGain);
+        const wetG = _ctx.createGain(); wetG.gain.value = 0.40; env.connect(wetG); wetG.connect(_reverbSend);
+
+        const end = startT + dur + 0.18;
+        lfo.start(startT); osc.start(startT); osc2.start(startT); osc3.start(startT);
+        lfo.stop(end); osc.stop(end); osc2.stop(end); osc3.stop(end);
+    } catch(_) {}
+}
+
+/* Ottoni: sawtooth ottava bassa + bandpass + riverbero */
+function _playBrass(freq, startT, dur) {
+    try {
+        const env = _ctx.createGain();
+        const atk = Math.min(0.09, dur * 0.12);
+        env.gain.setValueAtTime(0, startT);
+        env.gain.linearRampToValueAtTime(0.52, startT + atk);
+        env.gain.setValueAtTime(0.42, startT + dur * 0.55);
+        env.gain.linearRampToValueAtTime(0, startT + dur + 0.06);
+
+        const osc = _ctx.createOscillator(); osc.type = 'sawtooth'; osc.frequency.value = freq * 0.5;
+        const bpf = _ctx.createBiquadFilter(); bpf.type = 'bandpass'; bpf.frequency.value = 680; bpf.Q.value = 1.4;
+        osc.connect(bpf); bpf.connect(env);
+
+        const dryG = _ctx.createGain(); dryG.gain.value = 0.55; env.connect(dryG); dryG.connect(_musicGain);
+        const wetG = _ctx.createGain(); wetG.gain.value = 0.45; env.connect(wetG); wetG.connect(_reverbSend);
+
+        osc.start(startT); osc.stop(startT + dur + 0.10);
     } catch(_) {}
 }
 
@@ -789,8 +852,8 @@ function _playChirps() {
    DINO INTERACTION
 ══════════════════════════════════════════ */
 const DINO_CFG = {
-    rex:   { anim:'roaring', play:_playRoar,   speeches:['ROAAAR! 🦖','Sono Max! 💪','Buon Compleanno Edo! 🎉','Vieni alla festa! 🥳','GRRRRR! 🦕','Un anno già! ✨','Ti voglio bene! ❤️','Sono Max il feroce! 🦖'] },
-    lungo: { anim:'honking', play:_playHonk,   speeches:['MHOOOOO! 🦕','Il mio collo è ENORME! 🦕','Ciao Edo! Sono Ele! 🎂','Sono la più alta! 🏔️','Foglie! 🌿','Buon compleanno! 🎉','Guarda in sù! ☁️','Un anno! Che bello! 🎈'] },
+    lungo: { anim:'honking', play:_playHonk,   speeches:['MHOOOOO! 🦕','Sono Max il più alto! 🏔️','Ciao Edo! 🎂','Il mio collo è ENORME! 🦕','Foglie! 🌿','Buon compleanno! 🎉','Guarda in sù! ☁️','Un anno! Che bello! 🎈'] },
+    rex:   { anim:'roaring', play:_playRoar,   speeches:['ROAAAR! 🦖','Sono Ele! 💕','Buon Compleanno Edo! 🎉','Vieni alla festa! 🥳','GRRRRR! 🦕','Un anno già! ✨','Ti voglio bene! ❤️','Sono Ele la feroce! 🦖'] },
     raptor:{ anim:'dashing', play:_playChirps, speeches:['kek-kek-kek! 🦖','Sono Edo come te! ⚡','Non scappare! 🏃','Sono il più furbo! 🧠','KRRRR! 🎉','Festa! Festa! 🥳','Buon compleanno Edo! 🎂','Ci vediamo il 13! 📅'] }
 };
 const dinoIdx    = {rex:0, lungo:0, raptor:0};
