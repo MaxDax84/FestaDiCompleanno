@@ -27,40 +27,30 @@
             --radius-sm: 8px;
         }
 
-        body {
-            font-family: 'Nunito', sans-serif;
-            background: var(--green-dark);
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
+        body { font-family:'Nunito',sans-serif; background:var(--green-dark); min-height:100vh; overflow-x:hidden; }
 
         body::before {
-            content: '';
-            position: fixed; inset: 0;
+            content:''; position:fixed; inset:0;
             background:
                 radial-gradient(ellipse at 15% 15%, rgba(82,183,136,.18) 0%, transparent 55%),
                 radial-gradient(ellipse at 85% 85%, rgba(45,106,79,.25)  0%, transparent 55%),
                 linear-gradient(160deg, #1b4332 0%, #2d6a4f 50%, #1b4332 100%);
-            z-index: -2;
+            z-index:-2;
         }
-
         body::after {
-            content: '';
-            position: fixed; bottom:0; left:0; right:0; height:80px;
-            background: linear-gradient(180deg, transparent, rgba(27,67,50,.6));
-            z-index: -1; pointer-events: none;
+            content:''; position:fixed; bottom:0; left:0; right:0; height:80px;
+            background:linear-gradient(180deg,transparent,rgba(27,67,50,.6));
+            z-index:-1; pointer-events:none;
         }
 
         /* ── Ambient leaves ── */
         .ambient-dino {
-            position: fixed; pointer-events: none; font-size: 4.5rem;
-            opacity: .12; animation: ambient-float 7s ease-in-out infinite;
-            z-index: 0; filter: drop-shadow(0 4px 12px rgba(0,0,0,.3));
-            user-select: none;
+            position:fixed; pointer-events:none; font-size:4.5rem;
+            opacity:.12; animation:ambient-float 7s ease-in-out infinite;
+            z-index:0; filter:drop-shadow(0 4px 12px rgba(0,0,0,.3)); user-select:none;
         }
         @keyframes ambient-float {
-            0%,100% { transform: translateY(0)    rotate(-6deg); }
-            50%      { transform: translateY(-22px) rotate(6deg); }
+            0%,100%{transform:translateY(0) rotate(-6deg);} 50%{transform:translateY(-22px) rotate(6deg);}
         }
 
         /* ── Container ── */
@@ -68,29 +58,24 @@
 
         /* ── Hero ── */
         .hero { text-align:center; padding:50px 16px 30px; }
-
         .hero-pill {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--yellow), var(--yellow-warm));
-            color: var(--green-dark);
-            font-family: 'Fredoka One', cursive; font-size:1.1rem;
-            padding: 9px 26px; border-radius:50px; margin-bottom:24px;
-            box-shadow: 0 4px 18px rgba(255,214,10,.45);
-            animation: pill-pulse 2.4s ease-in-out infinite;
+            display:inline-block;
+            background:linear-gradient(135deg,var(--yellow),var(--yellow-warm));
+            color:var(--green-dark); font-family:'Fredoka One',cursive; font-size:1.1rem;
+            padding:9px 26px; border-radius:50px; margin-bottom:24px;
+            box-shadow:0 4px 18px rgba(255,214,10,.45); animation:pill-pulse 2.4s ease-in-out infinite;
         }
         @keyframes pill-pulse {
-            0%,100% { transform:scale(1);    box-shadow:0 4px 18px rgba(255,214,10,.45); }
-            50%      { transform:scale(1.04); box-shadow:0 4px 28px rgba(255,214,10,.65); }
+            0%,100%{transform:scale(1);    box-shadow:0 4px 18px rgba(255,214,10,.45);}
+            50%     {transform:scale(1.04); box-shadow:0 4px 28px rgba(255,214,10,.65);}
         }
-
         .hero-dino-row { display:flex; justify-content:center; align-items:flex-end; gap:12px; margin-bottom:10px; }
         .hdino { display:inline-block; filter:drop-shadow(0 8px 18px rgba(0,0,0,.35)); animation:hero-bounce 1.8s ease-in-out infinite; }
-        .hdino--sm  { font-size:4.5rem; }
-        .hdino--md  { font-size:6.5rem; animation-delay:.25s; }
+        .hdino--sm   { font-size:4.5rem; }
+        .hdino--md   { font-size:6.5rem; animation-delay:.25s; }
         .hdino--sm-r { font-size:4.5rem; animation-delay:.5s; animation-name:hero-bounce-r; }
         @keyframes hero-bounce   { 0%,100%{transform:translateY(0) rotate(0deg);} 30%{transform:translateY(-18px) rotate(-4deg);} 70%{transform:translateY(-10px) rotate(4deg);} }
         @keyframes hero-bounce-r { 0%,100%{transform:scaleX(-1) translateY(0) rotate(0deg);} 30%{transform:scaleX(-1) translateY(-18px) rotate(4deg);} 70%{transform:scaleX(-1) translateY(-10px) rotate(-4deg);} }
-
         .hero-title {
             font-family:'Fredoka One',cursive; font-size:clamp(2rem,7vw,4rem);
             color:var(--yellow); line-height:1.15; margin:18px 0 6px;
@@ -98,8 +83,8 @@
             animation:glow 3s ease-in-out infinite;
         }
         @keyframes glow {
-            0%,100% { text-shadow:3px 3px 0 var(--green-dark),0 0 20px rgba(255,214,10,.25); }
-            50%      { text-shadow:3px 3px 0 var(--green-dark),0 0 45px rgba(255,214,10,.55); }
+            0%,100%{text-shadow:3px 3px 0 var(--green-dark),0 0 20px rgba(255,214,10,.25);}
+            50%     {text-shadow:3px 3px 0 var(--green-dark),0 0 45px rgba(255,214,10,.55);}
         }
         .hero-name {
             display:block; font-family:'Fredoka One',cursive;
@@ -114,33 +99,32 @@
             animation:badge-glow 2.5s ease-in-out infinite;
         }
         @keyframes badge-glow {
-            0%,100% { box-shadow:0 8px 30px rgba(230,57,70,.5),  0 0 0 8px  rgba(230,57,70,.15); }
-            50%      { box-shadow:0 8px 30px rgba(244,162,97,.5), 0 0 0 16px rgba(244,162,97,.1); }
+            0%,100%{box-shadow:0 8px 30px rgba(230,57,70,.5), 0 0 0 8px  rgba(230,57,70,.15);}
+            50%     {box-shadow:0 8px 30px rgba(244,162,97,.5),0 0 0 16px rgba(244,162,97,.1);}
         }
-        .hero-sub    { font-size:1.2rem; color:var(--green-pale); font-weight:700; margin-bottom:18px; }
-        .footprints  { font-size:1.4rem; letter-spacing:14px; opacity:.35; animation:steps 2s steps(3) infinite; }
+        .hero-sub   { font-size:1.2rem; color:var(--green-pale); font-weight:700; margin-bottom:18px; }
+        .footprints { font-size:1.4rem; letter-spacing:14px; opacity:.35; animation:steps 2s steps(3) infinite; }
         @keyframes steps { 0%{opacity:.2;} 50%{opacity:.5;} 100%{opacity:.2;} }
 
         /* ── Info cards ── */
         .info-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; margin:36px 0; }
         @media (max-width:540px) { .info-grid { grid-template-columns:1fr; } }
-
         .info-card {
             background:rgba(255,255,255,.96); border-radius:var(--radius-xl);
             padding:30px 24px; text-align:center; box-shadow:var(--shadow-lg);
             position:relative; overflow:hidden;
-            transition:transform .3s ease, box-shadow .3s ease; cursor:default;
+            transition:transform .3s ease,box-shadow .3s ease; cursor:default;
         }
         .info-card::before {
             content:''; position:absolute; top:0; left:0; right:0; height:5px;
             background:linear-gradient(90deg,var(--green-bright),var(--yellow),var(--orange));
         }
         .info-card:hover { transform:translateY(-6px); box-shadow:0 28px 70px rgba(0,0,0,.22); }
-        .info-icon    { font-size:3rem; display:block; margin-bottom:12px; animation:icon-pop 2.2s ease-in-out infinite; }
+        .info-icon  { font-size:3rem; display:block; margin-bottom:12px; animation:icon-pop 2.2s ease-in-out infinite; }
         @keyframes icon-pop { 0%,100%{transform:scale(1);} 50%{transform:scale(1.12);} }
-        .info-label   { font-size:.78rem; text-transform:uppercase; letter-spacing:2.5px; color:var(--green-bright); font-weight:900; margin-bottom:8px; }
-        .info-value   { font-family:'Fredoka One',cursive; font-size:1.55rem; color:var(--green-dark); line-height:1.3; }
-        .info-sub     { font-size:.9rem; color:#777; margin-top:6px; }
+        .info-label { font-size:.78rem; text-transform:uppercase; letter-spacing:2.5px; color:var(--green-bright); font-weight:900; margin-bottom:8px; }
+        .info-value { font-family:'Fredoka One',cursive; font-size:1.55rem; color:var(--green-dark); line-height:1.3; }
+        .info-sub   { font-size:.9rem; color:#777; margin-top:6px; }
 
         /* ── Shared card ── */
         .card {
@@ -158,85 +142,104 @@
             background:linear-gradient(90deg,var(--green-bright),var(--yellow),var(--orange));
         }
         .map-address {
-            display:inline-flex; align-items:center; gap:8px;
+            display:flex; align-items:center; justify-content:center;
+            flex-wrap:wrap; gap:4px 8px; text-align:center;
             background:var(--green-pale); color:var(--green-dark);
             font-weight:800; font-size:.95rem;
-            padding:8px 18px; border-radius:50px; margin-bottom:20px;
+            padding:10px 20px; border-radius:var(--radius-md); margin-bottom:20px;
         }
         .map-iframe {
             width:100%; height:320px; border:none; display:block;
-            border-radius:0 0 var(--radius-xl) var(--radius-xl);
-            margin-top:4px;
+            border-radius:0 0 var(--radius-xl) var(--radius-xl); margin-top:4px;
         }
 
-        /* ── Interactive Dino card ── */
+        /* ── Dino trio ── */
         .card--dino::after {
             content:'🌿'; position:absolute; bottom:-10px; right:-10px;
             font-size:8rem; opacity:.07; pointer-events:none;
         }
-
-        .dino-stage {
-            display:flex; flex-direction:column; align-items:center;
-            padding:10px 0 8px; gap:4px;
+        .dino-trio {
+            display:flex; justify-content:center; align-items:flex-end;
+            gap:16px; flex-wrap:wrap; padding:10px 0 4px;
         }
-
+        .dino-unit { display:flex; flex-direction:column; align-items:center; gap:0; }
+        .dino-name {
+            font-family:'Fredoka One',cursive; font-size:.9rem;
+            color:var(--green-mid); margin-top:6px;
+        }
         .dino-wrap {
             position:relative; cursor:pointer; display:inline-block;
             -webkit-tap-highlight-color:transparent; outline:none;
             transition:transform .08s ease;
         }
-
         .dino-char {
-            font-size: 9rem; display:block; user-select:none;
-            filter:drop-shadow(0 12px 22px rgba(0,0,0,.3));
+            display:block; user-select:none;
+            filter:drop-shadow(0 8px 16px rgba(0,0,0,.28));
             animation:dino-breathe 3.5s ease-in-out infinite;
-            transform-origin: bottom center;
+            transform-origin:bottom center;
         }
+        .dino-char--rex    { font-size:8rem; }
+        .dino-char--lungo  { font-size:9rem; }
+        .dino-char--raptor { font-size:5.5rem; }
+
         @keyframes dino-breathe {
-            0%,100% { transform:scaleY(1)    translateY(0); }
-            50%      { transform:scaleY(1.04) translateY(-5px); }
+            0%,100%{transform:scaleY(1)    translateY(0);}
+            50%     {transform:scaleY(1.04) translateY(-5px);}
         }
 
-        .dino-wrap.roaring .dino-char {
-            animation:dino-roar-anim .65s ease forwards;
-        }
-        @keyframes dino-roar-anim {
-            0%   { transform:scale(1)    rotate(0deg); }
-            15%  { transform:scale(1.4)  rotate(-6deg); }
-            30%  { transform:scale(1.38) rotate(6deg); }
-            50%  { transform:scale(1.35) rotate(-4deg); }
-            70%  { transform:scale(1.25) rotate(3deg); }
-            100% { transform:scale(1)    rotate(0deg); }
+        /* Rex — scuote e si ingrandisce */
+        .dino-wrap.roaring .dino-char { animation:anim-roar .65s ease forwards; }
+        @keyframes anim-roar {
+            0%  {transform:scale(1)    rotate(0deg);}
+            15% {transform:scale(1.4)  rotate(-6deg);}
+            30% {transform:scale(1.38) rotate(6deg);}
+            50% {transform:scale(1.35) rotate(-4deg);}
+            70% {transform:scale(1.25) rotate(3deg);}
+            100%{transform:scale(1)    rotate(0deg);}
         }
 
-        /* Speech bubble */
+        /* Lungo — si allunga verso l'alto */
+        .dino-wrap.honking .dino-char { animation:anim-honk .9s ease forwards; }
+        @keyframes anim-honk {
+            0%  {transform:scale(1);}
+            20% {transform:scaleY(1.3) scaleX(.84) translateY(-14px);}
+            45% {transform:scaleY(1.25) scaleX(.87) translateY(-11px) rotate(5deg);}
+            70% {transform:scaleY(1.08) scaleX(.96);}
+            100%{transform:scale(1);}
+        }
+
+        /* Raptor — dash laterale rapido */
+        .dino-wrap.dashing .dino-char { animation:anim-dash .55s ease forwards; }
+        @keyframes anim-dash {
+            0%  {transform:translateX(0)    rotate(0deg);}
+            12% {transform:translateX(-22px) scaleX(.78) rotate(-12deg);}
+            28% {transform:translateX(18px)  scaleX(1.1)  rotate(7deg);}
+            48% {transform:translateX(-10px) rotate(-4deg);}
+            68% {transform:translateX(6px)   rotate(2deg);}
+            100%{transform:translateX(0)    rotate(0deg);}
+        }
+
+        /* Speech bubble (comune) */
         .dino-bubble {
-            position:absolute;
-            bottom:calc(100% + 10px);
-            left:50%;
-            transform:translateX(-50%) scale(0);
-            transform-origin: bottom center;
-            background:var(--yellow);
-            color:var(--green-dark);
-            font-family:'Fredoka One',cursive; font-size:1.25rem;
-            padding:10px 22px; border-radius:50px; white-space:nowrap;
-            box-shadow:0 4px 18px rgba(255,214,10,.5);
-            pointer-events:none; opacity:0;
-            transition:transform .3s cubic-bezier(.34,1.56,.64,1), opacity .25s;
+            position:absolute; bottom:calc(100% + 8px); left:50%;
+            transform:translateX(-50%) scale(0); transform-origin:bottom center;
+            background:var(--yellow); color:var(--green-dark);
+            font-family:'Fredoka One',cursive; font-size:1.1rem;
+            padding:8px 18px; border-radius:50px; white-space:nowrap;
+            box-shadow:0 4px 16px rgba(255,214,10,.5);
+            pointer-events:none; opacity:0; z-index:10;
+            transition:transform .28s cubic-bezier(.34,1.56,.64,1), opacity .22s;
         }
         .dino-bubble::after {
             content:''; position:absolute; top:100%; left:50%; transform:translateX(-50%);
-            border:10px solid transparent; border-top-color:var(--yellow); border-bottom:0;
+            border:9px solid transparent; border-top-color:var(--yellow); border-bottom:0;
         }
-        .dino-wrap.roaring .dino-bubble {
-            transform:translateX(-50%) scale(1);
-            opacity:1;
-        }
+        .dino-wrap.roaring .dino-bubble,
+        .dino-wrap.honking .dino-bubble,
+        .dino-wrap.dashing .dino-bubble { transform:translateX(-50%) scale(1); opacity:1; }
 
-        .dino-hint {
-            font-size:.88rem; color:#aaa; font-weight:700; margin-top:10px;
-            animation:hint-fade 2s ease-in-out infinite;
-        }
+        .dino-hint-row { text-align:center; margin-top:12px; }
+        .dino-hint { font-size:.88rem; color:#aaa; font-weight:700; animation:hint-fade 2s ease-in-out infinite; }
         @keyframes hint-fade { 0%,100%{opacity:.5;} 50%{opacity:1;} }
 
         /* ── RSVP ── */
@@ -250,7 +253,7 @@
             border:3px solid var(--green-pale); border-radius:var(--radius-md);
             font-family:'Nunito',sans-serif; font-size:1rem; font-weight:700;
             color:var(--green-dark); background:var(--cream); outline:none;
-            transition:border-color .25s, box-shadow .25s, background .25s;
+            transition:border-color .25s,box-shadow .25s,background .25s;
         }
         .rsvp-input:focus { border-color:var(--green-bright); background:#fff; box-shadow:0 0 0 4px rgba(82,183,136,.18); }
         .rsvp-input::placeholder { color:#bbb; font-weight:400; }
@@ -261,7 +264,7 @@
             font-family:'Fredoka One',cursive; font-size:1.1rem; cursor:pointer;
             white-space:nowrap; position:relative; overflow:hidden;
             box-shadow:0 4px 18px rgba(82,183,136,.45);
-            transition:transform .25s, box-shadow .25s;
+            transition:transform .25s,box-shadow .25s;
         }
         .rsvp-btn::after { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(255,255,255,.2),transparent); pointer-events:none; }
         .rsvp-btn:hover  { transform:translateY(-3px); box-shadow:0 8px 28px rgba(82,183,136,.55); }
@@ -278,8 +281,8 @@
         #confetti-root { position:fixed; inset:0; pointer-events:none; z-index:9999; }
         .cp { position:absolute; border-radius:2px; animation:cp-fall linear forwards; }
         @keyframes cp-fall {
-            0%   { top:-30px; opacity:1; transform:rotate(0deg)   translateX(0); }
-            100% { top:110vh; opacity:0; transform:rotate(720deg) translateX(80px); }
+            0%  {top:-30px; opacity:1; transform:rotate(0deg)   translateX(0);}
+            100%{top:110vh;  opacity:0; transform:rotate(720deg) translateX(80px);}
         }
 
         /* ── Footer ── */
@@ -287,12 +290,16 @@
 
         /* ── Responsive ── */
         @media (max-width:480px) {
-            .card        { padding:28px 18px; }
-            .card-title  { font-size:1.6rem; }
-            .rsvp-form   { flex-direction:column; }
-            .rsvp-btn    { text-align:center; }
-            .dino-char   { font-size:7rem; }
-            .map-iframe  { height:250px; }
+            .card           { padding:28px 18px; }
+            .card-title     { font-size:1.6rem; }
+            .rsvp-form      { flex-direction:column; }
+            .rsvp-btn       { text-align:center; }
+            .map-iframe     { height:250px; }
+            .map-address    { font-size:.82rem; }
+            .dino-char--rex    { font-size:6rem; }
+            .dino-char--lungo  { font-size:7rem; }
+            .dino-char--raptor { font-size:4.5rem; }
+            .dino-bubble    { font-size:.95rem; padding:7px 14px; }
         }
     </style>
 </head>
@@ -343,7 +350,12 @@
     <!-- Map -->
     <section class="card card--map">
         <h2 class="card-title">🗺️ Come arrivare</h2>
-        <div class="map-address">📍 Seconda Strada 11 — 20096 Pioltello (MI)</div>
+        <div class="map-address">
+            <span>📍</span>
+            <span>Seconda Strada 11</span>
+            <span>–</span>
+            <span>20096 Pioltello (MI)</span>
+        </div>
         <iframe
             class="map-iframe"
             src="https://maps.google.com/maps?q=Seconda+Strada+11,+20096+Pioltello+MI+Italia&output=embed&hl=it&z=16"
@@ -354,16 +366,46 @@
         ></iframe>
     </section>
 
-    <!-- Interactive dino -->
+    <!-- Dino trio -->
     <section class="card card--dino">
-        <h2 class="card-title">🦖 Incontra Rex!</h2>
-        <p class="card-sub">Il dinosauro della festa vuole salutarti — dagli un tocco!</p>
-        <div class="dino-stage">
-            <div class="dino-wrap" id="dinoWrap" onclick="roarDino()" role="button" aria-label="Fai ruggire Rex">
-                <div class="dino-bubble" id="dinoBubble">ROAAAR! 🦖</div>
-                <span class="dino-char" id="dinoChar">🦖</span>
+        <h2 class="card-title">🦕 Incontra la banda!</h2>
+        <p class="card-sub">Tre dinosauri ti aspettano — dagli un tocco e scopri cosa combinano!</p>
+
+        <div class="dino-trio">
+
+            <!-- Lungo (Brontosaurus) -->
+            <div class="dino-unit">
+                <div class="dino-wrap" id="wrapLungo" onclick="interactDino('lungo')"
+                     role="button" aria-label="Saluta Lungo">
+                    <div class="dino-bubble" id="bubbleLungo"></div>
+                    <span class="dino-char dino-char--lungo">🦕</span>
+                </div>
+                <div class="dino-name">Lungo</div>
             </div>
-            <p class="dino-hint" id="dinoHint">👆 Clicca su Rex!</p>
+
+            <!-- Rex (T-Rex) -->
+            <div class="dino-unit">
+                <div class="dino-wrap" id="wrapRex" onclick="interactDino('rex')"
+                     role="button" aria-label="Fai ruggire Rex">
+                    <div class="dino-bubble" id="bubbleRex"></div>
+                    <span class="dino-char dino-char--rex" id="charRex">🦖</span>
+                </div>
+                <div class="dino-name">Rex</div>
+            </div>
+
+            <!-- Raptor (Velociraptor) -->
+            <div class="dino-unit">
+                <div class="dino-wrap" id="wrapRaptor" onclick="interactDino('raptor')"
+                     role="button" aria-label="Saluta Raptor">
+                    <div class="dino-bubble" id="bubbleRaptor"></div>
+                    <span class="dino-char dino-char--raptor">🦖</span>
+                </div>
+                <div class="dino-name">Raptor</div>
+            </div>
+
+        </div>
+        <div class="dino-hint-row">
+            <span class="dino-hint">👆 Clicca su ognuno di loro!</span>
         </div>
     </section>
 
@@ -383,9 +425,7 @@
                 maxlength="50"
                 autocomplete="off"
             >
-            <button class="rsvp-btn" onclick="confirmRsvp()">
-                🎉 Ci sarò!
-            </button>
+            <button class="rsvp-btn" onclick="confirmRsvp()">🎉 Ci sarò!</button>
         </div>
         <div class="feedback feedback--ok" id="feedbackOk">
             <span>🦕</span><span id="feedbackOkText"></span>
@@ -403,7 +443,9 @@
 </div>
 
 <script>
-    /* ─────────────── RSVP ─────────────── */
+    /* ══════════════════════════════════════════
+       RSVP
+    ══════════════════════════════════════════ */
     const RSVP_KEY      = 'edoardo_rsvp_v1';
     const FORMSPREE_URL = 'https://formspree.io/f/xjgleqka';
 
@@ -413,190 +455,258 @@
         const name  = input.value.trim();
         clearFeedback();
 
-        if (!name) {
-            showErr('Inserisci il tuo nome prima di confermare! 🦖');
-            input.focus();
-            return;
-        }
+        if (!name) { showErr('Inserisci il tuo nome prima di confermare! 🦖'); input.focus(); return; }
 
         const confirmed = JSON.parse(localStorage.getItem(RSVP_KEY) || '[]');
         if (confirmed.includes(name.toLowerCase())) {
             showErr(`${name} ha già confermato la presenza! 🦕`);
-            input.select();
-            return;
+            input.select(); return;
         }
 
-        btn.disabled    = true;
-        btn.textContent = '⏳ Invio…';
-
+        btn.disabled = true; btn.textContent = '⏳ Invio…';
         try {
             const res = await fetch(FORMSPREE_URL, {
-                method:  'POST',
+                method: 'POST',
                 headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                body:    JSON.stringify({ name, _subject: `RSVP Festa Edoardo — ${name}` })
+                body: JSON.stringify({ name, _subject: `RSVP Festa Edoardo — ${name}` })
             });
-
             if (res.ok) {
                 confirmed.push(name.toLowerCase());
                 localStorage.setItem(RSVP_KEY, JSON.stringify(confirmed));
                 showOk(`Evviva ${name}! A presto alla festa! 🎉`);
-                input.value = '';
-                input.focus();
-                launchConfetti();
-            } else {
-                showErr('Ops, qualcosa è andato storto. Riprova! 🦖');
-            }
-        } catch (_) {
-            showErr('Errore di rete. Controlla la connessione e riprova! 🦖');
-        } finally {
-            btn.disabled    = false;
-            btn.textContent = '🎉 Ci sarò!';
-        }
+                input.value = ''; input.focus(); launchConfetti();
+            } else { showErr('Ops, qualcosa è andato storto. Riprova! 🦖'); }
+        } catch (_) { showErr('Errore di rete. Controlla la connessione e riprova! 🦖'); }
+        finally { btn.disabled = false; btn.textContent = '🎉 Ci sarò!'; }
     }
 
     function showOk(msg) {
         const el = document.getElementById('feedbackOk');
         document.getElementById('feedbackOkText').textContent = msg;
-        el.classList.add('show');
-        setTimeout(() => el.classList.remove('show'), 5000);
+        el.classList.add('show'); setTimeout(() => el.classList.remove('show'), 5000);
     }
-
     function showErr(msg) {
         const el = document.getElementById('feedbackErr');
         document.getElementById('feedbackErrText').textContent = msg;
         el.style.animation = 'none'; el.offsetHeight; el.style.animation = '';
-        el.classList.add('show');
-        setTimeout(() => el.classList.remove('show'), 3500);
+        el.classList.add('show'); setTimeout(() => el.classList.remove('show'), 3500);
     }
-
     function clearFeedback() {
         document.getElementById('feedbackOk').classList.remove('show');
         document.getElementById('feedbackErr').classList.remove('show');
     }
-
     document.getElementById('nameInput').addEventListener('keydown', e => {
         if (e.key === 'Enter') confirmRsvp();
     });
 
-    /* ─────────────── REX (dino interattivo) ─────────────── */
-    const SPEECHES = [
-        'ROAAAR! 🦖',
-        'Ciao Edoardo! 🎂',
-        'Buon Compleanno! 🎉',
-        'Vieni alla festa! 🥳',
-        'GRRRRR! 🦕',
-        'Un anno già! ✨',
-        'Ti voglio bene! ❤️',
-        'Sono Rex il feroce! 🦖',
-    ];
-    let speechIdx = 0;
-    let isRoaring = false;
+    /* ══════════════════════════════════════════
+       AUDIO — AudioContext condiviso, lazy
+    ══════════════════════════════════════════ */
+    let _ctx         = null;
+    let _noiseBuf    = null;
 
-    /* AudioContext e curva di distorsione creati una sola volta (lazy) */
-    let _audioCtx = null;
-    let _wsCurve  = null;
-
-    function _ensureAudio() {
+    /* Chiamato SINCRONO nel click (user gesture) così il browser
+       autorizza l'AudioContext anche su iOS Safari. */
+    function _initAudio() {
         const AC = window.AudioContext || window.webkitAudioContext;
         if (!AC) return false;
-        if (!_audioCtx) {
-            _audioCtx = new AC();
-            _wsCurve  = new Float32Array(512);
-            for (let i = 0; i < 512; i++) {
-                const x    = (i * 2) / 512 - 1;
-                _wsCurve[i] = (Math.PI + 180) * x / (Math.PI + 180 * Math.abs(x));
-            }
+        if (!_ctx) {
+            _ctx = new AC();
+            const sr  = _ctx.sampleRate;
+            _noiseBuf = _ctx.createBuffer(1, sr * 2, sr);
+            const d   = _noiseBuf.getChannelData(0);
+            for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
         }
+        /* resume() obbligatorio dopo interruzioni (es. schermata di blocco) */
+        if (_ctx.state === 'suspended') _ctx.resume();
         return true;
     }
 
-    function roarDino() {
-        if (isRoaring) return;
-        isRoaring = true;
+    /* ── Rex: ruggito (rumore bianco + formanti + sub-basso) ── */
+    function _playRoar() {
+        if (!_ctx) return;
+        try {
+            const t = _ctx.currentTime;
+            const src = _ctx.createBufferSource(); src.buffer = _noiseBuf;
 
-        const wrap   = document.getElementById('dinoWrap');
-        const bubble = document.getElementById('dinoBubble');
-        const hint   = document.getElementById('dinoHint');
+            const f1 = _ctx.createBiquadFilter(); f1.type='bandpass'; f1.Q.value=7;
+            const f2 = _ctx.createBiquadFilter(); f2.type='bandpass'; f2.Q.value=5;
+            const f3 = _ctx.createBiquadFilter(); f3.type='bandpass'; f3.Q.value=3;
 
-        bubble.textContent = SPEECHES[speechIdx % SPEECHES.length];
-        speechIdx++;
+            f1.frequency.setValueAtTime(100,t); f1.frequency.linearRampToValueAtTime(210,t+.2);  f1.frequency.linearRampToValueAtTime(80, t+1.1);
+            f2.frequency.setValueAtTime(380,t); f2.frequency.linearRampToValueAtTime(640,t+.25); f2.frequency.linearRampToValueAtTime(260,t+1.1);
+            f3.frequency.setValueAtTime(1400,t);f3.frequency.linearRampToValueAtTime(2100,t+.1); f3.frequency.exponentialRampToValueAtTime(700,t+.5);
 
-        /* Aggiorna il DOM — il browser può disegnare il frame prima che
-           l'audio parta. rAF garantisce il paint, setTimeout cede il
-           main thread al browser prima di avviare l'audio. */
-        wrap.classList.add('roaring');
-        hint.style.opacity = '0';
-        requestAnimationFrame(() => setTimeout(playRoar, 0));
+            const g1=_ctx.createGain(); g1.gain.value=0.65;
+            const g2=_ctx.createGain(); g2.gain.value=0.55;
+            const g3=_ctx.createGain(); g3.gain.value=0.15;
+
+            const sub=_ctx.createOscillator(); sub.type='sawtooth';
+            sub.frequency.setValueAtTime(42,t); sub.frequency.linearRampToValueAtTime(72,t+.18); sub.frequency.linearRampToValueAtTime(28,t+1.1);
+            const sg=_ctx.createGain(); sg.gain.value=0.35;
+
+            const master=_ctx.createGain();
+            master.gain.setValueAtTime(0,t); master.gain.linearRampToValueAtTime(.8,t+.06);
+            master.gain.setValueAtTime(.8,t+.45); master.gain.exponentialRampToValueAtTime(.001,t+1.2);
+
+            src.connect(f1); f1.connect(g1); g1.connect(master);
+            src.connect(f2); f2.connect(g2); g2.connect(master);
+            src.connect(f3); f3.connect(g3); g3.connect(master);
+            sub.connect(sg); sg.connect(master); master.connect(_ctx.destination);
+
+            src.start(t); sub.start(t); src.stop(t+1.2); sub.stop(t+1.2);
+        } catch(_) {}
+    }
+
+    /* ── Lungo: MHOOOOO (tono sinusoidale con vibrato — morbido e divertente) ── */
+    function _playHonk() {
+        if (!_ctx) return;
+        try {
+            const t = _ctx.currentTime;
+
+            const osc=_ctx.createOscillator(); osc.type='sine';
+            osc.frequency.setValueAtTime(110,t);
+            osc.frequency.linearRampToValueAtTime(230,t+.35);
+            osc.frequency.setValueAtTime(230,t+.4);
+            osc.frequency.linearRampToValueAtTime(95,t+1.0);
+
+            /* Vibrato LFO */
+            const lfo=_ctx.createOscillator(); lfo.frequency.value=7;
+            const lfoG=_ctx.createGain(); lfoG.gain.value=14;
+            lfo.connect(lfoG); lfoG.connect(osc.frequency);
+
+            /* Armonica superiore per calore */
+            const osc2=_ctx.createOscillator(); osc2.type='triangle';
+            osc2.frequency.setValueAtTime(220,t);
+            osc2.frequency.linearRampToValueAtTime(460,t+.35);
+            osc2.frequency.linearRampToValueAtTime(190,t+1.0);
+            const g2=_ctx.createGain(); g2.gain.value=0.12;
+
+            const master=_ctx.createGain();
+            master.gain.setValueAtTime(0,t); master.gain.linearRampToValueAtTime(.55,t+.08);
+            master.gain.setValueAtTime(.55,t+.55); master.gain.exponentialRampToValueAtTime(.001,t+1.1);
+
+            osc.connect(master); osc2.connect(g2); g2.connect(master);
+            master.connect(_ctx.destination);
+
+            lfo.start(t); osc.start(t); osc2.start(t);
+            lfo.stop(t+1.1); osc.stop(t+1.1); osc2.stop(t+1.1);
+        } catch(_) {}
+    }
+
+    /* ── Raptor: kek-kek-kek + screech finale ── */
+    function _playChirps() {
+        if (!_ctx) return;
+        try {
+            const t = _ctx.currentTime;
+            const master=_ctx.createGain(); master.gain.value=0.55;
+            master.connect(_ctx.destination);
+
+            /* 4 click rapidi */
+            for (let i=0; i<4; i++) {
+                const onset = t + i * 0.1;
+                const o=_ctx.createOscillator(); o.type='square';
+                o.frequency.setValueAtTime(1300-i*60, onset);
+                o.frequency.exponentialRampToValueAtTime(500, onset+.08);
+                const g=_ctx.createGain();
+                g.gain.setValueAtTime(0,onset); g.gain.linearRampToValueAtTime(.6,onset+.008);
+                g.gain.exponentialRampToValueAtTime(.001,onset+.1);
+                o.connect(g); g.connect(master); o.start(onset); o.stop(onset+.11);
+            }
+
+            /* Screech finale */
+            const t2 = t + 0.48;
+            const sc=_ctx.createOscillator(); sc.type='sawtooth';
+            sc.frequency.setValueAtTime(900,t2);
+            sc.frequency.linearRampToValueAtTime(1700,t2+.1);
+            sc.frequency.exponentialRampToValueAtTime(380,t2+.4);
+            const sg=_ctx.createGain();
+            sg.gain.setValueAtTime(0,t2); sg.gain.linearRampToValueAtTime(.35,t2+.02);
+            sg.gain.exponentialRampToValueAtTime(.001,t2+.45);
+            sc.connect(sg); sg.connect(master); sc.start(t2); sc.stop(t2+.46);
+        } catch(_) {}
+    }
+
+    /* ══════════════════════════════════════════
+       DINO INTERACTION
+    ══════════════════════════════════════════ */
+    const DINO_CFG = {
+        rex:    {
+            anim:    'roaring',
+            play:    _playRoar,
+            speeches:['ROAAAR! 🦖','Ciao Edoardo! 🎂','Buon Compleanno! 🎉',
+                      'Vieni alla festa! 🥳','GRRRRR! 🦕','Un anno già! ✨',
+                      'Ti voglio bene! ❤️','Sono Rex il feroce! 🦖']
+        },
+        lungo:  {
+            anim:    'honking',
+            play:    _playHonk,
+            speeches:['MHOOOOO! 🦕','Il mio collo è ENORME! 🦕','Ciao piccolo Edoardo! 🎂',
+                      'Sono il più alto! 🏔️','Foglie! 🌿','Buon compleanno! 🎉',
+                      'Guarda in sù! ☁️','Un anno! Che bello! 🎈']
+        },
+        raptor: {
+            anim:    'dashing',
+            play:    _playChirps,
+            speeches:['kek-kek-kek! 🦖','Veloce come il vento! ⚡','Non scappare! 🏃',
+                      'Sono il più furbo! 🧠','KRRRR! 🎉','Festa! Festa! 🥳',
+                      'Surprise! 😈','Ci vediamo il 13! 📅']
+        }
+    };
+
+    const dinoIdx     = { rex:0, lungo:0, raptor:0 };
+    const dinoLocked  = { rex:false, lungo:false, raptor:false };
+
+    function interactDino(id) {
+        if (dinoLocked[id]) return;
+
+        /* Crea/riprende AudioContext nel click (user gesture) */
+        _initAudio();
+
+        dinoLocked[id] = true;
+
+        const cfg    = DINO_CFG[id];
+        const wrap   = document.getElementById('wrap'   + id.charAt(0).toUpperCase() + id.slice(1));
+        const bubble = document.getElementById('bubble' + id.charAt(0).toUpperCase() + id.slice(1));
+
+        bubble.textContent = cfg.speeches[dinoIdx[id] % cfg.speeches.length];
+        dinoIdx[id]++;
+
+        wrap.classList.add(cfg.anim);
+
+        /* Suono dopo il paint — no blocco INP */
+        requestAnimationFrame(() => setTimeout(cfg.play, 0));
 
         setTimeout(() => {
-            wrap.classList.remove('roaring');
-            hint.style.opacity = '';
-            isRoaring = false;
+            wrap.classList.remove(cfg.anim);
+            dinoLocked[id] = false;
         }, 1800);
     }
 
-    function playRoar() {
-        if (!_ensureAudio()) return;
-        try {
-            const ctx = _audioCtx;
-            const ws  = ctx.createWaveShaper();
-            ws.curve  = _wsCurve;
-
-            const o1 = ctx.createOscillator();
-            const o2 = ctx.createOscillator();
-            const mg = ctx.createGain();
-
-            o1.type = 'sawtooth';
-            o1.frequency.setValueAtTime(85,  ctx.currentTime);
-            o1.frequency.linearRampToValueAtTime(165, ctx.currentTime + 0.1);
-            o1.frequency.exponentialRampToValueAtTime(38,  ctx.currentTime + 0.9);
-
-            o2.type = 'square';
-            o2.frequency.setValueAtTime(65,  ctx.currentTime);
-            o2.frequency.linearRampToValueAtTime(125, ctx.currentTime + 0.1);
-            o2.frequency.exponentialRampToValueAtTime(28,  ctx.currentTime + 0.9);
-
-            mg.gain.setValueAtTime(0,    ctx.currentTime);
-            mg.gain.linearRampToValueAtTime(0.28, ctx.currentTime + 0.07);
-            mg.gain.setValueAtTime(0.28,  ctx.currentTime + 0.4);
-            mg.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 1.05);
-
-            o1.connect(ws); o2.connect(ws);
-            ws.connect(mg); mg.connect(ctx.destination);
-
-            o1.start(); o2.start();
-            o1.stop(ctx.currentTime + 1.05);
-            o2.stop(ctx.currentTime + 1.05);
-        } catch (_) { /* audio non supportato */ }
-    }
-
-    /* Mouse tracking — Rex guarda il cursore */
+    /* Mouse tracking — solo Rex segue il cursore */
     document.addEventListener('mousemove', e => {
-        if (isRoaring) return;
-        const wrap = document.getElementById('dinoWrap');
-        if (!wrap) return;
-        const rect = wrap.getBoundingClientRect();
-        const cx   = rect.left + rect.width  / 2;
-        const cy   = rect.top  + rect.height / 2;
-        const dx   = (e.clientX - cx) / window.innerWidth;
-        const dy   = (e.clientY - cy) / window.innerHeight;
-        wrap.style.transform = `rotate(${dx * 12}deg) translateY(${dy * -8}px)`;
+        if (dinoLocked.rex) return;
+        const w = document.getElementById('wrapRex');
+        if (!w) return;
+        const r  = w.getBoundingClientRect();
+        const dx = (e.clientX - r.left - r.width  / 2) / window.innerWidth;
+        const dy = (e.clientY - r.top  - r.height / 2) / window.innerHeight;
+        w.style.transform = `rotate(${dx*12}deg) translateY(${dy*-8}px)`;
     });
-
-    /* Reset trasformazione quando il mouse esce dalla finestra */
     document.addEventListener('mouseleave', () => {
-        const wrap = document.getElementById('dinoWrap');
-        if (wrap && !isRoaring) wrap.style.transform = '';
+        const w = document.getElementById('wrapRex');
+        if (w && !dinoLocked.rex) w.style.transform = '';
     });
 
-    /* ─────────────── Confetti ─────────────── */
+    /* ══════════════════════════════════════════
+       CONFETTI
+    ══════════════════════════════════════════ */
     function launchConfetti() {
         const root   = document.getElementById('confetti-root');
         const colors = ['#ffd60a','#52b788','#e76f51','#e63946','#ffffff','#95d5b2','#f4a261'];
-        for (let i = 0; i < 90; i++) {
+        for (let i=0; i<90; i++) {
             setTimeout(() => {
-                const p = document.createElement('div');
-                p.className = 'cp';
+                const p = document.createElement('div'); p.className = 'cp';
                 p.style.cssText = [
                     `left:${Math.random()*100}vw`,
                     `background:${colors[Math.floor(Math.random()*colors.length)]}`,
@@ -608,7 +718,7 @@
                 ].join(';');
                 root.appendChild(p);
                 p.addEventListener('animationend', () => p.remove());
-            }, i * 18);
+            }, i*18);
         }
     }
 </script>
