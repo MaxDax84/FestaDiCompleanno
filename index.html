@@ -209,9 +209,9 @@
             animation:dino-breathe 3.5s ease-in-out infinite;
             transform-origin:bottom center;
         }
-        .dino-char--lungo  { font-size:9rem;   filter:drop-shadow(2px 6px 12px rgba(93,58,26,.18)) hue-rotate(12deg) saturate(1.2) brightness(0.92); }
-        .dino-char--rex    { font-size:8rem;   filter:drop-shadow(2px 6px 12px rgba(93,58,26,.18)) sepia(0.5) hue-rotate(282deg) saturate(2.8) brightness(1.15); }
-        .dino-char--raptor { font-size:6.5rem; filter:drop-shadow(2px 6px 12px rgba(93,58,26,.18)) hue-rotate(32deg) saturate(1.4) brightness(1.05); }
+        .dino-char--lungo  { height:185px; filter:drop-shadow(2px 6px 12px rgba(93,58,26,.18)); }
+        .dino-char--rex    { height:165px; filter:drop-shadow(2px 6px 12px rgba(93,58,26,.18)); }
+        .dino-char--raptor { height:145px; filter:drop-shadow(2px 6px 12px rgba(93,58,26,.18)); }
         @keyframes dino-breathe {
             0%,100%{transform:scaleY(1) translateY(0);} 50%{transform:scaleY(1.04) translateY(-5px);}
         }
@@ -343,9 +343,9 @@
             .rsvp-btn          { text-align:center; }
             .map-iframe        { height:250px; }
             .map-address       { font-size:.80rem; }
-            .dino-char--lungo  { font-size:7rem; }
-            .dino-char--rex    { font-size:6.5rem; }
-            .dino-char--raptor { font-size:5rem; }
+            .dino-char--lungo  { height:150px; }
+            .dino-char--rex    { height:132px; }
+            .dino-char--raptor { height:116px; }
             .dino-bubble       { font-size:.9rem; padding:7px 14px; }
             .music-btn         { bottom:max(16px, env(safe-area-inset-bottom, 16px)); right:16px; width:50px; height:50px; font-size:1.3rem; }
             .cd-block          { min-width:116px; padding:10px 12px; }
@@ -358,54 +358,11 @@
 <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
      style="position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none">
   <defs>
-    <pattern id="dp" width="240" height="240" patternUnits="userSpaceOnUse">
+    <pattern id="dp" width="380" height="380" patternUnits="userSpaceOnUse">
 
-      <!-- 1. Brontosauro (mint) — collo lunghissimo, corpo tondo, 4 zampe, coda -->
-      <g transform="rotate(-8, 25, 30)">
-        <g transform="translate(5,5) scale(0.48)" opacity="0.42">
-          <ellipse cx="72" cy="64" rx="36" ry="22" fill="#8DCFCA"/>
-          <path d="M102 56 Q118 44 122 30 Q114 20 102 28 Q95 38 94 52" fill="#8DCFCA"/>
-          <path d="M48 44 Q38 20 24 6" stroke="#8DCFCA" stroke-width="18" stroke-linecap="round" fill="none"/>
-          <ellipse cx="20" cy="4" rx="16" ry="10" fill="#8DCFCA"/>
-          <rect x="42" y="82" width="14" height="20" rx="7" fill="#8DCFCA"/>
-          <rect x="60" y="84" width="12" height="18" rx="6" fill="#8DCFCA"/>
-          <rect x="78" y="84" width="12" height="18" rx="6" fill="#8DCFCA"/>
-          <rect x="94" y="82" width="14" height="20" rx="7" fill="#8DCFCA"/>
-        </g>
-      </g>
-
-      <!-- 2. T-Rex (arancione pesca) — testa enorme, braccino, 2 zampe potenti, coda -->
-      <g transform="rotate(10, 187, 30)">
-        <g transform="translate(174,5) scale(0.46)" opacity="0.42">
-          <path d="M62 56 Q82 46 86 32 Q80 20 68 28 Q60 40 58 52" fill="#E8916A"/>
-          <ellipse cx="38" cy="62" rx="28" ry="20" fill="#E8916A"/>
-          <path d="M22 44 Q16 30 12 18" stroke="#E8916A" stroke-width="22" stroke-linecap="round" fill="none"/>
-          <ellipse cx="18" cy="14" rx="24" ry="15" fill="#E8916A"/>
-          <path d="M2 18 Q0 30 6 36 Q18 38 34 32 Q36 22 26 16" fill="#E8916A"/>
-          <path d="M18 52 Q10 58 8 68 L14 70 Q16 60 22 56" fill="#E8916A"/>
-          <path d="M24 78 C22 88 20 98 18 105 Q30 108 36 105 C36 96 34 86 32 78" fill="#E8916A"/>
-          <path d="M46 78 C46 88 48 96 50 103 Q62 105 66 102 C64 92 60 82 54 78" fill="#E8916A"/>
-        </g>
-      </g>
-
-      <!-- 3. Raptor (verde salvia) — corpo orizzontale, braccia lunghe, coda rigida, artiglio -->
-      <g transform="rotate(-5, 112, 28)">
-        <g transform="translate(100,6) scale(0.46)" opacity="0.42">
-          <path d="M62 36 Q82 26 88 12 Q82 4 72 10 Q66 20 62 32" fill="#7EAD7A"/>
-          <ellipse cx="42" cy="44" rx="24" ry="14" fill="#7EAD7A" transform="rotate(-18 42 44)"/>
-          <path d="M26 32 Q18 20 12 10" stroke="#7EAD7A" stroke-width="12" stroke-linecap="round" fill="none"/>
-          <ellipse cx="8" cy="8" rx="16" ry="9" fill="#7EAD7A" transform="rotate(-12 8 8)"/>
-          <path d="M2 10 Q2 20 6 24 Q16 26 24 20" fill="#7EAD7A"/>
-          <path d="M28 44 Q16 52 12 62 L18 66 Q24 56 32 48" fill="#7EAD7A"/>
-          <path d="M36 56 C34 66 32 74 30 80 Q40 83 46 80 C46 72 44 62 42 56" fill="#7EAD7A"/>
-          <path d="M52 54 C52 64 52 72 54 80 Q64 82 68 79 C66 70 62 60 58 54" fill="#7EAD7A"/>
-          <path d="M30 80 Q22 72 24 62" stroke="#7EAD7A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-        </g>
-      </g>
-
-      <!-- 4. Brontosauro piccolo (pesca chiaro) al centro-sinistra -->
-      <g transform="rotate(6, 18, 116)">
-        <g transform="translate(5,103) scale(0.30)" opacity="0.36">
+      <!-- 1. Brontosauro pesca — top-left -->
+      <g transform="rotate(-6, 29, 25)">
+        <g transform="translate(2,4) scale(0.42)" opacity="0.40">
           <ellipse cx="72" cy="64" rx="36" ry="22" fill="#F7C9B0"/>
           <path d="M102 56 Q118 44 122 30 Q114 20 102 28 Q95 38 94 52" fill="#F7C9B0"/>
           <path d="M48 44 Q38 20 24 6" stroke="#F7C9B0" stroke-width="18" stroke-linecap="round" fill="none"/>
@@ -417,74 +374,129 @@
         </g>
       </g>
 
-      <!-- 5. Brontosauro (rosa) al centro -->
-      <g transform="rotate(8, 64, 126)">
-        <g transform="translate(50,108) scale(0.32)" opacity="0.38">
-          <ellipse cx="72" cy="64" rx="36" ry="22" fill="#F4A8C7"/>
-          <path d="M102 56 Q118 44 122 30 Q114 20 102 28 Q95 38 94 52" fill="#F4A8C7"/>
-          <path d="M48 44 Q38 20 24 6" stroke="#F4A8C7" stroke-width="18" stroke-linecap="round" fill="none"/>
-          <ellipse cx="20" cy="4" rx="16" ry="10" fill="#F4A8C7"/>
-          <rect x="42" y="82" width="14" height="20" rx="7" fill="#F4A8C7"/>
-          <rect x="60" y="84" width="12" height="18" rx="6" fill="#F4A8C7"/>
-          <rect x="78" y="84" width="12" height="18" rx="6" fill="#F4A8C7"/>
-          <rect x="94" y="82" width="14" height="20" rx="7" fill="#F4A8C7"/>
+      <!-- 2. Triceratops menta — top-center -->
+      <g transform="rotate(8, 193, 20)">
+        <g transform="translate(168,2) scale(0.38)" opacity="0.40">
+          <path d="M106 58 Q118 50 120 40 Q116 32 108 38 Q104 46 102 54" fill="#8DCFCA"/>
+          <ellipse cx="76" cy="58" rx="34" ry="22" fill="#8DCFCA"/>
+          <ellipse cx="42" cy="40" rx="26" ry="24" fill="#8DCFCA"/>
+          <ellipse cx="22" cy="52" rx="20" ry="15" fill="#8DCFCA"/>
+          <path d="M6 46 Q0 36 4 26" stroke="#8DCFCA" stroke-width="6" stroke-linecap="round" fill="none"/>
+          <path d="M14 36 Q10 26 12 18" stroke="#8DCFCA" stroke-width="5" stroke-linecap="round" fill="none"/>
+          <path d="M28 32 Q26 22 28 14" stroke="#8DCFCA" stroke-width="4" stroke-linecap="round" fill="none"/>
+          <rect x="48" y="76" width="12" height="18" rx="6" fill="#8DCFCA"/>
+          <rect x="64" y="78" width="10" height="16" rx="5" fill="#8DCFCA"/>
+          <rect x="80" y="78" width="10" height="16" rx="5" fill="#8DCFCA"/>
+          <rect x="96" y="76" width="12" height="18" rx="6" fill="#8DCFCA"/>
         </g>
       </g>
 
-      <!-- 6. T-Rex piccolo (verde chiaro) al centro-destra -->
-      <g transform="rotate(-8, 185, 109)">
-        <g transform="translate(174,97) scale(0.30)" opacity="0.36">
-          <path d="M62 56 Q82 46 86 32 Q80 20 68 28 Q60 40 58 52" fill="#B8D9B5"/>
-          <ellipse cx="38" cy="62" rx="28" ry="20" fill="#B8D9B5"/>
-          <path d="M22 44 Q16 30 12 18" stroke="#B8D9B5" stroke-width="22" stroke-linecap="round" fill="none"/>
-          <ellipse cx="18" cy="14" rx="24" ry="15" fill="#B8D9B5"/>
-          <path d="M2 18 Q0 30 6 36 Q18 38 34 32 Q36 22 26 16" fill="#B8D9B5"/>
-          <path d="M18 52 Q10 58 8 68 L14 70 Q16 60 22 56" fill="#B8D9B5"/>
-          <path d="M24 78 C22 88 20 98 18 105 Q30 108 36 105 C36 96 34 86 32 78" fill="#B8D9B5"/>
-          <path d="M46 78 C46 88 48 96 50 103 Q62 105 66 102 C64 92 60 82 54 78" fill="#B8D9B5"/>
+      <!-- 3. T-Rex rosa — top-right -->
+      <g transform="rotate(-4, 305, 23)">
+        <g transform="translate(288,2) scale(0.38)" opacity="0.40">
+          <path d="M62 56 Q82 46 86 32 Q80 20 68 28 Q60 40 58 52" fill="#F4A8C7"/>
+          <ellipse cx="38" cy="62" rx="28" ry="20" fill="#F4A8C7"/>
+          <path d="M22 44 Q16 30 12 18" stroke="#F4A8C7" stroke-width="22" stroke-linecap="round" fill="none"/>
+          <ellipse cx="18" cy="14" rx="24" ry="15" fill="#F4A8C7"/>
+          <path d="M2 18 Q0 30 6 36 Q18 38 34 32 Q36 22 26 16" fill="#F4A8C7"/>
+          <path d="M18 52 Q10 58 8 68 L14 70 Q16 60 22 56" fill="#F4A8C7"/>
+          <path d="M24 78 C22 88 20 98 18 105 Q30 108 36 105 C36 96 34 86 32 78" fill="#F4A8C7"/>
+          <path d="M46 78 C46 88 48 96 50 103 Q62 105 66 102 C64 92 60 82 54 78" fill="#F4A8C7"/>
         </g>
       </g>
 
-      <!-- 7. T-Rex (giallo) in basso a sinistra -->
-      <g transform="rotate(12, 20, 198)">
-        <g transform="translate(4,175) scale(0.44)" opacity="0.42">
-          <path d="M62 56 Q82 46 86 32 Q80 20 68 28 Q60 40 58 52" fill="#F5D47E"/>
-          <ellipse cx="38" cy="62" rx="28" ry="20" fill="#F5D47E"/>
-          <path d="M22 44 Q16 30 12 18" stroke="#F5D47E" stroke-width="22" stroke-linecap="round" fill="none"/>
-          <ellipse cx="18" cy="14" rx="24" ry="15" fill="#F5D47E"/>
-          <path d="M2 18 Q0 30 6 36 Q18 38 34 32 Q36 22 26 16" fill="#F5D47E"/>
-          <path d="M18 52 Q10 58 8 68 L14 70 Q16 60 22 56" fill="#F5D47E"/>
-          <path d="M24 78 C22 88 20 98 18 105 Q30 108 36 105 C36 96 34 86 32 78" fill="#F5D47E"/>
-          <path d="M46 78 C46 88 48 96 50 103 Q62 105 66 102 C64 92 60 82 54 78" fill="#F5D47E"/>
+      <!-- 4. Pterodattilo arancione — center-left (vola) -->
+      <g transform="rotate(5, 24, 151)">
+        <g transform="translate(2,140) scale(0.44)" opacity="0.40">
+          <path d="M46 36 Q22 8 4 20 Q0 32 46 42" fill="#E8916A"/>
+          <path d="M54 36 Q78 8 96 20 Q100 32 54 42" fill="#E8916A"/>
+          <ellipse cx="50" cy="40" rx="12" ry="9" fill="#E8916A"/>
+          <ellipse cx="50" cy="24" rx="10" ry="9" fill="#E8916A"/>
+          <path d="M41 22 Q28 16 20 18 Q24 26 41 26" fill="#E8916A"/>
+          <path d="M58 18 Q66 8 64 2 Q56 6 52 16" fill="#E8916A"/>
+          <path d="M44 50 L40 62 L48 64 L50 50" fill="#E8916A"/>
+          <path d="M56 50 L60 62 L52 64 L50 50" fill="#E8916A"/>
         </g>
       </g>
 
-      <!-- 8. Brontosauro (rosa-arancio) in basso a destra -->
-      <g transform="rotate(15, 175, 188)">
-        <g transform="translate(162,168) scale(0.46)" opacity="0.42">
-          <ellipse cx="72" cy="64" rx="36" ry="22" fill="#F4A8C7"/>
-          <path d="M102 56 Q118 44 122 30 Q114 20 102 28 Q95 38 94 52" fill="#F4A8C7"/>
-          <path d="M48 44 Q38 20 24 6" stroke="#F4A8C7" stroke-width="18" stroke-linecap="round" fill="none"/>
-          <ellipse cx="20" cy="4" rx="16" ry="10" fill="#F4A8C7"/>
-          <rect x="42" y="82" width="14" height="20" rx="7" fill="#F4A8C7"/>
-          <rect x="60" y="84" width="12" height="18" rx="6" fill="#F4A8C7"/>
-          <rect x="78" y="84" width="12" height="18" rx="6" fill="#F4A8C7"/>
-          <rect x="94" y="82" width="14" height="20" rx="7" fill="#F4A8C7"/>
+      <!-- 5. Stegosauro giallo — center -->
+      <g transform="rotate(-6, 168, 167)">
+        <g transform="translate(144,148) scale(0.40)" opacity="0.40">
+          <ellipse cx="14" cy="46" rx="14" ry="12" fill="#F5D47E"/>
+          <ellipse cx="64" cy="58" rx="44" ry="26" fill="#F5D47E"/>
+          <polygon points="30,32 36,50 24,50" fill="#F5D47E"/>
+          <polygon points="46,24 53,44 39,44" fill="#F5D47E"/>
+          <polygon points="62,22 69,42 55,42" fill="#F5D47E"/>
+          <polygon points="78,26 84,46 72,46" fill="#F5D47E"/>
+          <polygon points="92,32 97,50 87,50" fill="#F5D47E"/>
+          <path d="M102 58 Q118 50 122 38 Q116 30 108 36 Q104 44 100 54" fill="#F5D47E"/>
+          <rect x="22" y="80" width="12" height="16" rx="6" fill="#F5D47E"/>
+          <rect x="38" y="82" width="10" height="14" rx="5" fill="#F5D47E"/>
+          <rect x="72" y="82" width="10" height="14" rx="5" fill="#F5D47E"/>
+          <rect x="86" y="80" width="12" height="16" rx="6" fill="#F5D47E"/>
         </g>
       </g>
 
-      <!-- 9. Raptor (lavanda) in basso al centro -->
-      <g transform="rotate(-10, 100, 193)">
-        <g transform="translate(90,172) scale(0.44)" opacity="0.42">
-          <path d="M62 36 Q82 26 88 12 Q82 4 72 10 Q66 20 62 32" fill="#C9AEDE"/>
-          <ellipse cx="42" cy="44" rx="24" ry="14" fill="#C9AEDE" transform="rotate(-18 42 44)"/>
-          <path d="M26 32 Q18 20 12 10" stroke="#C9AEDE" stroke-width="12" stroke-linecap="round" fill="none"/>
-          <ellipse cx="8" cy="8" rx="16" ry="9" fill="#C9AEDE" transform="rotate(-12 8 8)"/>
-          <path d="M2 10 Q2 20 6 24 Q16 26 24 20" fill="#C9AEDE"/>
-          <path d="M28 44 Q16 52 12 62 L18 66 Q24 56 32 48" fill="#C9AEDE"/>
-          <path d="M36 56 C34 66 32 74 30 80 Q40 83 46 80 C46 72 44 62 42 56" fill="#C9AEDE"/>
-          <path d="M52 54 C52 64 52 72 54 80 Q64 82 68 79 C66 70 62 60 58 54" fill="#C9AEDE"/>
-          <path d="M30 80 Q22 72 24 62" stroke="#C9AEDE" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <!-- 6. Brontosauro rosa — center-right -->
+      <g transform="rotate(10, 303, 166)">
+        <g transform="translate(280,148) scale(0.36)" opacity="0.38">
+          <ellipse cx="72" cy="64" rx="36" ry="22" fill="#FDDCEE"/>
+          <path d="M102 56 Q118 44 122 30 Q114 20 102 28 Q95 38 94 52" fill="#FDDCEE"/>
+          <path d="M48 44 Q38 20 24 6" stroke="#FDDCEE" stroke-width="18" stroke-linecap="round" fill="none"/>
+          <ellipse cx="20" cy="4" rx="16" ry="10" fill="#FDDCEE"/>
+          <rect x="42" y="82" width="14" height="20" rx="7" fill="#FDDCEE"/>
+          <rect x="60" y="84" width="12" height="18" rx="6" fill="#FDDCEE"/>
+          <rect x="78" y="84" width="12" height="18" rx="6" fill="#FDDCEE"/>
+          <rect x="94" y="82" width="14" height="20" rx="7" fill="#FDDCEE"/>
+        </g>
+      </g>
+
+      <!-- 7. Dino verde con spine dorsali — bottom-left -->
+      <g transform="rotate(-4, 24, 287)">
+        <g transform="translate(2,268) scale(0.40)" opacity="0.38">
+          <ellipse cx="58" cy="58" rx="38" ry="24" fill="#B8D9B5"/>
+          <ellipse cx="16" cy="50" rx="16" ry="13" fill="#B8D9B5"/>
+          <path d="M28 44 Q40 42 46 46" stroke="#B8D9B5" stroke-width="12" stroke-linecap="round" fill="none"/>
+          <polygon points="44,34 48,50 40,50" fill="#B8D9B5"/>
+          <polygon points="57,30 61,46 53,46" fill="#B8D9B5"/>
+          <polygon points="70,32 74,48 66,48" fill="#B8D9B5"/>
+          <polygon points="82,36 86,52 78,52" fill="#B8D9B5"/>
+          <path d="M90 58 Q104 50 108 38 Q102 30 94 36 Q90 46 88 54" fill="#B8D9B5"/>
+          <rect x="22" y="78" width="12" height="16" rx="6" fill="#B8D9B5"/>
+          <rect x="38" y="80" width="10" height="14" rx="5" fill="#B8D9B5"/>
+          <rect x="66" y="80" width="10" height="14" rx="5" fill="#B8D9B5"/>
+          <rect x="80" y="78" width="12" height="16" rx="6" fill="#B8D9B5"/>
+        </g>
+      </g>
+
+      <!-- 8. Brontosauro pesca piccolo — bottom-center -->
+      <g transform="rotate(6, 166, 286)">
+        <g transform="translate(148,272) scale(0.28)" opacity="0.36">
+          <ellipse cx="72" cy="64" rx="36" ry="22" fill="#F7C9B0"/>
+          <path d="M102 56 Q118 44 122 30 Q114 20 102 28 Q95 38 94 52" fill="#F7C9B0"/>
+          <path d="M48 44 Q38 20 24 6" stroke="#F7C9B0" stroke-width="18" stroke-linecap="round" fill="none"/>
+          <ellipse cx="20" cy="4" rx="16" ry="10" fill="#F7C9B0"/>
+          <rect x="42" y="82" width="14" height="20" rx="7" fill="#F7C9B0"/>
+          <rect x="60" y="84" width="12" height="18" rx="6" fill="#F7C9B0"/>
+          <rect x="78" y="84" width="12" height="18" rx="6" fill="#F7C9B0"/>
+          <rect x="94" y="82" width="14" height="20" rx="7" fill="#F7C9B0"/>
+        </g>
+      </g>
+
+      <!-- 9. Triceratops lavanda — bottom-right -->
+      <g transform="rotate(-8, 300, 286)">
+        <g transform="translate(278,270) scale(0.34)" opacity="0.38">
+          <path d="M106 58 Q118 50 120 40 Q116 32 108 38 Q104 46 102 54" fill="#C9AEDE"/>
+          <ellipse cx="76" cy="58" rx="34" ry="22" fill="#C9AEDE"/>
+          <ellipse cx="42" cy="40" rx="26" ry="24" fill="#C9AEDE"/>
+          <ellipse cx="22" cy="52" rx="20" ry="15" fill="#C9AEDE"/>
+          <path d="M6 46 Q0 36 4 26" stroke="#C9AEDE" stroke-width="6" stroke-linecap="round" fill="none"/>
+          <path d="M14 36 Q10 26 12 18" stroke="#C9AEDE" stroke-width="5" stroke-linecap="round" fill="none"/>
+          <path d="M28 32 Q26 22 28 14" stroke="#C9AEDE" stroke-width="4" stroke-linecap="round" fill="none"/>
+          <rect x="48" y="76" width="12" height="18" rx="6" fill="#C9AEDE"/>
+          <rect x="64" y="78" width="10" height="16" rx="5" fill="#C9AEDE"/>
+          <rect x="80" y="78" width="10" height="16" rx="5" fill="#C9AEDE"/>
+          <rect x="96" y="76" width="12" height="18" rx="6" fill="#C9AEDE"/>
         </g>
       </g>
 
@@ -599,7 +611,47 @@
                 <div class="dino-wrap" id="wrapLungo" onclick="interactDino('lungo')"
                      role="button" aria-label="Saluta Max">
                     <div class="dino-bubble" id="bubbleLungo"></div>
-                    <span class="dino-char dino-char--lungo">🦕</span>
+                    <svg class="dino-char dino-char--lungo" viewBox="0 0 160 222" xmlns="http://www.w3.org/2000/svg">
+                      <!-- Spine spikes (giallo-verde) -->
+                      <polygon points="55,10 61,31 49,31" fill="#A8D466"/>
+                      <polygon points="73,4  79,26 67,26"  fill="#A8D466"/>
+                      <polygon points="91,10 97,31 85,31"  fill="#A8D466"/>
+                      <!-- Coda -->
+                      <path d="M128 170 Q156 160 158 142 Q156 128 144 134 Q136 148 128 165" fill="#5BA8D4"/>
+                      <!-- Corpo -->
+                      <ellipse cx="80" cy="162" rx="54" ry="48" fill="#5BA8D4"/>
+                      <!-- Pancia corpo -->
+                      <ellipse cx="84" cy="170" rx="40" ry="36" fill="#B8DEFA"/>
+                      <!-- Testa (grande) -->
+                      <ellipse cx="78" cy="74" rx="56" ry="52" fill="#5BA8D4"/>
+                      <!-- Mento (più chiaro) -->
+                      <ellipse cx="84" cy="90" rx="40" ry="28" fill="#B8DEFA"/>
+                      <!-- Occhio sinistro -->
+                      <circle cx="54" cy="62" r="18" fill="white"/>
+                      <circle cx="56" cy="64" r="10" fill="#1A3A5C"/>
+                      <circle cx="50" cy="58" r="4"   fill="white"/>
+                      <!-- Occhio destro -->
+                      <circle cx="100" cy="60" r="15" fill="white"/>
+                      <circle cx="102" cy="62" r="8.5" fill="#1A3A5C"/>
+                      <circle cx="96"  cy="56" r="3.5" fill="white"/>
+                      <!-- Blush -->
+                      <ellipse cx="36"  cy="82" rx="13" ry="8" fill="#FF9EC0" opacity="0.40"/>
+                      <ellipse cx="118" cy="80" rx="13" ry="8" fill="#FF9EC0" opacity="0.40"/>
+                      <!-- Narice -->
+                      <circle cx="30" cy="76" r="3" fill="#3A78A8" opacity="0.45"/>
+                      <!-- Sorriso -->
+                      <path d="M 44 97 Q 78 116 112 99" stroke="#3A78A8" stroke-width="3" fill="none" stroke-linecap="round"/>
+                      <!-- Braccino sinistro -->
+                      <path d="M 30 142 Q 16 152 18 166 Q 24 172 32 166 Q 34 154 40 146" fill="#5BA8D4"/>
+                      <path d="M 18 166 L 11 160 M 18 166 L 10 168" stroke="#3A78A8" stroke-width="2" stroke-linecap="round" fill="none"/>
+                      <!-- Braccino destro -->
+                      <path d="M 130 142 Q 144 152 142 166 Q 136 172 128 166 Q 126 154 120 146" fill="#5BA8D4"/>
+                      <path d="M 142 166 L 149 160 M 142 166 L 150 168" stroke="#3A78A8" stroke-width="2" stroke-linecap="round" fill="none"/>
+                      <!-- Zampa sinistra -->
+                      <path d="M 44 203 C 42 214 40 222 38 227 Q 53 231 62 227 C 62 220 60 210 57 203" fill="#5BA8D4"/>
+                      <!-- Zampa destra -->
+                      <path d="M 96 203 C 96 214 98 222 100 227 Q 115 231 122 227 C 122 218 118 208 110 203" fill="#5BA8D4"/>
+                    </svg>
                 </div>
                 <div class="dino-name">Max</div>
             </div>
@@ -609,7 +661,47 @@
                 <div class="dino-wrap" id="wrapRex" onclick="interactDino('rex')"
                      role="button" aria-label="Saluta Ele">
                     <div class="dino-bubble" id="bubbleRex"></div>
-                    <span class="dino-char dino-char--rex">🦖</span>
+                    <svg class="dino-char dino-char--rex" viewBox="0 0 140 196" xmlns="http://www.w3.org/2000/svg">
+                      <!-- Spine spikes (lavanda) -->
+                      <polygon points="48,9  54,28 42,28"  fill="#C9AEDE"/>
+                      <polygon points="64,4  70,23 58,23"  fill="#C9AEDE"/>
+                      <polygon points="80,9  86,28 74,28"  fill="#C9AEDE"/>
+                      <!-- Coda -->
+                      <path d="M 112 150 Q 136 140 138 124 Q 136 112 126 118 Q 118 132 112 147" fill="#F4A8C7"/>
+                      <!-- Corpo -->
+                      <ellipse cx="70" cy="145" rx="47" ry="42" fill="#F4A8C7"/>
+                      <!-- Pancia corpo -->
+                      <ellipse cx="74" cy="153" rx="35" ry="32" fill="#FDDCEE"/>
+                      <!-- Macchie corpo -->
+                      <circle cx="50"  cy="138" r="5"   fill="#E898B8" opacity="0.55"/>
+                      <circle cx="88"  cy="133" r="4"   fill="#E898B8" opacity="0.55"/>
+                      <circle cx="74"  cy="158" r="3.5" fill="#E898B8" opacity="0.45"/>
+                      <!-- Testa -->
+                      <ellipse cx="68" cy="66" rx="49" ry="46" fill="#F4A8C7"/>
+                      <!-- Mento -->
+                      <ellipse cx="74" cy="82" rx="35" ry="25" fill="#FDDCEE"/>
+                      <!-- Occhio sinistro -->
+                      <circle cx="46" cy="55" r="16" fill="white"/>
+                      <circle cx="48" cy="57" r="9"   fill="#6B1A40"/>
+                      <circle cx="43" cy="52" r="4"   fill="white"/>
+                      <!-- Occhio destro -->
+                      <circle cx="88" cy="53" r="14" fill="white"/>
+                      <circle cx="90" cy="55" r="8"   fill="#6B1A40"/>
+                      <circle cx="85" cy="50" r="3"   fill="white"/>
+                      <!-- Blush -->
+                      <ellipse cx="30"  cy="73" rx="11" ry="8" fill="#FFB0D0" opacity="0.45"/>
+                      <ellipse cx="104" cy="71" rx="11" ry="8" fill="#FFB0D0" opacity="0.45"/>
+                      <!-- Sorriso -->
+                      <path d="M 38 87 Q 68 105 98 89" stroke="#D4709A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                      <!-- Braccino sinistro -->
+                      <path d="M 26 125 Q 14 134 16 146 Q 22 151 28 146 Q 30 135 36 129" fill="#F4A8C7"/>
+                      <!-- Braccino destro -->
+                      <path d="M 114 125 Q 126 134 124 146 Q 118 151 112 146 Q 110 135 104 129" fill="#F4A8C7"/>
+                      <!-- Zampa sinistra -->
+                      <path d="M 38 180 C 36 190 34 198 32 203 Q 46 207 54 203 C 54 196 52 187 50 180" fill="#F4A8C7"/>
+                      <!-- Zampa destra -->
+                      <path d="M 82 180 C 82 190 84 198 86 203 Q 100 207 106 203 C 106 194 102 185 96 180" fill="#F4A8C7"/>
+                    </svg>
                 </div>
                 <div class="dino-name">Ele</div>
             </div>
@@ -619,7 +711,43 @@
                 <div class="dino-wrap" id="wrapRaptor" onclick="interactDino('raptor')"
                      role="button" aria-label="Saluta Edo">
                     <div class="dino-bubble" id="bubbleRaptor"></div>
-                    <span class="dino-char dino-char--raptor">🦖</span>
+                    <svg class="dino-char dino-char--raptor" viewBox="0 0 120 176" xmlns="http://www.w3.org/2000/svg">
+                      <!-- Spine spikes (giallo) -->
+                      <polygon points="41,8  46,24 36,24"  fill="#F5D47E"/>
+                      <polygon points="55,4  60,20 50,20"  fill="#F5D47E"/>
+                      <polygon points="69,8  74,24 64,24"  fill="#F5D47E"/>
+                      <!-- Coda -->
+                      <path d="M 96 130 Q 118 122 119 107 Q 118 97 108 102 Q 101 116 96 127" fill="#7EAD7A"/>
+                      <!-- Corpo -->
+                      <ellipse cx="60" cy="128" rx="40" ry="36" fill="#7EAD7A"/>
+                      <!-- Pancia corpo -->
+                      <ellipse cx="63" cy="135" rx="29" ry="27" fill="#C4E8C2"/>
+                      <!-- Testa -->
+                      <ellipse cx="58" cy="57" rx="42" ry="40" fill="#7EAD7A"/>
+                      <!-- Mento -->
+                      <ellipse cx="63" cy="70" rx="30" ry="21" fill="#C4E8C2"/>
+                      <!-- Occhio sinistro -->
+                      <circle cx="40" cy="47" r="14" fill="white"/>
+                      <circle cx="42" cy="49" r="8"   fill="#1E3A1A"/>
+                      <circle cx="37" cy="44" r="3"   fill="white"/>
+                      <!-- Occhio destro -->
+                      <circle cx="76" cy="45" r="12" fill="white"/>
+                      <circle cx="78" cy="47" r="7"   fill="#1E3A1A"/>
+                      <circle cx="73" cy="42" r="2.5" fill="white"/>
+                      <!-- Blush -->
+                      <ellipse cx="26" cy="63" rx="9" ry="6" fill="#FFB0C0" opacity="0.45"/>
+                      <ellipse cx="88" cy="61" rx="9" ry="6" fill="#FFB0C0" opacity="0.45"/>
+                      <!-- Sorriso -->
+                      <path d="M 32 75 Q 57 91 83 77" stroke="#4A8756" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                      <!-- Braccino sinistro -->
+                      <path d="M 22 110 Q 12 118 14 128 Q 19 133 25 128 Q 27 118 32 114" fill="#7EAD7A"/>
+                      <!-- Braccino destro -->
+                      <path d="M 98 110 Q 108 118 106 128 Q 101 133 95 128 Q 93 118 88 114" fill="#7EAD7A"/>
+                      <!-- Zampa sinistra -->
+                      <path d="M 33 158 C 31 167 29 174 27 179 Q 39 183 46 179 C 46 173 44 164 42 158" fill="#7EAD7A"/>
+                      <!-- Zampa destra -->
+                      <path d="M 72 158 C 72 167 74 174 76 179 Q 88 183 93 179 C 93 171 89 162 83 158" fill="#7EAD7A"/>
+                    </svg>
                 </div>
                 <div class="dino-name">Edo</div>
             </div>
