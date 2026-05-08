@@ -7,236 +7,205 @@
     <title>🦕 1° Compleanno di Edoardo! 🦖</title>
     <meta name="description" content="Sabato 13 Giugno 2026 · Seconda Strada 11, Pioltello · Unisciti a noi per festeggiare!">
 
-    <!-- Open Graph (WhatsApp, Facebook, Telegram) -->
     <meta property="og:type"        content="website">
     <meta property="og:title"       content="🦕 Festa di Compleanno di Edoardo! 🦖">
     <meta property="og:description" content="Sabato 13 Giugno 2026 · Seconda Strada 11, Pioltello · Conferma la tua presenza!">
     <meta property="og:locale"      content="it_IT">
-
-    <!-- Twitter card -->
     <meta name="twitter:card"        content="summary">
     <meta name="twitter:title"       content="🦕 Festa di Compleanno di Edoardo!">
     <meta name="twitter:description" content="Sabato 13 Giugno 2026 · Seconda Strada 11, Pioltello">
 
-    <!-- Favicon emoji SVG -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦕</text></svg>">
-
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Fredoka+One&display=swap" rel="stylesheet">
+
     <style>
         *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 
         :root {
-            --bg:      #5ec96e;
-            --bg-dot:  #4db85d;
-            --yellow:  #ffe94d;
-            --pink:    #ff6b9d;
-            --teal:    #38d9c0;
-            --orange:  #ff8c42;
-            --red:     #ff4757;
-            --purple:  #c084fc;
-            --black:   #1a1a2e;
-            --white:   #fffef0;
-            --outline: 4px solid #1a1a2e;
-            --comic:   6px 6px 0 #1a1a2e;
-            --comic-sm:4px 4px 0 #1a1a2e;
+            --bg:       #FFF8F0;
+            --sage:     #7EAD7A;
+            --sage-dk:  #5A8756;
+            --sage-lt:  #B8D9B5;
+            --peach:    #E8916A;
+            --peach-lt: #F7C9B0;
+            --yellow:   #F5D47E;
+            --yellow-lt:#FBF0C0;
+            --pink:     #F4A8C7;
+            --pink-lt:  #FDDCEE;
+            --mint:     #8DCFCA;
+            --lavender: #C9AEDE;
+            --brown:    #5D3A1A;
+            --brown-lt: #9B7060;
+            --white:    #FFFFFF;
             --r-xl: 24px;
             --r-lg: 18px;
             --r-md: 12px;
             --r-sm: 8px;
+            --shadow:   0 4px 20px rgba(93,58,26,.10);
+            --shadow-lg:0 8px 32px rgba(93,58,26,.15);
         }
 
         body {
-            font-family:'Baloo 2',sans-serif;
+            font-family:'Baloo 2', sans-serif;
             background: var(--bg);
             min-height:100vh; overflow-x:hidden;
+            color: var(--brown);
         }
 
-        /* polka dot background */
         body::before {
-            content:''; position:fixed; inset:0; z-index:-2;
-            background: radial-gradient(circle, var(--bg-dot) 2.5px, transparent 2.5px);
-            background-size: 32px 32px;
+            content:''; position:fixed; inset:0; z-index:-1;
+            background: radial-gradient(circle, rgba(126,173,122,.13) 2px, transparent 2px);
+            background-size: 38px 38px;
         }
 
-        /* ── Ambient stars ── */
+        /* ── Ambient ── */
         .ambient {
-            position:fixed; pointer-events:none; font-size:3.2rem;
-            opacity:.22; animation:ambient-float 7s ease-in-out infinite;
+            position:fixed; pointer-events:none; font-size:2.6rem;
+            opacity:.16; animation:ambient-float 7s ease-in-out infinite;
             z-index:0; user-select:none;
         }
         @keyframes ambient-float {
             0%,100%{transform:translateY(0) rotate(-8deg) scale(1);}
-            50%{transform:translateY(-24px) rotate(8deg) scale(1.08);}
+            50%{transform:translateY(-22px) rotate(8deg) scale(1.07);}
         }
 
         /* ── Container ── */
-        .container { max-width:860px; margin:0 auto; padding:20px 16px max(100px, calc(80px + env(safe-area-inset-bottom, 0px))); position:relative; z-index:1; }
+        .container { max-width:860px; margin:0 auto; padding:0 16px max(100px, calc(80px + env(safe-area-inset-bottom, 0px))); position:relative; z-index:1; }
+
+        /* ── Bunting ── */
+        .bunting-wrap { overflow:hidden; line-height:0; }
+        .bunting-svg  { width:100%; display:block; }
 
         /* ── Hero ── */
-        .hero { text-align:center; padding:max(50px, calc(24px + env(safe-area-inset-top, 0px))) 16px 30px; }
+        .hero { text-align:center; padding:max(40px, calc(18px + env(safe-area-inset-top, 0px))) 16px 28px; }
 
         .hero-pill {
             display:inline-block;
-            background:var(--pink); color:#fff;
-            font-family:'Fredoka One',cursive; font-size:1.15rem;
-            padding:9px 28px; border-radius:50px;
-            border:var(--outline); box-shadow:var(--comic-sm);
-            margin-bottom:24px; animation:pill-bounce 1.8s ease-in-out infinite;
+            background:var(--sage); color:#fff;
+            font-family:'Fredoka One',cursive; font-size:1.1rem;
+            padding:8px 26px; border-radius:50px;
+            box-shadow:0 4px 14px rgba(90,135,86,.28);
+            margin-bottom:20px; animation:pill-bounce 1.8s ease-in-out infinite;
         }
         @keyframes pill-bounce {
             0%,100%{transform:translateY(0) rotate(-1deg);}
             50%{transform:translateY(-6px) rotate(1deg);}
         }
 
-        .hero-dino-row { display:flex; justify-content:center; align-items:flex-end; gap:12px; margin-bottom:10px; }
-        .hdino { display:inline-block; filter:drop-shadow(3px 3px 0 rgba(0,0,0,.5)); animation:hero-bounce 1.8s ease-in-out infinite; }
-        .hdino--sm   { font-size:4.5rem; }
-        .hdino--md   { font-size:6.5rem; animation-delay:.25s; }
-        .hdino--sm-r { font-size:4.5rem; animation-delay:.5s; animation-name:hero-bounce-r; }
-        @keyframes hero-bounce   { 0%,100%{transform:translateY(0) rotate(0deg);} 30%{transform:translateY(-18px) rotate(-5deg);} 70%{transform:translateY(-10px) rotate(5deg);} }
-        @keyframes hero-bounce-r { 0%,100%{transform:scaleX(-1) translateY(0);} 30%{transform:scaleX(-1) translateY(-18px) rotate(5deg);} 70%{transform:scaleX(-1) translateY(-10px) rotate(-5deg);} }
-
         .hero-title {
-            font-family:'Fredoka One',cursive; font-size:clamp(2rem,7vw,4rem);
-            color:var(--yellow); line-height:1.15; margin:18px 0 6px;
-            text-shadow:
-                3px  3px 0 var(--black),
-               -2px -2px 0 var(--black),
-                2px -2px 0 var(--black),
-               -2px  2px 0 var(--black);
+            font-family:'Fredoka One',cursive;
+            font-size:clamp(1.6rem,5vw,2.7rem);
+            color:var(--brown); line-height:1.2; margin:18px 0 2px;
             animation:title-wobble 3s ease-in-out infinite;
         }
         @keyframes title-wobble {
-            0%,100%{transform:rotate(-1deg);} 50%{transform:rotate(1deg);}
+            0%,100%{transform:rotate(-.4deg);} 50%{transform:rotate(.4deg);}
         }
 
         .hero-name {
             display:block; font-family:'Fredoka One',cursive;
-            font-size:clamp(3.8rem,13vw,7.5rem); color:#fff; line-height:1;
-            text-shadow:
-                4px  4px 0 var(--black),
-               -2px -2px 0 var(--black),
-                2px -2px 0 var(--black),
-               -2px  2px 0 var(--black);
+            font-size:clamp(3.2rem,12vw,7rem); color:var(--peach); line-height:1;
+            text-shadow:3px 3px 0 rgba(232,145,106,.20);
         }
 
         .bday-one {
             display:inline-flex; flex-direction:column; align-items:center;
-            margin:14px auto 18px;
-            background:var(--white); border:var(--outline); box-shadow:var(--comic);
-            border-radius:28px; padding:14px 36px;
+            margin:18px auto 18px;
+            background:var(--white); border:2px solid var(--peach-lt);
+            box-shadow:var(--shadow); border-radius:28px; padding:14px 38px;
             animation:badge-pop 2.2s ease-in-out infinite;
         }
-        .bday-cake { font-size:3.2rem; line-height:1; }
-        .bday-num {
+        .bday-cake { font-size:2.8rem; line-height:1; }
+        .bday-num  {
             font-family:'Fredoka One',cursive;
-            font-size:clamp(5.5rem,18vw,9rem); color:var(--red); line-height:1;
-            text-shadow:4px 4px 0 var(--black),-2px -2px 0 var(--black),
-                        2px -2px 0 var(--black),-2px  2px 0 var(--black);
+            font-size:clamp(5rem,17vw,9rem); color:var(--peach); line-height:1;
+            text-shadow:3px 3px 0 rgba(232,145,106,.20);
         }
         .bday-label {
-            font-family:'Fredoka One',cursive; font-size:1.5rem;
-            color:var(--black); margin-top:-6px;
-            background:var(--yellow); border:2px solid var(--black);
-            box-shadow:2px 2px 0 var(--black);
+            font-family:'Fredoka One',cursive; font-size:1.4rem;
+            color:var(--brown); margin-top:-6px;
+            background:var(--yellow-lt); border:1.5px solid var(--yellow);
+            box-shadow:0 2px 8px rgba(200,160,64,.18);
             padding:3px 18px; border-radius:20px;
         }
         @keyframes badge-pop {
-            0%,100%{transform:scale(1) rotate(-3deg);}
-            50%{transform:scale(1.06) rotate(3deg);}
+            0%,100%{transform:scale(1) rotate(-2deg);}
+            50%{transform:scale(1.04) rotate(2deg);}
         }
 
-        .hero-sub { font-size:1.15rem; color:#fff; font-weight:700; margin-bottom:18px; text-shadow:1px 1px 0 rgba(0,0,0,.3); }
+        .hero-sub { font-size:1rem; color:var(--brown-lt); font-weight:700; margin-bottom:16px; }
 
-        /* ── Two countdowns ── */
-        .cd-row {
-            display:flex; gap:14px; justify-content:center; flex-wrap:wrap;
-            margin:14px 0 20px;
-        }
+        /* ── Countdown ── */
+        .cd-row { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin:10px 0 18px; }
         .cd-block {
-            background:var(--white); border:var(--outline); box-shadow:var(--comic-sm);
-            border-radius:var(--r-lg); padding:12px 18px; min-width:140px; text-align:center;
+            background:var(--white); border:1.5px solid var(--sage-lt);
+            box-shadow:var(--shadow); border-radius:var(--r-lg);
+            padding:12px 18px; min-width:140px; text-align:center;
         }
-        .cd-block--bday  { border-color:var(--black); }
-        .cd-block--party { border-color:var(--black); }
-        .cd-label {
-            font-family:'Fredoka One',cursive; font-size:.85rem;
-            color:var(--black); margin-bottom:6px; letter-spacing:.5px;
-        }
-        .countdown {
-            font-family:'Fredoka One',cursive; font-size:1.05rem;
-            color:var(--black); display:flex; align-items:center; justify-content:center;
-            gap:6px; flex-wrap:wrap;
-        }
+        .cd-label { font-family:'Fredoka One',cursive; font-size:.85rem; color:var(--brown); margin-bottom:6px; }
+        .countdown { font-family:'Fredoka One',cursive; font-size:1.05rem; color:var(--brown); display:flex; align-items:center; justify-content:center; gap:6px; flex-wrap:wrap; }
         .cd-num {
-            background:var(--yellow); color:var(--black);
-            border:2px solid var(--black); box-shadow:2px 2px 0 var(--black);
+            background:var(--yellow-lt); color:var(--brown); border:1.5px solid var(--yellow);
             padding:2px 10px; border-radius:6px; font-size:1.2rem; min-width:36px; text-align:center;
         }
 
-        .footprints { font-size:1.4rem; letter-spacing:14px; opacity:.5; animation:steps 2s steps(3) infinite; }
-        @keyframes steps { 0%{opacity:.3;} 50%{opacity:.7;} 100%{opacity:.3;} }
+        .footprints { font-size:1.3rem; letter-spacing:14px; opacity:.28; animation:steps 2s steps(3) infinite; }
+        @keyframes steps { 0%{opacity:.18;} 50%{opacity:.45;} 100%{opacity:.18;} }
 
         /* ── Info cards ── */
-        .info-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; margin:36px 0; }
+        .info-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; margin:32px 0; }
         @media (max-width:540px) { .info-grid { grid-template-columns:1fr; } }
         .info-card {
-            border-radius:var(--r-xl); padding:30px 24px; text-align:center;
-            border:var(--outline); box-shadow:var(--comic);
-            position:relative; overflow:hidden;
+            border-radius:var(--r-xl); padding:28px 22px; text-align:center;
+            box-shadow:var(--shadow); border:1.5px solid transparent;
             transition:transform .15s ease, box-shadow .15s ease;
         }
-        .info-card--when { background:#fff9d0; }
-        .info-card--where { background:#d0f8e8; }
-        .info-card:hover  { transform:translate(-2px,-2px); box-shadow:8px 8px 0 var(--black); }
-        .info-card:active { transform:translate(2px,2px); box-shadow:2px 2px 0 var(--black); }
-        .info-icon  { font-size:3rem; display:block; margin-bottom:12px; animation:icon-pop 2.2s ease-in-out infinite; }
-        @keyframes icon-pop { 0%,100%{transform:scale(1) rotate(-4deg);} 50%{transform:scale(1.15) rotate(4deg);} }
-        .info-label { font-size:.78rem; text-transform:uppercase; letter-spacing:2px; color:var(--black); font-weight:800; margin-bottom:8px; opacity:.6; }
-        .info-value { font-family:'Fredoka One',cursive; font-size:1.55rem; color:var(--black); line-height:1.3; }
-        .info-sub   { font-size:.9rem; color:#555; margin-top:6px; font-weight:600; }
+        .info-card--when  { background:#FFF9E8; border-color:rgba(245,212,126,.5); }
+        .info-card--where { background:#F0F9F0; border-color:rgba(126,173,122,.30); }
+        .info-card:hover  { transform:translateY(-3px); box-shadow:var(--shadow-lg); }
+        .info-icon  { font-size:2.8rem; display:block; margin-bottom:10px; animation:icon-pop 2.2s ease-in-out infinite; }
+        @keyframes icon-pop { 0%,100%{transform:scale(1) rotate(-4deg);} 50%{transform:scale(1.14) rotate(4deg);} }
+        .info-label { font-size:.75rem; text-transform:uppercase; letter-spacing:2px; color:var(--brown); font-weight:800; margin-bottom:7px; opacity:.48; }
+        .info-value { font-family:'Fredoka One',cursive; font-size:1.5rem; color:var(--brown); line-height:1.3; }
+        .info-sub   { font-size:.88rem; color:var(--brown-lt); margin-top:5px; font-weight:600; }
 
         /* ── Shared card ── */
         .card {
             background:var(--white); border-radius:var(--r-xl);
-            border:var(--outline); box-shadow:var(--comic);
-            padding:36px 32px; margin:22px 0;
+            border:1.5px solid rgba(93,58,26,.07);
+            box-shadow:var(--shadow); padding:34px 30px; margin:20px 0;
             position:relative; overflow:hidden; text-align:center;
         }
-        .card-title { font-family:'Fredoka One',cursive; font-size:1.9rem; color:var(--black); margin-bottom:6px; }
-        .card-sub   { color:#555; font-size:.98rem; margin-bottom:24px; line-height:1.5; font-weight:600; }
+        .card-title { font-family:'Fredoka One',cursive; font-size:1.85rem; color:var(--brown); margin-bottom:6px; }
+        .card-sub   { color:var(--brown-lt); font-size:.96rem; margin-bottom:22px; line-height:1.5; font-weight:600; }
 
         /* ── Map card ── */
         .card--map { padding-bottom:0; }
         .map-address {
-            display:flex; align-items:center; justify-content:center;
-            flex-wrap:wrap; gap:4px 8px; text-align:center;
-            background:var(--teal); color:var(--black);
-            font-weight:800; font-size:.95rem;
-            padding:10px 20px; border-radius:var(--r-md); margin-bottom:20px;
-            border:3px solid var(--black); box-shadow:3px 3px 0 var(--black);
+            display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:4px 8px;
+            background:var(--mint); color:var(--brown); font-weight:800; font-size:.94rem;
+            padding:10px 20px; border-radius:var(--r-md); margin-bottom:18px;
+            border:1.5px solid rgba(141,207,202,.40);
+            box-shadow:0 2px 10px rgba(141,207,202,.22);
         }
         .map-iframe {
             width:100%; height:320px; border:none; display:block;
-            border-top:var(--outline); margin-top:4px;
+            border-top:1.5px solid rgba(93,58,26,.07); margin-top:4px;
             border-radius:0 0 calc(var(--r-xl) - 4px) calc(var(--r-xl) - 4px);
         }
 
         /* ── Dino card ── */
         .card--dino::after {
             content:'🌿'; position:absolute; bottom:-10px; right:-10px;
-            font-size:8rem; opacity:.07; pointer-events:none;
+            font-size:8rem; opacity:.05; pointer-events:none;
         }
-        .dino-trio {
-            display:flex; justify-content:center; align-items:flex-end;
-            gap:16px; flex-wrap:wrap; padding:10px 0 4px;
-        }
+        .dino-trio { display:flex; justify-content:center; align-items:flex-end; gap:18px; flex-wrap:wrap; padding:10px 0 4px; }
         .dino-unit { display:flex; flex-direction:column; align-items:center; }
         .dino-name {
-            font-family:'Fredoka One',cursive; font-size:1rem; color:var(--black);
-            margin-top:6px; background:var(--yellow);
-            border:2px solid var(--black); box-shadow:2px 2px 0 var(--black);
-            padding:2px 12px; border-radius:20px;
+            font-family:'Fredoka One',cursive; font-size:1rem; color:var(--brown);
+            margin-top:8px; background:var(--yellow-lt); border:1.5px solid var(--yellow);
+            box-shadow:0 2px 8px rgba(200,160,64,.16);
+            padding:3px 14px; border-radius:20px;
         }
         .dino-wrap {
             position:relative; cursor:pointer; display:inline-block;
@@ -244,24 +213,23 @@
         }
         .dino-char {
             display:block; user-select:none;
-            filter:drop-shadow(3px 3px 0 rgba(0,0,0,.4));
             animation:dino-breathe 3.5s ease-in-out infinite;
             transform-origin:bottom center;
         }
-        /* Max (lungo) = verde scuro — colore naturale emoji 🦕 */
-        .dino-char--lungo  { font-size:9rem; filter:drop-shadow(3px 3px 0 rgba(0,0,0,.4)) hue-rotate(15deg) saturate(1.3) brightness(0.88); }
-        /* Ele (rex) = rosa */
-        .dino-char--rex    { font-size:8rem; filter:drop-shadow(3px 3px 0 rgba(0,0,0,.4)) sepia(0.6) hue-rotate(280deg) saturate(3) brightness(1.2); }
-        /* Edo (raptor) = giallo ocra */
-        .dino-char--raptor { font-size:5.5rem; filter:drop-shadow(3px 3px 0 rgba(0,0,0,.4)) hue-rotate(35deg) saturate(1.5) brightness(1.1); }
+        .dino-char--lungo  { height:185px; filter:drop-shadow(2px 6px 12px rgba(93,58,26,.16)); }
+        .dino-char--rex    { height:165px; filter:drop-shadow(2px 6px 12px rgba(93,58,26,.16)); }
+        .dino-char--raptor { height:145px; filter:drop-shadow(2px 6px 12px rgba(93,58,26,.16)); }
         @keyframes dino-breathe {
             0%,100%{transform:scaleY(1) translateY(0);} 50%{transform:scaleY(1.04) translateY(-5px);}
         }
         .dino-wrap.roaring .dino-char { animation:anim-roar .65s ease forwards; }
         @keyframes anim-roar {
-            0%  {transform:scale(1)    rotate(0deg);} 15%{transform:scale(1.4)  rotate(-6deg);}
-            30% {transform:scale(1.38) rotate(6deg);} 50%{transform:scale(1.35) rotate(-4deg);}
-            70% {transform:scale(1.25) rotate(3deg);} 100%{transform:scale(1)   rotate(0deg);}
+            0%  {transform:scale(1)    rotate(0deg);}
+            15% {transform:scale(1.4)  rotate(-6deg);}
+            30% {transform:scale(1.38) rotate(6deg);}
+            50% {transform:scale(1.35) rotate(-4deg);}
+            70% {transform:scale(1.25) rotate(3deg);}
+            100%{transform:scale(1)    rotate(0deg);}
         }
         .dino-wrap.honking .dino-char { animation:anim-honk .9s ease forwards; }
         @keyframes anim-honk {
@@ -283,21 +251,21 @@
         .dino-bubble {
             position:absolute; bottom:calc(100% + 8px); left:50%;
             transform:translateX(-50%) scale(0); transform-origin:bottom center;
-            background:var(--yellow); color:var(--black);
-            font-family:'Fredoka One',cursive; font-size:1.1rem;
+            background:var(--yellow-lt); color:var(--brown);
+            font-family:'Fredoka One',cursive; font-size:1.05rem;
             padding:8px 18px; border-radius:50px; white-space:nowrap;
-            border:3px solid var(--black); box-shadow:3px 3px 0 var(--black);
+            border:1.5px solid var(--yellow);
+            box-shadow:0 4px 14px rgba(200,160,64,.20);
             pointer-events:none; opacity:0; z-index:10;
             transition:transform .28s cubic-bezier(.34,1.56,.64,1), opacity .22s;
         }
         .dino-bubble::after {
             content:''; position:absolute; top:100%; left:50%; transform:translateX(-50%);
-            border:9px solid transparent; border-top-color:var(--black); border-bottom:0;
-            margin-top:0;
+            border:8px solid transparent; border-top-color:var(--yellow); border-bottom:0;
         }
         .dino-bubble::before {
             content:''; position:absolute; top:100%; left:50%; transform:translateX(-50%);
-            border:6px solid transparent; border-top-color:var(--yellow); border-bottom:0;
+            border:6px solid transparent; border-top-color:var(--yellow-lt); border-bottom:0;
             margin-top:-1px; z-index:1;
         }
         .dino-wrap.roaring .dino-bubble,
@@ -305,43 +273,42 @@
         .dino-wrap.dashing .dino-bubble { transform:translateX(-50%) scale(1); opacity:1; }
         .dino-hint-row { text-align:center; margin-top:14px; }
         .dino-hint {
-            font-size:.9rem; color:var(--black); font-weight:700; opacity:.55;
-            background:var(--teal); padding:4px 14px; border-radius:20px;
-            border:2px solid var(--black); display:inline-block;
+            font-size:.88rem; color:var(--brown); font-weight:700;
+            background:rgba(141,207,202,.30); padding:5px 16px; border-radius:20px;
+            border:1.5px solid rgba(141,207,202,.45); display:inline-block;
             animation:hint-fade 2s ease-in-out infinite;
         }
-        @keyframes hint-fade { 0%,100%{opacity:.4;} 50%{opacity:.9;} }
+        @keyframes hint-fade { 0%,100%{opacity:.4;} 50%{opacity:.95;} }
 
         /* ── RSVP ── */
         .card--rsvp::after {
-            content:'🦕'; position:absolute; bottom:-14px; right:-14px;
-            font-size:7rem; opacity:.07; transform:scaleX(-1); pointer-events:none;
+            content:'🌿'; position:absolute; bottom:-14px; right:-14px;
+            font-size:7rem; opacity:.05; pointer-events:none;
         }
         .rsvp-form { display:flex; gap:12px; flex-wrap:wrap; }
         .rsvp-input {
-            flex:1; min-width:190px; padding:15px 20px; text-align:left;
-            border:3px solid var(--black); border-radius:var(--r-md);
+            flex:1; min-width:190px; padding:15px 20px;
+            border:1.5px solid rgba(93,58,26,.16); border-radius:var(--r-md);
             font-family:'Baloo 2',sans-serif; font-size:1rem; font-weight:700;
-            color:var(--black); background:#fff; outline:none;
-            box-shadow:3px 3px 0 var(--black);
-            transition:transform .15s, box-shadow .15s;
+            color:var(--brown); background:#fff; outline:none;
+            box-shadow:0 2px 8px rgba(93,58,26,.05);
+            transition:border-color .15s, box-shadow .15s;
         }
-        .rsvp-input:focus { transform:translate(-1px,-1px); box-shadow:4px 4px 0 var(--black); }
-        .rsvp-input::placeholder { color:#bbb; font-weight:400; }
+        .rsvp-input:focus { border-color:var(--sage); box-shadow:0 0 0 3px rgba(126,173,122,.16); }
+        .rsvp-input::placeholder { color:#C4A898; font-weight:400; }
         .rsvp-btn {
-            padding:15px 28px;
-            background:var(--yellow); color:var(--black);
-            border:3px solid var(--black); border-radius:var(--r-md);
+            padding:15px 28px; background:var(--peach); color:#fff;
+            border:none; border-radius:var(--r-md);
             font-family:'Fredoka One',cursive; font-size:1.1rem; cursor:pointer;
-            white-space:nowrap; box-shadow:var(--comic-sm);
+            white-space:nowrap; box-shadow:0 4px 16px rgba(232,145,106,.32);
             transition:transform .12s, box-shadow .12s;
         }
-        .rsvp-btn:hover  { transform:translate(-2px,-2px); box-shadow:6px 6px 0 var(--black); }
-        .rsvp-btn:active { transform:translate(2px,2px);  box-shadow:1px 1px 0 var(--black); }
-        .feedback { display:none; align-items:center; gap:10px; padding:13px 18px; border-radius:var(--r-sm); margin-top:14px; font-weight:700; font-size:.97rem; border:3px solid var(--black); box-shadow:var(--comic-sm); }
+        .rsvp-btn:hover  { transform:translateY(-2px); box-shadow:0 8px 22px rgba(232,145,106,.40); }
+        .rsvp-btn:active { transform:translateY(1px); }
+        .feedback { display:none; align-items:center; gap:10px; padding:13px 18px; border-radius:var(--r-sm); margin-top:14px; font-weight:700; font-size:.97rem; box-shadow:var(--shadow); }
         .feedback.show { display:flex; }
-        .feedback--ok  { background:#b9f5d0; color:var(--black); animation:slide-down .35s ease; }
-        .feedback--err { background:#ffcdd2; color:#b00020; animation:shake .45s ease; }
+        .feedback--ok  { background:#E8F7EE; color:var(--sage-dk); animation:slide-down .35s ease; }
+        .feedback--err { background:#FFEAEA; color:#B00020; animation:shake .45s ease; }
         @keyframes slide-down { from{opacity:0;transform:translateY(-8px);} to{opacity:1;transform:translateY(0);} }
         @keyframes shake { 0%,100%{transform:translateX(0);} 20%,60%{transform:translateX(-8px);} 40%,80%{transform:translateX(8px);} }
 
@@ -349,14 +316,14 @@
         .music-btn {
             position:fixed; bottom:24px; right:24px; z-index:500;
             width:58px; height:58px; border-radius:50%; cursor:pointer;
-            background:var(--pink); color:#fff;
-            font-size:1.55rem; display:flex; align-items:center; justify-content:center;
-            border:3px solid var(--black); box-shadow:var(--comic-sm);
+            background:var(--peach); color:#fff;
+            font-size:1.5rem; display:flex; align-items:center; justify-content:center;
+            border:none; box-shadow:0 4px 16px rgba(232,145,106,.38);
             transition:transform .12s, box-shadow .12s;
             animation:music-pop 3s ease-in-out infinite;
         }
-        .music-btn:hover  { transform:translate(-2px,-2px) scale(1.08); box-shadow:6px 6px 0 var(--black); animation:none; }
-        .music-btn:active { transform:translate(2px,2px); box-shadow:1px 1px 0 var(--black); }
+        .music-btn:hover  { transform:translate(-2px,-2px) scale(1.08); box-shadow:0 8px 22px rgba(232,145,106,.44); animation:none; }
+        .music-btn:active { transform:translate(1px,1px); }
         @keyframes music-pop {
             0%,100%{transform:scale(1) rotate(-4deg);}
             50%{transform:scale(1.08) rotate(4deg);}
@@ -372,52 +339,74 @@
         }
 
         /* ── Footer ── */
-        .footer { text-align:center; padding:30px 16px 10px; color:#fff; opacity:.7; font-size:.95rem; font-weight:700; }
+        .footer { text-align:center; padding:28px 16px 10px; color:var(--brown-lt); opacity:.72; font-size:.92rem; font-weight:700; }
 
         /* ── Responsive ── */
         @media (max-width:480px) {
-            .hero              { padding-top:18px; }
-            .card              { padding:28px 18px; }
-            .card-title        { font-size:1.6rem; }
+            .hero              { padding-top:14px; }
+            .card              { padding:26px 16px; }
+            .card-title        { font-size:1.55rem; }
             .rsvp-form         { flex-direction:column; }
             .rsvp-btn          { text-align:center; }
             .map-iframe        { height:250px; }
-            .map-address       { font-size:.82rem; }
-            .dino-char--rex    { font-size:6rem; }
-            .dino-char--lungo  { font-size:7rem; }
-            .dino-char--raptor { font-size:4.5rem; }
-            .dino-bubble       { font-size:.95rem; padding:7px 14px; }
-            .music-btn         { bottom:max(16px, env(safe-area-inset-bottom, 16px)); right:16px; width:50px; height:50px; font-size:1.35rem; }
-            .cd-block          { min-width:120px; padding:10px 12px; }
+            .map-address       { font-size:.80rem; }
+            .dino-char--lungo  { height:150px; }
+            .dino-char--rex    { height:132px; }
+            .dino-char--raptor { height:116px; }
+            .dino-bubble       { font-size:.9rem; padding:7px 14px; }
+            .music-btn         { bottom:max(16px, env(safe-area-inset-bottom, 16px)); right:16px; width:50px; height:50px; font-size:1.3rem; }
+            .cd-block          { min-width:116px; padding:10px 12px; }
         }
     </style>
 </head>
 <body>
 
-<div class="ambient" style="top:6%;  left:1%;  animation-duration:6s;">⭐</div>
-<div class="ambient" style="top:52%; right:1%; animation-duration:9s; animation-delay:-3s;">🌟</div>
-<div class="ambient" style="top:28%; left:.5%; font-size:2.4rem; animation-delay:-1.5s;">✨</div>
-<div class="ambient" style="top:74%; right:1%; font-size:2.6rem; animation-delay:-5s;">⭐</div>
-<div class="ambient" style="top:18%; right:2%; font-size:2rem; animation-delay:-2.5s;">🎈</div>
-<div class="ambient" style="top:62%; left:1%; font-size:2.2rem; animation-delay:-4s;">🎈</div>
+<div class="ambient" style="top:6%;  left:1%;  animation-duration:6s;">🎈</div>
+<div class="ambient" style="top:52%; right:1%; animation-duration:9s;  animation-delay:-3s;">🎈</div>
+<div class="ambient" style="top:28%; left:.5%; font-size:2rem; animation-delay:-1.5s;">🌿</div>
+<div class="ambient" style="top:74%; right:1%; font-size:2.2rem; animation-delay:-5s;">🎈</div>
+<div class="ambient" style="top:18%; right:2%; font-size:1.8rem; animation-delay:-2.5s;">🌿</div>
+<div class="ambient" style="top:62%; left:1%; font-size:1.9rem; animation-delay:-4s;">🎈</div>
 
 <div id="confetti-root"></div>
+<button class="music-btn" id="musicBtn" onclick="toggleMusic()" title="Musica">🎵</button>
 
-<!-- Music toggle button -->
-<button class="music-btn" id="musicBtn" onclick="toggleMusic()" title="Musica Jurassic Park">🎵</button>
+<!-- Garland / Bunting -->
+<div class="bunting-wrap">
+  <svg class="bunting-svg" viewBox="0 0 800 92" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <!-- String -->
+    <path d="M-5 18 Q200 4 400 30 Q600 54 805 18" stroke="#C8A850" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- Flags -->
+    <line x1="58"  y1="13" x2="58"  y2="59" stroke="#C8A850" stroke-width="1.5"/>
+    <polygon points="42,13 74,13 58,59"   fill="#F4A8C7"/>
+    <line x1="138" y1="7"  x2="138" y2="53" stroke="#C8A850" stroke-width="1.5"/>
+    <polygon points="122,7 154,7 138,53"  fill="#F5D47E"/>
+    <line x1="218" y1="6"  x2="218" y2="52" stroke="#C8A850" stroke-width="1.5"/>
+    <polygon points="202,6 234,6 218,52"  fill="#7EAD7A"/>
+    <line x1="298" y1="13" x2="298" y2="59" stroke="#C8A850" stroke-width="1.5"/>
+    <polygon points="282,13 314,13 298,59" fill="#E8916A"/>
+    <line x1="378" y1="23" x2="378" y2="69" stroke="#C8A850" stroke-width="1.5"/>
+    <polygon points="362,23 394,23 378,69" fill="#8DCFCA"/>
+    <line x1="458" y1="35" x2="458" y2="81" stroke="#C8A850" stroke-width="1.5"/>
+    <polygon points="442,35 474,35 458,81" fill="#C9AEDE"/>
+    <line x1="538" y1="43" x2="538" y2="85" stroke="#C8A850" stroke-width="1.5"/>
+    <polygon points="522,43 554,43 538,85" fill="#F4A8C7"/>
+    <line x1="618" y1="41" x2="618" y2="83" stroke="#C8A850" stroke-width="1.5"/>
+    <polygon points="602,41 634,41 618,83" fill="#F5D47E"/>
+    <line x1="698" y1="31" x2="698" y2="75" stroke="#C8A850" stroke-width="1.5"/>
+    <polygon points="682,31 714,31 698,75" fill="#7EAD7A"/>
+    <line x1="773" y1="20" x2="773" y2="64" stroke="#C8A850" stroke-width="1.5"/>
+    <polygon points="757,20 789,20 773,64" fill="#E8916A"/>
+  </svg>
+</div>
 
 <div class="container">
 
     <!-- Hero -->
     <section class="hero">
-        <div class="hero-pill">🦖 UN ANNO DI RUGGITI! 🦕</div>
-        <div class="hero-dino-row">
-            <span class="hdino hdino--sm">🦕</span>
-            <span class="hdino hdino--md">🎂</span>
-            <span class="hdino hdino--sm-r">🦖</span>
-        </div>
+        <div class="hero-pill">🦕 Sei invitato alla festa! 🦖</div>
         <h1 class="hero-title">
-            Festa di compleanno di<br>
+            Buon Compleanno<br>
             <span class="hero-name">Edoardo!</span>
         </h1>
         <div class="bday-one">
@@ -425,14 +414,9 @@
             <div class="bday-num">1</div>
             <div class="bday-label">anno 🎈</div>
         </div>
-        <p class="hero-sub">🎉 Unisciti a noi per festeggiare questo grande giorno! 🎉</p>
+        <p class="hero-sub">☀️ Edo ha completato il suo primo giro intorno al sole! 🌍</p>
 
-        <!-- Due countdown affiancati -->
         <div class="cd-row">
-            <div class="cd-block cd-block--bday">
-                <div class="cd-label">🎂 al Compleanno</div>
-                <div class="countdown" id="cdBday"></div>
-            </div>
             <div class="cd-block cd-block--party">
                 <div class="cd-label">🎉 alla Festa</div>
                 <div class="countdown" id="cdParty"></div>
@@ -478,30 +462,158 @@
         <h2 class="card-title">🦕 Incontra la banda!</h2>
         <p class="card-sub">Tre dinosauri ti aspettano — dagli un tocco e scopri cosa combinano!</p>
         <div class="dino-trio">
+
+            <!-- MAX — Brontosauro (verde salvia) -->
             <div class="dino-unit">
                 <div class="dino-wrap" id="wrapLungo" onclick="interactDino('lungo')"
                      role="button" aria-label="Saluta Max">
                     <div class="dino-bubble" id="bubbleLungo"></div>
-                    <span class="dino-char dino-char--lungo">🦕</span>
+                    <svg class="dino-char dino-char--lungo" viewBox="0 0 160 220" xmlns="http://www.w3.org/2000/svg">
+                      <!-- Coda -->
+                      <path d="M108 160 Q146 154 149 135 Q143 116 120 129 Q107 141 106 155" fill="#7EAD7A" stroke="#5A8756" stroke-width="2" stroke-linejoin="round"/>
+                      <!-- Corpo -->
+                      <ellipse cx="76" cy="160" rx="54" ry="42" fill="#7EAD7A" stroke="#5A8756" stroke-width="2"/>
+                      <!-- Pancia -->
+                      <ellipse cx="68" cy="170" rx="36" ry="28" fill="#B8D9B5"/>
+                      <!-- Zampe -->
+                      <rect x="33" y="193" width="20" height="22" rx="10" fill="#7EAD7A" stroke="#5A8756" stroke-width="2"/>
+                      <rect x="57" y="197" width="18" height="18" rx="9"  fill="#7EAD7A" stroke="#5A8756" stroke-width="2"/>
+                      <rect x="83" y="197" width="18" height="18" rx="9"  fill="#7EAD7A" stroke="#5A8756" stroke-width="2"/>
+                      <rect x="105" y="193" width="20" height="22" rx="10" fill="#7EAD7A" stroke="#5A8756" stroke-width="2"/>
+                      <!-- Collo (outline + fill + pancia) -->
+                      <path d="M52 124 Q38 84 22 44" stroke="#5A8756" stroke-width="32" stroke-linecap="round" fill="none"/>
+                      <path d="M52 124 Q38 84 22 44" stroke="#7EAD7A" stroke-width="28" stroke-linecap="round" fill="none"/>
+                      <path d="M52 124 Q38 84 22 44" stroke="#B8D9B5" stroke-width="13" stroke-linecap="round" fill="none" opacity="0.55"/>
+                      <!-- Testa -->
+                      <ellipse cx="18" cy="36" rx="24" ry="18" fill="#7EAD7A" stroke="#5A8756" stroke-width="2"/>
+                      <ellipse cx="12" cy="44" rx="15" ry="10" fill="#B8D9B5"/>
+                      <!-- Narice -->
+                      <ellipse cx="3" cy="38" rx="2.2" ry="1.8" fill="#5A8756" opacity="0.42"/>
+                      <!-- Occhio -->
+                      <circle cx="13" cy="30" r="6.5" fill="white" stroke="#5A8756" stroke-width="1.5"/>
+                      <circle cx="12" cy="30" r="3.5" fill="#2D1B0E"/>
+                      <circle cx="10.5" cy="28.5" r="1.3" fill="white"/>
+                      <!-- Blush -->
+                      <ellipse cx="5" cy="38" rx="6" ry="4" fill="#FFB6C1" opacity="0.52"/>
+                      <!-- Sorriso -->
+                      <path d="M 3 46 Q 12 52 22 47" stroke="#5A8756" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+                      <!-- Cappellino (pesca) -->
+                      <polygon points="18,-4 2,30 34,30" fill="#E8916A" stroke="#C06040" stroke-width="1.5"/>
+                      <ellipse cx="18" cy="30" rx="16" ry="5" fill="#F7C9B0" stroke="#C06040" stroke-width="1"/>
+                      <circle cx="18" cy="-2" r="3.5" fill="#F5D47E"/>
+                      <circle cx="13" cy="10" r="2.2" fill="#FBF0C0" opacity="0.88"/>
+                      <circle cx="23" cy="14" r="2.2" fill="#FBF0C0" opacity="0.88"/>
+                      <circle cx="16" cy="22" r="1.8" fill="#FBF0C0" opacity="0.78"/>
+                      <!-- Macchie corpo -->
+                      <circle cx="90"  cy="148" r="5"   fill="#5A8756" opacity="0.11"/>
+                      <circle cx="106" cy="163" r="4"   fill="#5A8756" opacity="0.09"/>
+                      <circle cx="76"  cy="162" r="3.5" fill="#5A8756" opacity="0.09"/>
+                    </svg>
                 </div>
                 <div class="dino-name">Max</div>
             </div>
+
+            <!-- ELE — T-Rex (rosa) -->
             <div class="dino-unit">
                 <div class="dino-wrap" id="wrapRex" onclick="interactDino('rex')"
                      role="button" aria-label="Saluta Ele">
                     <div class="dino-bubble" id="bubbleRex"></div>
-                    <span class="dino-char dino-char--rex">🦖</span>
+                    <svg class="dino-char dino-char--rex" viewBox="0 0 140 190" xmlns="http://www.w3.org/2000/svg">
+                      <!-- Coda -->
+                      <path d="M92 148 Q127 142 129 122 Q122 103 102 117 Q89 130 88 142" fill="#F4A8C7" stroke="#D4709A" stroke-width="2" stroke-linejoin="round"/>
+                      <!-- Corpo -->
+                      <ellipse cx="66" cy="148" rx="48" ry="38" fill="#F4A8C7" stroke="#D4709A" stroke-width="2"/>
+                      <!-- Pancia -->
+                      <ellipse cx="60" cy="158" rx="30" ry="24" fill="#FDDCEE"/>
+                      <!-- Zampe -->
+                      <path d="M42 178 C40 189 38 198 36 205 Q49 208 56 205 C57 196 56 186 54 178" fill="#F4A8C7" stroke="#D4709A" stroke-width="2"/>
+                      <path d="M71 180 C70 191 70 200 70 206 Q83 208 89 205 C88 195 86 184 82 180" fill="#F4A8C7" stroke="#D4709A" stroke-width="2"/>
+                      <!-- Braccini -->
+                      <path d="M32 126 Q22 134 20 145 Q26 151 32 147 Q38 137 43 130" fill="#F4A8C7" stroke="#D4709A" stroke-width="1.5"/>
+                      <path d="M20 145 L15 139 M20 145 L15 147" stroke="#D4709A" stroke-width="1.5" stroke-linecap="round"/>
+                      <!-- Testa (grande e rotonda) -->
+                      <ellipse cx="45" cy="84" rx="42" ry="34" fill="#F4A8C7" stroke="#D4709A" stroke-width="2"/>
+                      <!-- Mento/zona bassa più chiara -->
+                      <ellipse cx="38" cy="97" rx="26" ry="14" fill="#FDDCEE"/>
+                      <!-- Narice -->
+                      <ellipse cx="10" cy="84" rx="2.5" ry="2" fill="#D4709A" opacity="0.42"/>
+                      <!-- Occhio sinistro -->
+                      <circle cx="27" cy="74" r="7.5" fill="white" stroke="#D4709A" stroke-width="1.5"/>
+                      <circle cx="26" cy="74" r="4"   fill="#2D1B0E"/>
+                      <circle cx="24.5" cy="72.5" r="1.4" fill="white"/>
+                      <!-- Blush sinistro -->
+                      <ellipse cx="14" cy="83" rx="8" ry="5" fill="#FFB6C1" opacity="0.48"/>
+                      <!-- Occhio destro -->
+                      <circle cx="61" cy="74" r="7.5" fill="white" stroke="#D4709A" stroke-width="1.5"/>
+                      <circle cx="60" cy="74" r="4"   fill="#2D1B0E"/>
+                      <circle cx="58.5" cy="72.5" r="1.4" fill="white"/>
+                      <!-- Blush destro -->
+                      <ellipse cx="72" cy="83" rx="8" ry="5" fill="#FFB6C1" opacity="0.48"/>
+                      <!-- Sorriso -->
+                      <path d="M 24 97 Q 44 109 64 97" stroke="#D4709A" stroke-width="2" fill="none" stroke-linecap="round"/>
+                      <!-- Cappellino (verde salvia) -->
+                      <polygon points="45,44 27,76 63,76" fill="#7EAD7A" stroke="#5A8756" stroke-width="1.5"/>
+                      <ellipse cx="45" cy="76" rx="18" ry="5" fill="#B8D9B5" stroke="#5A8756" stroke-width="1"/>
+                      <circle cx="45" cy="46" r="3.5" fill="#F5D47E"/>
+                      <circle cx="37" cy="60" r="2.2" fill="#FBF0C0" opacity="0.88"/>
+                      <circle cx="53" cy="62" r="2.2" fill="#FBF0C0" opacity="0.88"/>
+                      <circle cx="43" cy="70" r="1.8" fill="#FBF0C0" opacity="0.78"/>
+                    </svg>
                 </div>
                 <div class="dino-name">Ele</div>
             </div>
+
+            <!-- EDO — Velociraptor (giallo ocra) -->
             <div class="dino-unit">
                 <div class="dino-wrap" id="wrapRaptor" onclick="interactDino('raptor')"
                      role="button" aria-label="Saluta Edo">
                     <div class="dino-bubble" id="bubbleRaptor"></div>
-                    <span class="dino-char dino-char--raptor">🦖</span>
+                    <svg class="dino-char dino-char--raptor" viewBox="0 0 120 175" xmlns="http://www.w3.org/2000/svg">
+                      <!-- Coda -->
+                      <path d="M82 126 Q116 114 119 95 Q112 77 94 89 Q82 103 80 118" fill="#F5D47E" stroke="#C8A040" stroke-width="2" stroke-linejoin="round"/>
+                      <!-- Corpo (leggermente inclinato) -->
+                      <ellipse cx="62" cy="130" rx="40" ry="32" fill="#F5D47E" stroke="#C8A040" stroke-width="2" transform="rotate(-10 62 130)"/>
+                      <!-- Pancia -->
+                      <ellipse cx="56" cy="136" rx="25" ry="20" fill="#FBF0C0" transform="rotate(-10 56 136)"/>
+                      <!-- Braccia (più lunghe del T-Rex) -->
+                      <path d="M36 112 Q24 120 18 132 Q24 140 30 134 Q38 124 44 116" fill="#F5D47E" stroke="#C8A040" stroke-width="1.5"/>
+                      <!-- Artigli -->
+                      <path d="M18 132 L13 126 M18 132 L13 133 M18 132 L14 139" stroke="#C8A040" stroke-width="1.5" stroke-linecap="round"/>
+                      <!-- Zampe -->
+                      <path d="M46 154 C44 163 42 172 40 178 Q52 181 57 178 C58 170 58 160 58 154" fill="#F5D47E" stroke="#C8A040" stroke-width="2"/>
+                      <path d="M66 156 C66 165 66 174 66 179 Q78 181 82 178 C80 169 78 159 76 156" fill="#F5D47E" stroke="#C8A040" stroke-width="2"/>
+                      <!-- Artiglio a falce -->
+                      <path d="M40 178 Q32 172 34 163" stroke="#C8A040" stroke-width="2" fill="none" stroke-linecap="round"/>
+                      <!-- Testa -->
+                      <ellipse cx="32" cy="78" rx="30" ry="23" fill="#F5D47E" stroke="#C8A040" stroke-width="2" transform="rotate(-8 32 78)"/>
+                      <!-- Muso -->
+                      <path d="M6 80 Q0 86 2 94 Q12 97 20 93 Q18 86 10 82" fill="#F5D47E" stroke="#C8A040" stroke-width="1.5"/>
+                      <!-- Narice -->
+                      <ellipse cx="4" cy="86" rx="2" ry="1.5" fill="#C8A040" opacity="0.42"/>
+                      <!-- Pancia testa -->
+                      <ellipse cx="27" cy="84" rx="17" ry="11" fill="#FBF0C0" transform="rotate(-8 27 84)"/>
+                      <!-- Occhio -->
+                      <circle cx="20" cy="71" r="6" fill="white" stroke="#C8A040" stroke-width="1.5"/>
+                      <circle cx="19" cy="71" r="3.2" fill="#2D1B0E"/>
+                      <circle cx="17.5" cy="69.5" r="1.2" fill="white"/>
+                      <!-- Blush -->
+                      <ellipse cx="10" cy="79" rx="5.5" ry="4" fill="#FFB6C1" opacity="0.52"/>
+                      <!-- Sorriso -->
+                      <path d="M 6 90 Q 16 97 26 92" stroke="#C8A040" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                      <!-- Cappellino (rosa) -->
+                      <polygon points="32,38 18,67 46,67" fill="#F4A8C7" stroke="#D4709A" stroke-width="1.5"/>
+                      <ellipse cx="32" cy="67" rx="14" ry="4" fill="#FDDCEE" stroke="#D4709A" stroke-width="1"/>
+                      <circle cx="32" cy="40" r="3" fill="#F5D47E"/>
+                      <circle cx="26" cy="54" r="1.8" fill="white" opacity="0.85"/>
+                      <circle cx="38" cy="52" r="1.8" fill="white" opacity="0.85"/>
+                      <!-- Striature corpo -->
+                      <path d="M54 120 Q62 114 70 120" stroke="#C8A040" stroke-width="1.5" fill="none" opacity="0.32"/>
+                      <path d="M58 132 Q66 126 74 132" stroke="#C8A040" stroke-width="1.5" fill="none" opacity="0.32"/>
+                    </svg>
                 </div>
                 <div class="dino-name">Edo</div>
             </div>
+
         </div>
         <div class="dino-hint-row">
             <span class="dino-hint">👆 Clicca su ognuno di loro!</span>
@@ -535,7 +647,7 @@
    RSVP
 ══════════════════════════════════════════ */
 const RSVP_KEY      = 'edoardo_rsvp_v1';
-const FORMSPREE_URL = 'https://formspree.io/f/xjgleqka';
+const FORMSPREE_URL = 'https://formspree.io/f/mdabwolw';
 
 async function confirmRsvp() {
     const input = document.getElementById('nameInput');
@@ -549,7 +661,7 @@ async function confirmRsvp() {
     try {
         const res = await fetch(FORMSPREE_URL, {
             method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
-            body: JSON.stringify({ name, _subject:`RSVP Festa Edoardo — ${name}` })
+            body: JSON.stringify({ name, _subject:`RSVP Festa Edoardo — ${name}`, _cc:'eleonorasanchez1705@gmail.com' })
         });
         if (res.ok) {
             confirmed.push(name.toLowerCase()); localStorage.setItem(RSVP_KEY, JSON.stringify(confirmed));
@@ -577,9 +689,8 @@ function clearFeedback() {
 document.getElementById('nameInput').addEventListener('keydown', e => { if (e.key==='Enter') confirmRsvp(); });
 
 /* ══════════════════════════════════════════
-   COUNTDOWNS
+   COUNTDOWN
 ══════════════════════════════════════════ */
-const BDAY_DATE  = new Date('2026-06-08T00:00:00');
 const PARTY_DATE = new Date('2026-06-13T00:00:00');
 
 function pad(n) { return String(n).padStart(2,'0'); }
@@ -603,7 +714,6 @@ function updateCd(id, target, todayMsg) {
 }
 
 function updateCountdowns() {
-    updateCd('cdBday',  BDAY_DATE,  '🎂 Oggi è il compleanno!');
     updateCd('cdParty', PARTY_DATE, '🎉 Oggi si festeggia!');
 }
 setInterval(updateCountdowns, 1000);
@@ -632,7 +742,6 @@ function _initAudio() {
 /* ══════════════════════════════════════════
    BABY SHARK — xilofono + percussioni
 ══════════════════════════════════════════ */
-// Costruisce un verso "Baby Shark, doo doo doo" (×3) + finale
 function _bsVerse(r, t, f) {
     return [
         [r,.5],[t,.5],[f,1.0],[f,.25],[f,.25],[f,.25],[f,.25],[f,.25],[f,.25],
@@ -641,10 +750,9 @@ function _bsVerse(r, t, f) {
         [r,.5],[t,.5],[f,2.0],[0,.75],
     ];
 }
-// Do maggiore — Baby(C-E-G), Mommy(E-G-C5), Daddy(G-B-E5)
 const _C4=261.63,_E4=329.63,_G4=392.00,_B4=493.88,_C5=523.25,_E5=659.25;
 const MELODY    = [..._bsVerse(_C4,_E4,_G4), ..._bsVerse(_E4,_G4,_C5), ..._bsVerse(_G4,_B4,_E5), [0,2]];
-const MELODY_BT = 0.46; // ≈ 130 BPM
+const MELODY_BT = 0.46;
 
 let _musicGain  = null;
 let _musicOn    = false;
@@ -687,7 +795,6 @@ function _scheduleMelody() {
         if (freq > 0) _playXylo(freq, t, dur);
         t += dur; total += dur;
     }
-    // Percussioni: kick ogni 2 beat, hi-hat ogni beat
     const numBeats = Math.ceil(total);
     for (let b = 0; b < numBeats; b++) {
         const bt = t0 + b * MELODY_BT;
@@ -697,7 +804,6 @@ function _scheduleMelody() {
     _loopTimer = setTimeout(_scheduleMelody, Math.max(200, (total - 1.5) * 1000));
 }
 
-/* Xilofono/glockenspiel: sine + parziale inarmonica per il "ding" */
 function _playXylo(freq, startT, dur) {
     try {
         const osc = _ctx.createOscillator(); osc.type = 'sine'; osc.frequency.value = freq;
@@ -707,7 +813,6 @@ function _playXylo(freq, startT, dur) {
         osc.connect(env); env.connect(_musicGain);
         osc.start(startT); osc.stop(startT + Math.min(dur * 1.6, 0.7));
 
-        // Parziale alta inarmonica (caratteristica degli xilofoni)
         const osc2 = _ctx.createOscillator(); osc2.type = 'sine'; osc2.frequency.value = freq * 2.76;
         const env2 = _ctx.createGain();
         env2.gain.setValueAtTime(0.26, startT);
@@ -717,7 +822,6 @@ function _playXylo(freq, startT, dur) {
     } catch(_) {}
 }
 
-/* Cassa: sine sweep 140→38 Hz */
 function _playKick(t) {
     try {
         const osc = _ctx.createOscillator();
@@ -731,7 +835,6 @@ function _playKick(t) {
     } catch(_) {}
 }
 
-/* Hi-hat: noise filtrato highpass */
 function _playHat(t) {
     try {
         const src = _ctx.createBufferSource(); src.buffer = _noiseBuf;
@@ -869,7 +972,7 @@ document.addEventListener('mouseleave', () => {
 ══════════════════════════════════════════ */
 function launchConfetti() {
     const root   = document.getElementById('confetti-root');
-    const colors = ['#ffe94d','#ff6b9d','#38d9c0','#ff8c42','#ff4757','#ffffff','#c084fc'];
+    const colors = ['#F5D47E','#F4A8C7','#8DCFCA','#E8916A','#7EAD7A','#ffffff','#C9AEDE'];
     for (let i=0;i<90;i++) {
         setTimeout(() => {
             const p = document.createElement('div'); p.className='cp';
