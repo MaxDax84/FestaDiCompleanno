@@ -209,9 +209,9 @@
             animation:dino-breathe 3.5s ease-in-out infinite;
             transform-origin:bottom center;
         }
-        .dino-char--lungo  { height:185px; filter:drop-shadow(2px 6px 12px rgba(93,58,26,.16)); }
-        .dino-char--rex    { height:165px; filter:drop-shadow(2px 6px 12px rgba(93,58,26,.16)); }
-        .dino-char--raptor { height:145px; filter:drop-shadow(2px 6px 12px rgba(93,58,26,.16)); }
+        .dino-char--lungo  { font-size:9rem;   filter:drop-shadow(2px 6px 12px rgba(93,58,26,.18)) hue-rotate(12deg) saturate(1.2) brightness(0.92); }
+        .dino-char--rex    { font-size:8rem;   filter:drop-shadow(2px 6px 12px rgba(93,58,26,.18)) sepia(0.5) hue-rotate(282deg) saturate(2.8) brightness(1.15); }
+        .dino-char--raptor { font-size:6.5rem; filter:drop-shadow(2px 6px 12px rgba(93,58,26,.18)) hue-rotate(32deg) saturate(1.4) brightness(1.05); }
         @keyframes dino-breathe {
             0%,100%{transform:scaleY(1) translateY(0);} 50%{transform:scaleY(1.04) translateY(-5px);}
         }
@@ -343,9 +343,9 @@
             .rsvp-btn          { text-align:center; }
             .map-iframe        { height:250px; }
             .map-address       { font-size:.80rem; }
-            .dino-char--lungo  { height:150px; }
-            .dino-char--rex    { height:132px; }
-            .dino-char--raptor { height:116px; }
+            .dino-char--lungo  { font-size:7rem; }
+            .dino-char--rex    { font-size:6.5rem; }
+            .dino-char--raptor { font-size:5rem; }
             .dino-bubble       { font-size:.9rem; padding:7px 14px; }
             .music-btn         { bottom:max(16px, env(safe-area-inset-bottom, 16px)); right:16px; width:50px; height:50px; font-size:1.3rem; }
             .cd-block          { min-width:116px; padding:10px 12px; }
@@ -599,47 +599,7 @@
                 <div class="dino-wrap" id="wrapLungo" onclick="interactDino('lungo')"
                      role="button" aria-label="Saluta Max">
                     <div class="dino-bubble" id="bubbleLungo"></div>
-                    <svg class="dino-char dino-char--lungo" viewBox="0 0 160 220" xmlns="http://www.w3.org/2000/svg">
-                      <!-- Coda -->
-                      <path d="M108 160 Q146 154 149 135 Q143 116 120 129 Q107 141 106 155" fill="#7EAD7A" stroke="#5A8756" stroke-width="2" stroke-linejoin="round"/>
-                      <!-- Corpo -->
-                      <ellipse cx="76" cy="160" rx="54" ry="42" fill="#7EAD7A" stroke="#5A8756" stroke-width="2"/>
-                      <!-- Pancia -->
-                      <ellipse cx="68" cy="170" rx="36" ry="28" fill="#B8D9B5"/>
-                      <!-- Zampe -->
-                      <rect x="33" y="193" width="20" height="22" rx="10" fill="#7EAD7A" stroke="#5A8756" stroke-width="2"/>
-                      <rect x="57" y="197" width="18" height="18" rx="9"  fill="#7EAD7A" stroke="#5A8756" stroke-width="2"/>
-                      <rect x="83" y="197" width="18" height="18" rx="9"  fill="#7EAD7A" stroke="#5A8756" stroke-width="2"/>
-                      <rect x="105" y="193" width="20" height="22" rx="10" fill="#7EAD7A" stroke="#5A8756" stroke-width="2"/>
-                      <!-- Collo (outline + fill + pancia) -->
-                      <path d="M52 124 Q38 84 22 44" stroke="#5A8756" stroke-width="32" stroke-linecap="round" fill="none"/>
-                      <path d="M52 124 Q38 84 22 44" stroke="#7EAD7A" stroke-width="28" stroke-linecap="round" fill="none"/>
-                      <path d="M52 124 Q38 84 22 44" stroke="#B8D9B5" stroke-width="13" stroke-linecap="round" fill="none" opacity="0.55"/>
-                      <!-- Testa -->
-                      <ellipse cx="18" cy="36" rx="24" ry="18" fill="#7EAD7A" stroke="#5A8756" stroke-width="2"/>
-                      <ellipse cx="12" cy="44" rx="15" ry="10" fill="#B8D9B5"/>
-                      <!-- Narice -->
-                      <ellipse cx="3" cy="38" rx="2.2" ry="1.8" fill="#5A8756" opacity="0.42"/>
-                      <!-- Occhio -->
-                      <circle cx="13" cy="30" r="6.5" fill="white" stroke="#5A8756" stroke-width="1.5"/>
-                      <circle cx="12" cy="30" r="3.5" fill="#2D1B0E"/>
-                      <circle cx="10.5" cy="28.5" r="1.3" fill="white"/>
-                      <!-- Blush -->
-                      <ellipse cx="5" cy="38" rx="6" ry="4" fill="#FFB6C1" opacity="0.52"/>
-                      <!-- Sorriso -->
-                      <path d="M 3 46 Q 12 52 22 47" stroke="#5A8756" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-                      <!-- Cappellino (pesca) -->
-                      <polygon points="18,-4 2,30 34,30" fill="#E8916A" stroke="#C06040" stroke-width="1.5"/>
-                      <ellipse cx="18" cy="30" rx="16" ry="5" fill="#F7C9B0" stroke="#C06040" stroke-width="1"/>
-                      <circle cx="18" cy="-2" r="3.5" fill="#F5D47E"/>
-                      <circle cx="13" cy="10" r="2.2" fill="#FBF0C0" opacity="0.88"/>
-                      <circle cx="23" cy="14" r="2.2" fill="#FBF0C0" opacity="0.88"/>
-                      <circle cx="16" cy="22" r="1.8" fill="#FBF0C0" opacity="0.78"/>
-                      <!-- Macchie corpo -->
-                      <circle cx="90"  cy="148" r="5"   fill="#5A8756" opacity="0.11"/>
-                      <circle cx="106" cy="163" r="4"   fill="#5A8756" opacity="0.09"/>
-                      <circle cx="76"  cy="162" r="3.5" fill="#5A8756" opacity="0.09"/>
-                    </svg>
+                    <span class="dino-char dino-char--lungo">🦕</span>
                 </div>
                 <div class="dino-name">Max</div>
             </div>
@@ -649,47 +609,7 @@
                 <div class="dino-wrap" id="wrapRex" onclick="interactDino('rex')"
                      role="button" aria-label="Saluta Ele">
                     <div class="dino-bubble" id="bubbleRex"></div>
-                    <svg class="dino-char dino-char--rex" viewBox="0 0 140 190" xmlns="http://www.w3.org/2000/svg">
-                      <!-- Coda -->
-                      <path d="M92 148 Q127 142 129 122 Q122 103 102 117 Q89 130 88 142" fill="#F4A8C7" stroke="#D4709A" stroke-width="2" stroke-linejoin="round"/>
-                      <!-- Corpo -->
-                      <ellipse cx="66" cy="148" rx="48" ry="38" fill="#F4A8C7" stroke="#D4709A" stroke-width="2"/>
-                      <!-- Pancia -->
-                      <ellipse cx="60" cy="158" rx="30" ry="24" fill="#FDDCEE"/>
-                      <!-- Zampe -->
-                      <path d="M42 178 C40 189 38 198 36 205 Q49 208 56 205 C57 196 56 186 54 178" fill="#F4A8C7" stroke="#D4709A" stroke-width="2"/>
-                      <path d="M71 180 C70 191 70 200 70 206 Q83 208 89 205 C88 195 86 184 82 180" fill="#F4A8C7" stroke="#D4709A" stroke-width="2"/>
-                      <!-- Braccini -->
-                      <path d="M32 126 Q22 134 20 145 Q26 151 32 147 Q38 137 43 130" fill="#F4A8C7" stroke="#D4709A" stroke-width="1.5"/>
-                      <path d="M20 145 L15 139 M20 145 L15 147" stroke="#D4709A" stroke-width="1.5" stroke-linecap="round"/>
-                      <!-- Testa (grande e rotonda) -->
-                      <ellipse cx="45" cy="84" rx="42" ry="34" fill="#F4A8C7" stroke="#D4709A" stroke-width="2"/>
-                      <!-- Mento/zona bassa più chiara -->
-                      <ellipse cx="38" cy="97" rx="26" ry="14" fill="#FDDCEE"/>
-                      <!-- Narice -->
-                      <ellipse cx="10" cy="84" rx="2.5" ry="2" fill="#D4709A" opacity="0.42"/>
-                      <!-- Occhio sinistro -->
-                      <circle cx="27" cy="74" r="7.5" fill="white" stroke="#D4709A" stroke-width="1.5"/>
-                      <circle cx="26" cy="74" r="4"   fill="#2D1B0E"/>
-                      <circle cx="24.5" cy="72.5" r="1.4" fill="white"/>
-                      <!-- Blush sinistro -->
-                      <ellipse cx="14" cy="83" rx="8" ry="5" fill="#FFB6C1" opacity="0.48"/>
-                      <!-- Occhio destro -->
-                      <circle cx="61" cy="74" r="7.5" fill="white" stroke="#D4709A" stroke-width="1.5"/>
-                      <circle cx="60" cy="74" r="4"   fill="#2D1B0E"/>
-                      <circle cx="58.5" cy="72.5" r="1.4" fill="white"/>
-                      <!-- Blush destro -->
-                      <ellipse cx="72" cy="83" rx="8" ry="5" fill="#FFB6C1" opacity="0.48"/>
-                      <!-- Sorriso -->
-                      <path d="M 24 97 Q 44 109 64 97" stroke="#D4709A" stroke-width="2" fill="none" stroke-linecap="round"/>
-                      <!-- Cappellino (verde salvia) -->
-                      <polygon points="45,44 27,76 63,76" fill="#7EAD7A" stroke="#5A8756" stroke-width="1.5"/>
-                      <ellipse cx="45" cy="76" rx="18" ry="5" fill="#B8D9B5" stroke="#5A8756" stroke-width="1"/>
-                      <circle cx="45" cy="46" r="3.5" fill="#F5D47E"/>
-                      <circle cx="37" cy="60" r="2.2" fill="#FBF0C0" opacity="0.88"/>
-                      <circle cx="53" cy="62" r="2.2" fill="#FBF0C0" opacity="0.88"/>
-                      <circle cx="43" cy="70" r="1.8" fill="#FBF0C0" opacity="0.78"/>
-                    </svg>
+                    <span class="dino-char dino-char--rex">🦖</span>
                 </div>
                 <div class="dino-name">Ele</div>
             </div>
@@ -699,48 +619,7 @@
                 <div class="dino-wrap" id="wrapRaptor" onclick="interactDino('raptor')"
                      role="button" aria-label="Saluta Edo">
                     <div class="dino-bubble" id="bubbleRaptor"></div>
-                    <svg class="dino-char dino-char--raptor" viewBox="0 0 120 175" xmlns="http://www.w3.org/2000/svg">
-                      <!-- Coda -->
-                      <path d="M82 126 Q116 114 119 95 Q112 77 94 89 Q82 103 80 118" fill="#F5D47E" stroke="#C8A040" stroke-width="2" stroke-linejoin="round"/>
-                      <!-- Corpo (leggermente inclinato) -->
-                      <ellipse cx="62" cy="130" rx="40" ry="32" fill="#F5D47E" stroke="#C8A040" stroke-width="2" transform="rotate(-10 62 130)"/>
-                      <!-- Pancia -->
-                      <ellipse cx="56" cy="136" rx="25" ry="20" fill="#FBF0C0" transform="rotate(-10 56 136)"/>
-                      <!-- Braccia (più lunghe del T-Rex) -->
-                      <path d="M36 112 Q24 120 18 132 Q24 140 30 134 Q38 124 44 116" fill="#F5D47E" stroke="#C8A040" stroke-width="1.5"/>
-                      <!-- Artigli -->
-                      <path d="M18 132 L13 126 M18 132 L13 133 M18 132 L14 139" stroke="#C8A040" stroke-width="1.5" stroke-linecap="round"/>
-                      <!-- Zampe -->
-                      <path d="M46 154 C44 163 42 172 40 178 Q52 181 57 178 C58 170 58 160 58 154" fill="#F5D47E" stroke="#C8A040" stroke-width="2"/>
-                      <path d="M66 156 C66 165 66 174 66 179 Q78 181 82 178 C80 169 78 159 76 156" fill="#F5D47E" stroke="#C8A040" stroke-width="2"/>
-                      <!-- Artiglio a falce -->
-                      <path d="M40 178 Q32 172 34 163" stroke="#C8A040" stroke-width="2" fill="none" stroke-linecap="round"/>
-                      <!-- Testa -->
-                      <ellipse cx="32" cy="78" rx="30" ry="23" fill="#F5D47E" stroke="#C8A040" stroke-width="2" transform="rotate(-8 32 78)"/>
-                      <!-- Muso -->
-                      <path d="M6 80 Q0 86 2 94 Q12 97 20 93 Q18 86 10 82" fill="#F5D47E" stroke="#C8A040" stroke-width="1.5"/>
-                      <!-- Narice -->
-                      <ellipse cx="4" cy="86" rx="2" ry="1.5" fill="#C8A040" opacity="0.42"/>
-                      <!-- Pancia testa -->
-                      <ellipse cx="27" cy="84" rx="17" ry="11" fill="#FBF0C0" transform="rotate(-8 27 84)"/>
-                      <!-- Occhio -->
-                      <circle cx="20" cy="71" r="6" fill="white" stroke="#C8A040" stroke-width="1.5"/>
-                      <circle cx="19" cy="71" r="3.2" fill="#2D1B0E"/>
-                      <circle cx="17.5" cy="69.5" r="1.2" fill="white"/>
-                      <!-- Blush -->
-                      <ellipse cx="10" cy="79" rx="5.5" ry="4" fill="#FFB6C1" opacity="0.52"/>
-                      <!-- Sorriso -->
-                      <path d="M 6 90 Q 16 97 26 92" stroke="#C8A040" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-                      <!-- Cappellino (rosa) -->
-                      <polygon points="32,38 18,67 46,67" fill="#F4A8C7" stroke="#D4709A" stroke-width="1.5"/>
-                      <ellipse cx="32" cy="67" rx="14" ry="4" fill="#FDDCEE" stroke="#D4709A" stroke-width="1"/>
-                      <circle cx="32" cy="40" r="3" fill="#F5D47E"/>
-                      <circle cx="26" cy="54" r="1.8" fill="white" opacity="0.85"/>
-                      <circle cx="38" cy="52" r="1.8" fill="white" opacity="0.85"/>
-                      <!-- Striature corpo -->
-                      <path d="M54 120 Q62 114 70 120" stroke="#C8A040" stroke-width="1.5" fill="none" opacity="0.32"/>
-                      <path d="M58 132 Q66 126 74 132" stroke="#C8A040" stroke-width="1.5" fill="none" opacity="0.32"/>
-                    </svg>
+                    <span class="dino-char dino-char--raptor">🦖</span>
                 </div>
                 <div class="dino-name">Edo</div>
             </div>
