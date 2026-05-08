@@ -21,52 +21,52 @@
     <!-- Favicon emoji SVG -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦕</text></svg>">
 
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Fredoka+One&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 
         :root {
-            --green-dark:   #1b4332;
-            --green-mid:    #2d6a4f;
-            --green-bright: #52b788;
-            --green-pale:   #d8f3dc;
-            --yellow:       #ffd60a;
-            --yellow-warm:  #f4a261;
-            --orange:       #e76f51;
-            --red:          #e63946;
-            --cream:        #fefae0;
-            --white:        #ffffff;
-            --shadow-lg: 0 20px 60px rgba(0,0,0,.18);
-            --radius-xl: 28px;
-            --radius-lg: 20px;
-            --radius-md: 14px;
-            --radius-sm: 8px;
+            --bg:      #5ec96e;
+            --bg-dot:  #4db85d;
+            --yellow:  #ffe94d;
+            --pink:    #ff6b9d;
+            --teal:    #38d9c0;
+            --orange:  #ff8c42;
+            --red:     #ff4757;
+            --purple:  #c084fc;
+            --black:   #1a1a2e;
+            --white:   #fffef0;
+            --outline: 4px solid #1a1a2e;
+            --comic:   6px 6px 0 #1a1a2e;
+            --comic-sm:4px 4px 0 #1a1a2e;
+            --r-xl: 24px;
+            --r-lg: 18px;
+            --r-md: 12px;
+            --r-sm: 8px;
         }
 
-        body { font-family:'Nunito',sans-serif; background:var(--green-dark); min-height:100vh; overflow-x:hidden; }
+        body {
+            font-family:'Baloo 2',sans-serif;
+            background: var(--bg);
+            min-height:100vh; overflow-x:hidden;
+        }
 
+        /* polka dot background */
         body::before {
-            content:''; position:fixed; inset:0;
-            background:
-                radial-gradient(ellipse at 15% 15%, rgba(82,183,136,.18) 0%, transparent 55%),
-                radial-gradient(ellipse at 85% 85%, rgba(45,106,79,.25)  0%, transparent 55%),
-                linear-gradient(160deg, #1b4332 0%, #2d6a4f 50%, #1b4332 100%);
-            z-index:-2;
-        }
-        body::after {
-            content:''; position:fixed; bottom:0; left:0; right:0; height:80px;
-            background:linear-gradient(180deg,transparent,rgba(27,67,50,.6));
-            z-index:-1; pointer-events:none;
+            content:''; position:fixed; inset:0; z-index:-2;
+            background: radial-gradient(circle, var(--bg-dot) 2.5px, transparent 2.5px);
+            background-size: 32px 32px;
         }
 
-        /* ── Ambient leaves ── */
-        .ambient-dino {
-            position:fixed; pointer-events:none; font-size:4.5rem;
-            opacity:.12; animation:ambient-float 7s ease-in-out infinite;
-            z-index:0; filter:drop-shadow(0 4px 12px rgba(0,0,0,.3)); user-select:none;
+        /* ── Ambient stars ── */
+        .ambient {
+            position:fixed; pointer-events:none; font-size:3.2rem;
+            opacity:.22; animation:ambient-float 7s ease-in-out infinite;
+            z-index:0; user-select:none;
         }
         @keyframes ambient-float {
-            0%,100%{transform:translateY(0) rotate(-6deg);} 50%{transform:translateY(-22px) rotate(6deg);}
+            0%,100%{transform:translateY(0) rotate(-8deg) scale(1);}
+            50%{transform:translateY(-24px) rotate(8deg) scale(1.08);}
         }
 
         /* ── Container ── */
@@ -74,119 +74,142 @@
 
         /* ── Hero ── */
         .hero { text-align:center; padding:max(50px, calc(24px + env(safe-area-inset-top, 0px))) 16px 30px; }
+
         .hero-pill {
             display:inline-block;
-            background:linear-gradient(135deg,var(--yellow),var(--yellow-warm));
-            color:var(--green-dark); font-family:'Fredoka One',cursive; font-size:1.1rem;
-            padding:9px 26px; border-radius:50px; margin-bottom:24px;
-            box-shadow:0 4px 18px rgba(255,214,10,.45); animation:pill-pulse 2.4s ease-in-out infinite;
+            background:var(--pink); color:#fff;
+            font-family:'Fredoka One',cursive; font-size:1.15rem;
+            padding:9px 28px; border-radius:50px;
+            border:var(--outline); box-shadow:var(--comic-sm);
+            margin-bottom:24px; animation:pill-bounce 1.8s ease-in-out infinite;
         }
-        @keyframes pill-pulse {
-            0%,100%{transform:scale(1);    box-shadow:0 4px 18px rgba(255,214,10,.45);}
-            50%     {transform:scale(1.04); box-shadow:0 4px 28px rgba(255,214,10,.65);}
+        @keyframes pill-bounce {
+            0%,100%{transform:translateY(0) rotate(-1deg);}
+            50%{transform:translateY(-6px) rotate(1deg);}
         }
+
         .hero-dino-row { display:flex; justify-content:center; align-items:flex-end; gap:12px; margin-bottom:10px; }
-        .hdino { display:inline-block; filter:drop-shadow(0 8px 18px rgba(0,0,0,.35)); animation:hero-bounce 1.8s ease-in-out infinite; }
+        .hdino { display:inline-block; filter:drop-shadow(3px 3px 0 rgba(0,0,0,.5)); animation:hero-bounce 1.8s ease-in-out infinite; }
         .hdino--sm   { font-size:4.5rem; }
         .hdino--md   { font-size:6.5rem; animation-delay:.25s; }
         .hdino--sm-r { font-size:4.5rem; animation-delay:.5s; animation-name:hero-bounce-r; }
-        @keyframes hero-bounce   { 0%,100%{transform:translateY(0) rotate(0deg);} 30%{transform:translateY(-18px) rotate(-4deg);} 70%{transform:translateY(-10px) rotate(4deg);} }
-        @keyframes hero-bounce-r { 0%,100%{transform:scaleX(-1) translateY(0) rotate(0deg);} 30%{transform:scaleX(-1) translateY(-18px) rotate(4deg);} 70%{transform:scaleX(-1) translateY(-10px) rotate(-4deg);} }
+        @keyframes hero-bounce   { 0%,100%{transform:translateY(0) rotate(0deg);} 30%{transform:translateY(-18px) rotate(-5deg);} 70%{transform:translateY(-10px) rotate(5deg);} }
+        @keyframes hero-bounce-r { 0%,100%{transform:scaleX(-1) translateY(0);} 30%{transform:scaleX(-1) translateY(-18px) rotate(5deg);} 70%{transform:scaleX(-1) translateY(-10px) rotate(-5deg);} }
+
         .hero-title {
             font-family:'Fredoka One',cursive; font-size:clamp(2rem,7vw,4rem);
             color:var(--yellow); line-height:1.15; margin:18px 0 6px;
-            text-shadow:3px 3px 0 var(--green-dark),0 0 30px rgba(255,214,10,.3);
-            animation:glow 3s ease-in-out infinite;
+            text-shadow:
+                3px  3px 0 var(--black),
+               -2px -2px 0 var(--black),
+                2px -2px 0 var(--black),
+               -2px  2px 0 var(--black);
+            animation:title-wobble 3s ease-in-out infinite;
         }
-        @keyframes glow {
-            0%,100%{text-shadow:3px 3px 0 var(--green-dark),0 0 20px rgba(255,214,10,.25);}
-            50%     {text-shadow:3px 3px 0 var(--green-dark),0 0 45px rgba(255,214,10,.55);}
+        @keyframes title-wobble {
+            0%,100%{transform:rotate(-1deg);} 50%{transform:rotate(1deg);}
         }
+
         .hero-name {
             display:block; font-family:'Fredoka One',cursive;
-            font-size:clamp(3.8rem,13vw,7.5rem); color:var(--white); line-height:1;
-            text-shadow:4px 4px 0 var(--green-mid),0 0 50px rgba(255,255,255,.15);
+            font-size:clamp(3.8rem,13vw,7.5rem); color:#fff; line-height:1;
+            text-shadow:
+                4px  4px 0 var(--black),
+               -2px -2px 0 var(--black),
+                2px -2px 0 var(--black),
+               -2px  2px 0 var(--black);
         }
+
         .age-badge {
             display:inline-flex; align-items:center; justify-content:center;
-            width:96px; height:96px; border-radius:50%; margin:22px auto;
-            background:linear-gradient(135deg,var(--red),var(--orange));
-            font-family:'Fredoka One',cursive; font-size:4rem; color:#fff;
-            animation:badge-glow 2.5s ease-in-out infinite;
+            width:100px; height:100px; border-radius:50%; margin:22px auto;
+            background:var(--red); color:#fff;
+            font-family:'Fredoka One',cursive; font-size:4.2rem;
+            border:var(--outline); box-shadow:var(--comic);
+            animation:badge-pop 2s ease-in-out infinite;
         }
-        @keyframes badge-glow {
-            0%,100%{box-shadow:0 8px 30px rgba(230,57,70,.5), 0 0 0 8px  rgba(230,57,70,.15);}
-            50%     {box-shadow:0 8px 30px rgba(244,162,97,.5),0 0 0 16px rgba(244,162,97,.1);}
+        @keyframes badge-pop {
+            0%,100%{transform:scale(1) rotate(-4deg);}
+            50%{transform:scale(1.08) rotate(4deg);}
         }
-        .hero-sub   { font-size:1.2rem; color:var(--green-pale); font-weight:700; margin-bottom:18px; }
 
-        /* ── Countdown ── */
-        .countdown-wrap { margin:14px 0 20px; }
+        .hero-sub { font-size:1.15rem; color:#fff; font-weight:700; margin-bottom:18px; text-shadow:1px 1px 0 rgba(0,0,0,.3); }
+
+        /* ── Two countdowns ── */
+        .cd-row {
+            display:flex; gap:14px; justify-content:center; flex-wrap:wrap;
+            margin:14px 0 20px;
+        }
+        .cd-block {
+            background:var(--white); border:var(--outline); box-shadow:var(--comic-sm);
+            border-radius:var(--r-lg); padding:12px 18px; min-width:140px; text-align:center;
+        }
+        .cd-block--bday  { border-color:var(--black); }
+        .cd-block--party { border-color:var(--black); }
+        .cd-label {
+            font-family:'Fredoka One',cursive; font-size:.85rem;
+            color:var(--black); margin-bottom:6px; letter-spacing:.5px;
+        }
         .countdown {
-            display:inline-flex; align-items:center; gap:10px; flex-wrap:wrap; justify-content:center;
-            background:rgba(255,255,255,.1); border:2px solid rgba(255,214,10,.3);
-            backdrop-filter:blur(6px); color:var(--yellow);
             font-family:'Fredoka One',cursive; font-size:1.05rem;
-            padding:10px 22px; border-radius:50px;
+            color:var(--black); display:flex; align-items:center; justify-content:center;
+            gap:6px; flex-wrap:wrap;
         }
         .cd-num {
-            background:var(--yellow); color:var(--green-dark);
-            padding:2px 12px; border-radius:8px; font-size:1.2rem;
-            min-width:40px; text-align:center;
+            background:var(--yellow); color:var(--black);
+            border:2px solid var(--black); box-shadow:2px 2px 0 var(--black);
+            padding:2px 10px; border-radius:6px; font-size:1.2rem; min-width:36px; text-align:center;
         }
-        .cd-sep { opacity:.5; font-size:.85rem; }
 
-        .footprints { font-size:1.4rem; letter-spacing:14px; opacity:.35; animation:steps 2s steps(3) infinite; }
-        @keyframes steps { 0%{opacity:.2;} 50%{opacity:.5;} 100%{opacity:.2;} }
+        .footprints { font-size:1.4rem; letter-spacing:14px; opacity:.5; animation:steps 2s steps(3) infinite; }
+        @keyframes steps { 0%{opacity:.3;} 50%{opacity:.7;} 100%{opacity:.3;} }
 
         /* ── Info cards ── */
         .info-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; margin:36px 0; }
         @media (max-width:540px) { .info-grid { grid-template-columns:1fr; } }
         .info-card {
-            background:rgba(255,255,255,.96); border-radius:var(--radius-xl);
-            padding:30px 24px; text-align:center; box-shadow:var(--shadow-lg);
+            border-radius:var(--r-xl); padding:30px 24px; text-align:center;
+            border:var(--outline); box-shadow:var(--comic);
             position:relative; overflow:hidden;
-            transition:transform .3s ease,box-shadow .3s ease; cursor:default;
+            transition:transform .15s ease, box-shadow .15s ease;
         }
-        .info-card::before {
-            content:''; position:absolute; top:0; left:0; right:0; height:5px;
-            background:linear-gradient(90deg,var(--green-bright),var(--yellow),var(--orange));
-        }
-        .info-card:hover { transform:translateY(-6px); box-shadow:0 28px 70px rgba(0,0,0,.22); }
+        .info-card--when { background:#fff9d0; }
+        .info-card--where { background:#d0f8e8; }
+        .info-card:hover  { transform:translate(-2px,-2px); box-shadow:8px 8px 0 var(--black); }
+        .info-card:active { transform:translate(2px,2px); box-shadow:2px 2px 0 var(--black); }
         .info-icon  { font-size:3rem; display:block; margin-bottom:12px; animation:icon-pop 2.2s ease-in-out infinite; }
-        @keyframes icon-pop { 0%,100%{transform:scale(1);} 50%{transform:scale(1.12);} }
-        .info-label { font-size:.78rem; text-transform:uppercase; letter-spacing:2.5px; color:var(--green-bright); font-weight:900; margin-bottom:8px; }
-        .info-value { font-family:'Fredoka One',cursive; font-size:1.55rem; color:var(--green-dark); line-height:1.3; }
-        .info-sub   { font-size:.9rem; color:#777; margin-top:6px; }
+        @keyframes icon-pop { 0%,100%{transform:scale(1) rotate(-4deg);} 50%{transform:scale(1.15) rotate(4deg);} }
+        .info-label { font-size:.78rem; text-transform:uppercase; letter-spacing:2px; color:var(--black); font-weight:800; margin-bottom:8px; opacity:.6; }
+        .info-value { font-family:'Fredoka One',cursive; font-size:1.55rem; color:var(--black); line-height:1.3; }
+        .info-sub   { font-size:.9rem; color:#555; margin-top:6px; font-weight:600; }
 
         /* ── Shared card ── */
         .card {
-            background:rgba(255,255,255,.96); border-radius:var(--radius-xl);
-            padding:36px 32px; margin:22px 0; box-shadow:var(--shadow-lg);
+            background:var(--white); border-radius:var(--r-xl);
+            border:var(--outline); box-shadow:var(--comic);
+            padding:36px 32px; margin:22px 0;
             position:relative; overflow:hidden; text-align:center;
         }
-        .card-title { font-family:'Fredoka One',cursive; font-size:1.9rem; color:var(--green-dark); margin-bottom:6px; }
-        .card-sub   { color:#777; font-size:.98rem; margin-bottom:24px; line-height:1.5; }
+        .card-title { font-family:'Fredoka One',cursive; font-size:1.9rem; color:var(--black); margin-bottom:6px; }
+        .card-sub   { color:#555; font-size:.98rem; margin-bottom:24px; line-height:1.5; font-weight:600; }
 
-        /* ── Map ── */
+        /* ── Map card ── */
         .card--map { padding-bottom:0; }
-        .card--map::before {
-            content:''; position:absolute; top:0; left:0; right:0; height:5px;
-            background:linear-gradient(90deg,var(--green-bright),var(--yellow),var(--orange));
-        }
         .map-address {
             display:flex; align-items:center; justify-content:center;
             flex-wrap:wrap; gap:4px 8px; text-align:center;
-            background:var(--green-pale); color:var(--green-dark);
+            background:var(--teal); color:var(--black);
             font-weight:800; font-size:.95rem;
-            padding:10px 20px; border-radius:var(--radius-md); margin-bottom:20px;
+            padding:10px 20px; border-radius:var(--r-md); margin-bottom:20px;
+            border:3px solid var(--black); box-shadow:3px 3px 0 var(--black);
         }
         .map-iframe {
             width:100%; height:320px; border:none; display:block;
-            border-radius:0 0 var(--radius-xl) var(--radius-xl); margin-top:4px;
+            border-top:var(--outline); margin-top:4px;
+            border-radius:0 0 calc(var(--r-xl) - 4px) calc(var(--r-xl) - 4px);
         }
 
-        /* ── Dino trio ── */
+        /* ── Dino card ── */
         .card--dino::after {
             content:'🌿'; position:absolute; bottom:-10px; right:-10px;
             font-size:8rem; opacity:.07; pointer-events:none;
@@ -195,21 +218,26 @@
             display:flex; justify-content:center; align-items:flex-end;
             gap:16px; flex-wrap:wrap; padding:10px 0 4px;
         }
-        .dino-unit { display:flex; flex-direction:column; align-items:center; gap:0; }
-        .dino-name { font-family:'Fredoka One',cursive; font-size:.9rem; color:var(--green-mid); margin-top:6px; }
+        .dino-unit { display:flex; flex-direction:column; align-items:center; }
+        .dino-name {
+            font-family:'Fredoka One',cursive; font-size:1rem; color:var(--black);
+            margin-top:6px; background:var(--yellow);
+            border:2px solid var(--black); box-shadow:2px 2px 0 var(--black);
+            padding:2px 12px; border-radius:20px;
+        }
         .dino-wrap {
             position:relative; cursor:pointer; display:inline-block;
             -webkit-tap-highlight-color:transparent; outline:none; transition:transform .08s ease;
         }
         .dino-char {
             display:block; user-select:none;
-            filter:drop-shadow(0 8px 16px rgba(0,0,0,.28));
+            filter:drop-shadow(3px 3px 0 rgba(0,0,0,.4));
             animation:dino-breathe 3.5s ease-in-out infinite;
             transform-origin:bottom center;
         }
         .dino-char--rex    { font-size:8rem; }
         .dino-char--lungo  { font-size:9rem; }
-        .dino-char--raptor { font-size:5.5rem; }
+        .dino-char--raptor { font-size:5.5rem; filter:drop-shadow(3px 3px 0 rgba(0,0,0,.4)) hue-rotate(175deg) saturate(1.4) brightness(1.1); }
         @keyframes dino-breathe {
             0%,100%{transform:scaleY(1) translateY(0);} 50%{transform:scaleY(1.04) translateY(-5px);}
         }
@@ -239,23 +267,34 @@
         .dino-bubble {
             position:absolute; bottom:calc(100% + 8px); left:50%;
             transform:translateX(-50%) scale(0); transform-origin:bottom center;
-            background:var(--yellow); color:var(--green-dark);
+            background:var(--yellow); color:var(--black);
             font-family:'Fredoka One',cursive; font-size:1.1rem;
             padding:8px 18px; border-radius:50px; white-space:nowrap;
-            box-shadow:0 4px 16px rgba(255,214,10,.5);
+            border:3px solid var(--black); box-shadow:3px 3px 0 var(--black);
             pointer-events:none; opacity:0; z-index:10;
             transition:transform .28s cubic-bezier(.34,1.56,.64,1), opacity .22s;
         }
         .dino-bubble::after {
             content:''; position:absolute; top:100%; left:50%; transform:translateX(-50%);
-            border:9px solid transparent; border-top-color:var(--yellow); border-bottom:0;
+            border:9px solid transparent; border-top-color:var(--black); border-bottom:0;
+            margin-top:0;
+        }
+        .dino-bubble::before {
+            content:''; position:absolute; top:100%; left:50%; transform:translateX(-50%);
+            border:6px solid transparent; border-top-color:var(--yellow); border-bottom:0;
+            margin-top:-1px; z-index:1;
         }
         .dino-wrap.roaring .dino-bubble,
         .dino-wrap.honking .dino-bubble,
         .dino-wrap.dashing .dino-bubble { transform:translateX(-50%) scale(1); opacity:1; }
-        .dino-hint-row { text-align:center; margin-top:12px; }
-        .dino-hint { font-size:.88rem; color:#aaa; font-weight:700; animation:hint-fade 2s ease-in-out infinite; }
-        @keyframes hint-fade { 0%,100%{opacity:.5;} 50%{opacity:1;} }
+        .dino-hint-row { text-align:center; margin-top:14px; }
+        .dino-hint {
+            font-size:.9rem; color:var(--black); font-weight:700; opacity:.55;
+            background:var(--teal); padding:4px 14px; border-radius:20px;
+            border:2px solid var(--black); display:inline-block;
+            animation:hint-fade 2s ease-in-out infinite;
+        }
+        @keyframes hint-fade { 0%,100%{opacity:.4;} 50%{opacity:.9;} }
 
         /* ── RSVP ── */
         .card--rsvp::after {
@@ -265,45 +304,46 @@
         .rsvp-form { display:flex; gap:12px; flex-wrap:wrap; }
         .rsvp-input {
             flex:1; min-width:190px; padding:15px 20px; text-align:left;
-            border:3px solid var(--green-pale); border-radius:var(--radius-md);
-            font-family:'Nunito',sans-serif; font-size:1rem; font-weight:700;
-            color:var(--green-dark); background:var(--cream); outline:none;
-            transition:border-color .25s,box-shadow .25s,background .25s;
+            border:3px solid var(--black); border-radius:var(--r-md);
+            font-family:'Baloo 2',sans-serif; font-size:1rem; font-weight:700;
+            color:var(--black); background:#fff; outline:none;
+            box-shadow:3px 3px 0 var(--black);
+            transition:transform .15s, box-shadow .15s;
         }
-        .rsvp-input:focus { border-color:var(--green-bright); background:#fff; box-shadow:0 0 0 4px rgba(82,183,136,.18); }
+        .rsvp-input:focus { transform:translate(-1px,-1px); box-shadow:4px 4px 0 var(--black); }
         .rsvp-input::placeholder { color:#bbb; font-weight:400; }
         .rsvp-btn {
             padding:15px 28px;
-            background:linear-gradient(135deg,var(--green-bright),var(--green-mid));
-            color:#fff; border:none; border-radius:var(--radius-md);
+            background:var(--yellow); color:var(--black);
+            border:3px solid var(--black); border-radius:var(--r-md);
             font-family:'Fredoka One',cursive; font-size:1.1rem; cursor:pointer;
-            white-space:nowrap; position:relative; overflow:hidden;
-            box-shadow:0 4px 18px rgba(82,183,136,.45); transition:transform .25s,box-shadow .25s;
+            white-space:nowrap; box-shadow:var(--comic-sm);
+            transition:transform .12s, box-shadow .12s;
         }
-        .rsvp-btn::after { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(255,255,255,.2),transparent); pointer-events:none; }
-        .rsvp-btn:hover  { transform:translateY(-3px); box-shadow:0 8px 28px rgba(82,183,136,.55); }
-        .rsvp-btn:active { transform:translateY(0); }
-        .feedback { display:none; align-items:center; gap:10px; padding:13px 18px; border-radius:var(--radius-sm); margin-top:14px; font-weight:700; font-size:.97rem; }
+        .rsvp-btn:hover  { transform:translate(-2px,-2px); box-shadow:6px 6px 0 var(--black); }
+        .rsvp-btn:active { transform:translate(2px,2px);  box-shadow:1px 1px 0 var(--black); }
+        .feedback { display:none; align-items:center; gap:10px; padding:13px 18px; border-radius:var(--r-sm); margin-top:14px; font-weight:700; font-size:.97rem; border:3px solid var(--black); box-shadow:var(--comic-sm); }
         .feedback.show { display:flex; }
-        .feedback--ok  { background:linear-gradient(135deg,var(--green-pale),#b7e4c7); border:2px solid var(--green-bright); color:var(--green-dark); animation:slide-down .35s ease; }
-        .feedback--err { background:#ffebee; border:2px solid #ef9a9a; color:#b71c1c; animation:shake .45s ease; }
+        .feedback--ok  { background:#b9f5d0; color:var(--black); animation:slide-down .35s ease; }
+        .feedback--err { background:#ffcdd2; color:#b00020; animation:shake .45s ease; }
         @keyframes slide-down { from{opacity:0;transform:translateY(-8px);} to{opacity:1;transform:translateY(0);} }
         @keyframes shake { 0%,100%{transform:translateX(0);} 20%,60%{transform:translateX(-8px);} 40%,80%{transform:translateX(8px);} }
 
         /* ── Music button ── */
         .music-btn {
             position:fixed; bottom:24px; right:24px; z-index:500;
-            width:56px; height:56px; border-radius:50%; border:none; cursor:pointer;
-            background:linear-gradient(135deg,var(--green-bright),var(--green-mid));
+            width:58px; height:58px; border-radius:50%; cursor:pointer;
+            background:var(--pink); color:#fff;
             font-size:1.55rem; display:flex; align-items:center; justify-content:center;
-            box-shadow:0 4px 20px rgba(82,183,136,.55); transition:transform .2s,box-shadow .2s;
-            animation:music-pulse 3s ease-in-out infinite;
+            border:3px solid var(--black); box-shadow:var(--comic-sm);
+            transition:transform .12s, box-shadow .12s;
+            animation:music-pop 3s ease-in-out infinite;
         }
-        .music-btn:hover  { transform:scale(1.12); box-shadow:0 6px 28px rgba(82,183,136,.65); animation:none; }
-        .music-btn:active { transform:scale(.96); }
-        @keyframes music-pulse {
-            0%,100%{box-shadow:0 4px 20px rgba(82,183,136,.55);}
-            50%     {box-shadow:0 4px 30px rgba(82,183,136,.8),0 0 0 8px rgba(82,183,136,.12);}
+        .music-btn:hover  { transform:translate(-2px,-2px) scale(1.08); box-shadow:6px 6px 0 var(--black); animation:none; }
+        .music-btn:active { transform:translate(2px,2px); box-shadow:1px 1px 0 var(--black); }
+        @keyframes music-pop {
+            0%,100%{transform:scale(1) rotate(-4deg);}
+            50%{transform:scale(1.08) rotate(4deg);}
         }
         .music-btn.playing { animation:none; }
 
@@ -316,7 +356,7 @@
         }
 
         /* ── Footer ── */
-        .footer { text-align:center; padding:30px 16px 10px; color:var(--green-pale); opacity:.5; font-size:.9rem; }
+        .footer { text-align:center; padding:30px 16px 10px; color:#fff; opacity:.7; font-size:.95rem; font-weight:700; }
 
         /* ── Responsive ── */
         @media (max-width:480px) {
@@ -331,16 +371,19 @@
             .dino-char--lungo  { font-size:7rem; }
             .dino-char--raptor { font-size:4.5rem; }
             .dino-bubble       { font-size:.95rem; padding:7px 14px; }
-            .music-btn         { bottom:max(16px, env(safe-area-inset-bottom, 16px)); right:16px; width:48px; height:48px; font-size:1.3rem; }
+            .music-btn         { bottom:max(16px, env(safe-area-inset-bottom, 16px)); right:16px; width:50px; height:50px; font-size:1.35rem; }
+            .cd-block          { min-width:120px; padding:10px 12px; }
         }
     </style>
 </head>
 <body>
 
-<div class="ambient-dino" style="top:8%;  left:2%;  animation-duration:7s;">🌿</div>
-<div class="ambient-dino" style="top:55%; right:2%; animation-duration:9s;  animation-delay:-3s;">🌿</div>
-<div class="ambient-dino" style="top:30%; left:.5%; font-size:2.8rem; animation-delay:-1.5s;">🍃</div>
-<div class="ambient-dino" style="top:75%; right:1%; font-size:3rem;   animation-delay:-5s;">🍃</div>
+<div class="ambient" style="top:6%;  left:1%;  animation-duration:6s;">⭐</div>
+<div class="ambient" style="top:52%; right:1%; animation-duration:9s; animation-delay:-3s;">🌟</div>
+<div class="ambient" style="top:28%; left:.5%; font-size:2.4rem; animation-delay:-1.5s;">✨</div>
+<div class="ambient" style="top:74%; right:1%; font-size:2.6rem; animation-delay:-5s;">⭐</div>
+<div class="ambient" style="top:18%; right:2%; font-size:2rem; animation-delay:-2.5s;">🎈</div>
+<div class="ambient" style="top:62%; left:1%; font-size:2.2rem; animation-delay:-4s;">🎈</div>
 
 <div id="confetti-root"></div>
 
@@ -363,21 +406,31 @@
         </h1>
         <div class="age-badge">1</div>
         <p class="hero-sub">🎉 Unisciti a noi per festeggiare questo grande giorno! 🎉</p>
-        <div class="countdown-wrap">
-            <div class="countdown" id="countdown"></div>
+
+        <!-- Due countdown affiancati -->
+        <div class="cd-row">
+            <div class="cd-block cd-block--bday">
+                <div class="cd-label">🎂 al Compleanno</div>
+                <div class="countdown" id="cdBday"></div>
+            </div>
+            <div class="cd-block cd-block--party">
+                <div class="cd-label">🎉 alla Festa</div>
+                <div class="countdown" id="cdParty"></div>
+            </div>
         </div>
+
         <div class="footprints">🐾🐾🐾🐾🐾</div>
     </section>
 
     <!-- Info cards -->
     <div class="info-grid">
-        <div class="info-card">
+        <div class="info-card info-card--when">
             <span class="info-icon">📅</span>
             <div class="info-label">Quando</div>
             <div class="info-value">13 Giugno 2026</div>
             <div class="info-sub">Sabato — segnalo sul calendario!</div>
         </div>
-        <div class="info-card">
+        <div class="info-card info-card--where">
             <span class="info-icon">📍</span>
             <div class="info-label">Dove</div>
             <div class="info-value">Seconda Strada 11</div>
@@ -407,27 +460,27 @@
         <div class="dino-trio">
             <div class="dino-unit">
                 <div class="dino-wrap" id="wrapLungo" onclick="interactDino('lungo')"
-                     role="button" aria-label="Saluta Lungo">
+                     role="button" aria-label="Saluta Ele">
                     <div class="dino-bubble" id="bubbleLungo"></div>
                     <span class="dino-char dino-char--lungo">🦕</span>
                 </div>
-                <div class="dino-name">Lungo</div>
+                <div class="dino-name">Ele</div>
             </div>
             <div class="dino-unit">
                 <div class="dino-wrap" id="wrapRex" onclick="interactDino('rex')"
-                     role="button" aria-label="Fai ruggire Rex">
+                     role="button" aria-label="Fai ruggire Max">
                     <div class="dino-bubble" id="bubbleRex"></div>
                     <span class="dino-char dino-char--rex">🦖</span>
                 </div>
-                <div class="dino-name">Rex</div>
+                <div class="dino-name">Max</div>
             </div>
             <div class="dino-unit">
                 <div class="dino-wrap" id="wrapRaptor" onclick="interactDino('raptor')"
-                     role="button" aria-label="Saluta Raptor">
+                     role="button" aria-label="Saluta Edo">
                     <div class="dino-bubble" id="bubbleRaptor"></div>
                     <span class="dino-char dino-char--raptor">🦖</span>
                 </div>
-                <div class="dino-name">Raptor</div>
+                <div class="dino-name">Edo</div>
             </div>
         </div>
         <div class="dino-hint-row">
@@ -504,37 +557,40 @@ function clearFeedback() {
 document.getElementById('nameInput').addEventListener('keydown', e => { if (e.key==='Enter') confirmRsvp(); });
 
 /* ══════════════════════════════════════════
-   COUNTDOWN
+   COUNTDOWNS
 ══════════════════════════════════════════ */
+const BDAY_DATE  = new Date('2026-06-08T00:00:00');
 const PARTY_DATE = new Date('2026-06-13T00:00:00');
 
-function updateCountdown() {
-    const el   = document.getElementById('countdown');
+function pad(n) { return String(n).padStart(2,'0'); }
+
+function updateCd(id, target, todayMsg) {
+    const el = document.getElementById(id);
     if (!el) return;
-    const diff = PARTY_DATE - new Date();
-    if (diff <= 0) {
-        el.innerHTML = '🎉 Oggi è la festa di Edoardo! 🎊';
-        return;
-    }
+    const diff = target - new Date();
+    if (diff <= 0) { el.innerHTML = todayMsg; return; }
     const d = Math.floor(diff / 86400000);
     const h = Math.floor((diff % 86400000) / 3600000);
     const m = Math.floor((diff % 3600000) / 60000);
     const s = Math.floor((diff % 60000) / 1000);
-
     if (d > 1) {
-        el.innerHTML = `🦕 Mancano <span class="cd-num">${d}</span> giorni! 🎂`;
+        el.innerHTML = `<span class="cd-num">${d}</span>&nbsp;giorni`;
     } else if (d === 1) {
-        el.innerHTML = `🦖 Domani è la festa! <span class="cd-num">${pad(h)}:${pad(m)}:${pad(s)}</span>`;
+        el.innerHTML = `Domani! <span class="cd-num">${pad(h)}:${pad(m)}:${pad(s)}</span>`;
     } else {
-        el.innerHTML = `🔥 Oggi! <span class="cd-num">${pad(h)}:${pad(m)}:${pad(s)}</span> alla festa!`;
+        el.innerHTML = `Oggi! <span class="cd-num">${pad(h)}:${pad(m)}:${pad(s)}</span>`;
     }
 }
-function pad(n) { return String(n).padStart(2,'0'); }
-setInterval(updateCountdown, 1000);
-updateCountdown();
+
+function updateCountdowns() {
+    updateCd('cdBday',  BDAY_DATE,  '🎂 Oggi è il compleanno!');
+    updateCd('cdParty', PARTY_DATE, '🎉 Oggi si festeggia!');
+}
+setInterval(updateCountdowns, 1000);
+updateCountdowns();
 
 /* ══════════════════════════════════════════
-   AUDIO CORE (condiviso da dino + musica)
+   AUDIO CORE
 ══════════════════════════════════════════ */
 let _ctx      = null;
 let _noiseBuf = null;
@@ -556,28 +612,23 @@ function _initAudio() {
 /* ══════════════════════════════════════════
    JURASSIC PARK THEME (sintetizzato)
 ══════════════════════════════════════════ */
-// Note frequencies in Hz — E major, A4=440
 const N = {
     E4:329.63,'F#4':369.99,'G#4':415.30,A4:440,'A#4':466.16,
     B4:493.88,C5:523.25,'C#5':554.37,D5:587.33,'D#5':622.25,
     E5:659.25,'F#5':739.99,'G#5':830.61,A5:880,B5:987.77,
     E3:164.81,A3:220,B3:246.94
 };
-const BT = 1.18; // ~51 BPM — maestoso
+const BT = 1.18;
 
-// [frequency | 0=rest, beats]
 const JP = [
-    // ── Phrase 1 ──────────────────────────────
     [N.B4,    3  ], [N['D#5'],1  ], [N.E5,  2  ],
     [N.E5,    0.5], [N['F#5'],0.5], [N.E5,  0.5],
     [N['D#5'],1.5], [N.B4,    1  ], [N['G#4'],1.5],
     [N.A4,    0.5], [N.B4,    2  ], [N.E4,  2  ], [0, 0.5],
-    // ── Phrase 2 (chiusura più alta) ──────────
     [N.B4,    3  ], [N['D#5'],1  ], [N.E5,  2  ],
     [N.E5,    0.5], [N['F#5'],0.5], [N.E5,  0.5],
     [N['D#5'],1.5], [N.B4,    1  ], [N['G#4'],1.5],
     [N.A4,    0.5], [N.E5,    2  ], [N.A4,  2  ], [0, 0.5],
-    // ── Phrase 3 — climax ─────────────────────
     [N['G#5'],2  ], [N.E5,    1  ], [N['F#5'],2  ],
     [N['D#5'],1  ], [N.E5,    3  ], [N.B4,   1  ],
     [N.A4,    2  ], [N.B4,    1  ], [N.E5,   4  ],
@@ -590,11 +641,9 @@ let _musicMuted  = false;
 let _loopTimer   = null;
 
 function toggleMusic() {
-    _initAudio(); // crea AudioContext nel click (user gesture)
-
+    _initAudio();
     const btn = document.getElementById('musicBtn');
     if (!_musicOn) {
-        // Prima apertura: crea gain master e avvia il loop
         if (!_musicGain) {
             _musicGain = _ctx.createGain();
             _musicGain.gain.value = 0.10;
@@ -622,16 +671,13 @@ function toggleMusic() {
 
 function _scheduleMelody() {
     if (!_musicOn || !_ctx || !_musicGain) return;
-
     const t0 = _ctx.currentTime + 0.1;
     let t = t0, total = 0;
-
     for (const [freq, beats] of JP) {
         const dur = beats * BT;
         if (freq > 0) _playNote(freq, t, dur);
         t += dur; total += dur;
     }
-    // Richiama sé stesso prima della fine per un loop senza lacune
     _loopTimer = setTimeout(_scheduleMelody, Math.max(100, (total - 1.5) * 1000));
 }
 
@@ -641,19 +687,14 @@ function _playNote(freq, startT, dur) {
         const g = _ctx.createGain();
         const atk = Math.min(0.22, dur * 0.18);
         const rel = Math.min(0.45, dur * 0.28);
-
         g.gain.setValueAtTime(0,    startT);
         g.gain.linearRampToValueAtTime(1, startT + atk);
         g.gain.setValueAtTime(1,    startT + dur - rel);
         g.gain.linearRampToValueAtTime(0, startT + dur);
         g.connect(_musicGain);
-
-        // Voce principale — sine (tono puro, imitazione archi/fiati)
         const o1 = _ctx.createOscillator();
         o1.type = 'sine'; o1.frequency.value = freq;
         o1.connect(g); o1.start(startT); o1.stop(startT + dur + 0.05);
-
-        // Armonica morbida — triangle all'ottava sotto
         const o2 = _ctx.createOscillator();
         const g2 = _ctx.createGain(); g2.gain.value = 0.14;
         o2.type = 'triangle'; o2.frequency.value = freq / 2;
@@ -748,9 +789,9 @@ function _playChirps() {
    DINO INTERACTION
 ══════════════════════════════════════════ */
 const DINO_CFG = {
-    rex:   { anim:'roaring', play:_playRoar,   speeches:['ROAAAR! 🦖','Ciao Edoardo! 🎂','Buon Compleanno! 🎉','Vieni alla festa! 🥳','GRRRRR! 🦕','Un anno già! ✨','Ti voglio bene! ❤️','Sono Rex il feroce! 🦖'] },
-    lungo: { anim:'honking', play:_playHonk,   speeches:['MHOOOOO! 🦕','Il mio collo è ENORME! 🦕','Ciao piccolo Edoardo! 🎂','Sono il più alto! 🏔️','Foglie! 🌿','Buon compleanno! 🎉','Guarda in sù! ☁️','Un anno! Che bello! 🎈'] },
-    raptor:{ anim:'dashing', play:_playChirps, speeches:['kek-kek-kek! 🦖','Veloce come il vento! ⚡','Non scappare! 🏃','Sono il più furbo! 🧠','KRRRR! 🎉','Festa! Festa! 🥳','Surprise! 😈','Ci vediamo il 13! 📅'] }
+    rex:   { anim:'roaring', play:_playRoar,   speeches:['ROAAAR! 🦖','Sono Max! 💪','Buon Compleanno Edo! 🎉','Vieni alla festa! 🥳','GRRRRR! 🦕','Un anno già! ✨','Ti voglio bene! ❤️','Sono Max il feroce! 🦖'] },
+    lungo: { anim:'honking', play:_playHonk,   speeches:['MHOOOOO! 🦕','Il mio collo è ENORME! 🦕','Ciao Edo! Sono Ele! 🎂','Sono la più alta! 🏔️','Foglie! 🌿','Buon compleanno! 🎉','Guarda in sù! ☁️','Un anno! Che bello! 🎈'] },
+    raptor:{ anim:'dashing', play:_playChirps, speeches:['kek-kek-kek! 🦖','Sono Edo come te! ⚡','Non scappare! 🏃','Sono il più furbo! 🧠','KRRRR! 🎉','Festa! Festa! 🥳','Buon compleanno Edo! 🎂','Ci vediamo il 13! 📅'] }
 };
 const dinoIdx    = {rex:0, lungo:0, raptor:0};
 const dinoLocked = {rex:false, lungo:false, raptor:false};
@@ -787,7 +828,7 @@ document.addEventListener('mouseleave', () => {
 ══════════════════════════════════════════ */
 function launchConfetti() {
     const root   = document.getElementById('confetti-root');
-    const colors = ['#ffd60a','#52b788','#e76f51','#e63946','#ffffff','#95d5b2','#f4a261'];
+    const colors = ['#ffe94d','#ff6b9d','#38d9c0','#ff8c42','#ff4757','#ffffff','#c084fc'];
     for (let i=0;i<90;i++) {
         setTimeout(() => {
             const p = document.createElement('div'); p.className='cp';
