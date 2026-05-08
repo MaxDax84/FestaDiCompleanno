@@ -347,23 +347,6 @@
             100% { opacity:0;    transform:translateY(-120vh) translateX(0) rotate(0deg); }
         }
 
-        /* ── Music button ── */
-        .music-btn {
-            position:fixed; bottom:24px; right:24px; z-index:500;
-            width:58px; height:58px; border-radius:50%; cursor:pointer;
-            background:var(--peach); color:#fff;
-            font-size:1.5rem; display:flex; align-items:center; justify-content:center;
-            border:none; box-shadow:0 4px 16px rgba(232,145,106,.38);
-            transition:transform .12s, box-shadow .12s;
-            animation:music-pop 3s ease-in-out infinite;
-        }
-        .music-btn:hover  { transform:translate(-2px,-2px) scale(1.08); box-shadow:0 8px 22px rgba(232,145,106,.44); animation:none; }
-        .music-btn:active { transform:translate(1px,1px); }
-        @keyframes music-pop {
-            0%,100%{transform:scale(1) rotate(-4deg);}
-            50%{transform:scale(1.08) rotate(4deg);}
-        }
-        .music-btn.playing { animation:none; }
 
         /* ── Confetti ── */
         #confetti-root { position:fixed; inset:0; pointer-events:none; z-index:9999; }
@@ -389,8 +372,7 @@
             .dino-char--rex    { height:150px; }
             .dino-char--raptor { height:93px; }
             .dino-bubble       { font-size:.9rem; padding:7px 14px; }
-            .music-btn         { bottom:max(16px, env(safe-area-inset-bottom, 16px)); right:16px; width:50px; height:50px; font-size:1.3rem; }
-            .cd-block          { min-width:116px; padding:10px 12px; }
+.cd-block          { min-width:116px; padding:10px 12px; }
         }
     </style>
 </head>
@@ -431,8 +413,6 @@
 
 <div id="confetti-root"></div>
 <div id="balloons-root"></div>
-<button class="music-btn" id="musicBtn" onclick="toggleMusic()" title="Musica">🎵</button>
-
 <!-- Garland / Bunting -->
 <div class="bunting-wrap">
   <svg class="bunting-svg" viewBox="0 0 800 92" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -676,114 +656,6 @@ function _initAudio() {
     }
     if (_ctx.state === 'suspended') _ctx.resume();
     return true;
-}
-
-/* ══════════════════════════════════════════
-   BABY SHARK — xilofono + percussioni
-══════════════════════════════════════════ */
-function _bsVerse(r, t, f) {
-    return [
-        [r,.5],[t,.5],[f,1.0],[f,.25],[f,.25],[f,.25],[f,.25],[f,.25],[f,.25],
-        [r,.5],[t,.5],[f,1.0],[f,.25],[f,.25],[f,.25],[f,.25],[f,.25],[f,.25],
-        [r,.5],[t,.5],[f,1.0],[f,.25],[f,.25],[f,.25],[f,.25],[f,.25],[f,.25],
-        [r,.5],[t,.5],[f,2.0],[0,.75],
-    ];
-}
-const _C4=261.63,_E4=329.63,_G4=392.00,_B4=493.88,_C5=523.25,_E5=659.25;
-const MELODY    = [..._bsVerse(_C4,_E4,_G4), ..._bsVerse(_E4,_G4,_C5), ..._bsVerse(_G4,_B4,_E5), [0,2]];
-const MELODY_BT = 0.46;
-
-let _musicGain  = null;
-let _musicOn    = false;
-let _musicMuted = false;
-let _loopTimer  = null;
-
-function _ensureMusic() {
-    if (_musicGain) return;
-    _musicGain = _ctx.createGain();
-    _musicGain.gain.value = 0.22;
-    _musicGain.connect(_ctx.destination);
-}
-
-function toggleMusic() {
-    _initAudio(); _ensureMusic();
-    const btn = document.getElementById('musicBtn');
-    if (!_musicOn) {
-        _musicOn = true; _musicMuted = false;
-        _scheduleMelody();
-        btn.textContent = '🔊'; btn.classList.add('playing');
-        btn.title = 'Musica attiva — clicca per silenziare';
-    } else {
-        _musicMuted = !_musicMuted;
-        if (_musicMuted) {
-            _musicGain.gain.setTargetAtTime(0, _ctx.currentTime, 0.3);
-            btn.textContent = '🔇'; btn.title = 'Musica silenziata — clicca per riattivare';
-        } else {
-            _musicGain.gain.setTargetAtTime(0.22, _ctx.currentTime, 0.3);
-            btn.textContent = '🔊'; btn.title = 'Musica attiva — clicca per silenziare';
-        }
-    }
-}
-
-function _scheduleMelody() {
-    if (!_musicOn || !_ctx) return;
-    const t0 = _ctx.currentTime + 0.06;
-    let t = t0, total = 0;
-    for (const [freq, beats] of MELODY) {
-        const dur = beats * MELODY_BT;
-        if (freq > 0) _playXylo(freq, t, dur);
-        t += dur; total += dur;
-    }
-    const numBeats = Math.ceil(total);
-    for (let b = 0; b < numBeats; b++) {
-        const bt = t0 + b * MELODY_BT;
-        _playHat(bt);
-        if (b % 2 === 0) _playKick(bt);
-    }
-    _loopTimer = setTimeout(_scheduleMelody, Math.max(200, (total - 1.5) * 1000));
-}
-
-function _playXylo(freq, startT, dur) {
-    try {
-        const osc = _ctx.createOscillator(); osc.type = 'sine'; osc.frequency.value = freq;
-        const env = _ctx.createGain();
-        env.gain.setValueAtTime(0.9, startT);
-        env.gain.exponentialRampToValueAtTime(0.001, startT + Math.min(dur * 1.5, 0.6));
-        osc.connect(env); env.connect(_musicGain);
-        osc.start(startT); osc.stop(startT + Math.min(dur * 1.6, 0.7));
-
-        const osc2 = _ctx.createOscillator(); osc2.type = 'sine'; osc2.frequency.value = freq * 2.76;
-        const env2 = _ctx.createGain();
-        env2.gain.setValueAtTime(0.26, startT);
-        env2.gain.exponentialRampToValueAtTime(0.001, startT + 0.08);
-        osc2.connect(env2); env2.connect(_musicGain);
-        osc2.start(startT); osc2.stop(startT + 0.1);
-    } catch(_) {}
-}
-
-function _playKick(t) {
-    try {
-        const osc = _ctx.createOscillator();
-        osc.frequency.setValueAtTime(140, t);
-        osc.frequency.exponentialRampToValueAtTime(38, t + 0.12);
-        const env = _ctx.createGain();
-        env.gain.setValueAtTime(0.85, t);
-        env.gain.exponentialRampToValueAtTime(0.001, t + 0.20);
-        osc.connect(env); env.connect(_musicGain);
-        osc.start(t); osc.stop(t + 0.22);
-    } catch(_) {}
-}
-
-function _playHat(t) {
-    try {
-        const src = _ctx.createBufferSource(); src.buffer = _noiseBuf;
-        const hpf = _ctx.createBiquadFilter(); hpf.type = 'highpass'; hpf.frequency.value = 7500;
-        const env = _ctx.createGain();
-        env.gain.setValueAtTime(0.10, t);
-        env.gain.exponentialRampToValueAtTime(0.001, t + 0.045);
-        src.connect(hpf); hpf.connect(env); env.connect(_musicGain);
-        src.start(t); src.stop(t + 0.06);
-    } catch(_) {}
 }
 
 /* ══════════════════════════════════════════
