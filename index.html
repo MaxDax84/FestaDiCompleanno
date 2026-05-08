@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🦕 1° Compleanno di Edoardo! 🦖</title>
+    <meta name="description" content="Sei invitato alla festa di compleanno di Edoardo! 13 Giugno 2026 - Pioltello">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --green-dark:   #1b4332;
+            --green-mid:    #2d6a4f;
+            --green-bright: #52b788;
+            --green-light:  #95d5b2;
+            --green-pale:   #d8f3dc;
+            --yellow:       #ffd60a;
+            --yellow-warm:  #f4a261;
+            --orange:       #e76f51;
+            --red:          #e63946;
+            --cream:        #fefae0;
+            --white:        #ffffff;
+            --shadow-lg: 0 20px 60px rgba(0,0,0,0.18);
+            --shadow-md: 0 8px 30px rgba(0,0,0,0.12);
+            --radius-xl: 28px;
+            --radius-lg: 20px;
+            --radius-md: 14px;
+            --radius-sm: 8px;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: var(--green-dark);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ── Background ─────────────────────────── */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 15% 15%, rgba(82,183,136,.18) 0%, transparent 55%),
+                radial-gradient(ellipse at 85% 85%, rgba(45,106,79,.25)  0%, transparent 55%),
+                linear-gradient(160deg, #1b4332 0%, #2d6a4f 50%, #1b4332 100%);
+            z-index: -2;
+        }
+
+        /* Grass strip at bottom */
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: linear-gradient(180deg, transparent, rgba(27,67,50,.6));
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* ── Floating ambient dinos ──────────────── */
+        .ambient-dino {
+            position: fixed;
+            pointer-events: none;
+            font-size: 4.5rem;
+            opacity: .12;
+            animation: ambient-float 7s ease-in-out infinite;
+            z-index: 0;
+            filter: drop-shadow(0 4px 12px rgba(0,0,0,.3));
+            user-select: none;
+        }
+
+        @keyframes ambient-float {
+            0%,100% { transform: translateY(0)   rotate(-6deg); }
+            50%      { transform: translateY(-22px) rotate(6deg); }
+        }
+
+        /* ── Container ───────────────────────────── */
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 20px 16px 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ── Hero ────────────────────────────────── */
+        .hero {
+            text-align: center;
+            padding: 50px 16px 30px;
+        }
+
+        .hero-pill {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--yellow), var(--yellow-warm));
+            color: var(--green-dark);
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.1rem;
+            padding: 9px 26px;
+            border-radius: 50px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 18px rgba(255,214,10,.45);
+            animation: pill-pulse 2.4s ease-in-out infinite;
+        }
+
+        @keyframes pill-pulse {
+            0%,100% { transform: scale(1);    box-shadow: 0 4px 18px rgba(255,214,10,.45); }
+            50%      { transform: scale(1.04); box-shadow: 0 4px 28px rgba(255,214,10,.65); }
+        }
+
+        .hero-dino-row {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        .hdino {
+            display: inline-block;
+            filter: drop-shadow(0 8px 18px rgba(0,0,0,.35));
+            animation: hero-bounce 1.8s ease-in-out infinite;
+        }
+
+        .hdino--sm { font-size: 4.5rem; }
+        .hdino--md { font-size: 6.5rem;  animation-delay: .25s; }
+        .hdino--sm-r { font-size: 4.5rem; animation-delay: .5s; transform: scaleX(-1); display: inline-block; }
+
+        @keyframes hero-bounce {
+            0%,100% { transform: translateY(0)    rotate(0deg); }
+            30%      { transform: translateY(-18px) rotate(-4deg); }
+            70%      { transform: translateY(-10px) rotate(4deg); }
+        }
+
+        .hdino--sm-r { animation-name: hero-bounce-r; }
+        @keyframes hero-bounce-r {
+            0%,100% { transform: scaleX(-1) translateY(0)    rotate(0deg); }
+            30%      { transform: scaleX(-1) translateY(-18px) rotate(4deg); }
+            70%      { transform: scaleX(-1) translateY(-10px) rotate(-4deg); }
+        }
+
+        .hero-title {
+            font-family: 'Fredoka One', cursive;
+            font-size: clamp(2rem, 7vw, 4rem);
+            color: var(--yellow);
+            text-shadow: 3px 3px 0 var(--green-dark), 0 0 30px rgba(255,214,10,.3);
+            line-height: 1.15;
+            margin: 18px 0 6px;
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%,100% { text-shadow: 3px 3px 0 var(--green-dark), 0 0 20px rgba(255,214,10,.25); }
+            50%      { text-shadow: 3px 3px 0 var(--green-dark), 0 0 45px rgba(255,214,10,.55); }
+        }
+
+        .hero-name {
+            display: block;
+            font-family: 'Fredoka One', cursive;
+            font-size: clamp(3.8rem, 13vw, 7.5rem);
+            color: var(--white);
+            text-shadow: 4px 4px 0 var(--green-mid), 0 0 50px rgba(255,255,255,.15);
+            line-height: 1;
+        }
+
+        .age-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 96px;
+            height: 96px;
+            background: linear-gradient(135deg, var(--red), var(--orange));
+            border-radius: 50%;
+            font-family: 'Fredoka One', cursive;
+            font-size: 4rem;
+            color: white;
+            margin: 22px auto;
+            animation: badge-glow 2.5s ease-in-out infinite;
+        }
+
+        @keyframes badge-glow {
+            0%,100% { box-shadow: 0 8px 30px rgba(230,57,70,.5), 0 0 0 8px  rgba(230,57,70,.15); }
+            50%      { box-shadow: 0 8px 30px rgba(244,162,97,.5), 0 0 0 16px rgba(244,162,97,.1); }
+        }
+
+        .hero-sub {
+            font-size: 1.2rem;
+            color: var(--green-pale);
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+
+        .footprints {
+            font-size: 1.4rem;
+            letter-spacing: 14px;
+            opacity: .35;
+            animation: steps 2s steps(3) infinite;
+        }
+
+        @keyframes steps {
+            0%   { opacity: .2; }
+            50%  { opacity: .5; }
+            100% { opacity: .2; }
+        }
+
+        /* ── Info cards ──────────────────────────── */
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin: 36px 0;
+        }
+
+        @media (max-width: 540px) { .info-grid { grid-template-columns: 1fr; } }
+
+        .info-card {
+            background: rgba(255,255,255,.96);
+            border-radius: var(--radius-xl);
+            padding: 30px 24px;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+            transition: transform .3s ease, box-shadow .3s ease;
+            cursor: default;
+        }
+
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--green-bright), var(--yellow), var(--orange));
+        }
+
+        .info-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 28px 70px rgba(0,0,0,.22);
+        }
+
+        .info-icon {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 12px;
+            animation: icon-pop 2.2s ease-in-out infinite;
+        }
+
+        @keyframes icon-pop {
+            0%,100% { transform: scale(1); }
+            50%      { transform: scale(1.12); }
+        }
+
+        .info-label {
+            font-size: .78rem;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: var(--green-bright);
+            font-weight: 900;
+            margin-bottom: 8px;
+        }
+
+        .info-value {
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.55rem;
+            color: var(--green-dark);
+            line-height: 1.3;
+        }
+
+        .info-sub {
+            font-size: .9rem;
+            color: #777;
+            margin-top: 6px;
+        }
+
+        /* ── RSVP section ────────────────────────── */
+        .card {
+            background: rgba(255,255,255,.96);
+            border-radius: var(--radius-xl);
+            padding: 36px 32px;
+            margin: 22px 0;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card--rsvp::after {
+            content: '🦕';
+            position: absolute;
+            bottom: -14px; right: -14px;
+            font-size: 7rem;
+            opacity: .07;
+            transform: scaleX(-1);
+            pointer-events: none;
+        }
+
+        .card-title {
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.9rem;
+            color: var(--green-dark);
+            margin-bottom: 6px;
+        }
+
+        .card-sub {
+            color: #777;
+            font-size: .98rem;
+            margin-bottom: 24px;
+            line-height: 1.5;
+        }
+
+        .rsvp-form {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .rsvp-input {
+            flex: 1;
+            min-width: 190px;
+            padding: 15px 20px;
+            border: 3px solid var(--green-pale);
+            border-radius: var(--radius-md);
+            font-family: 'Nunito', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--green-dark);
+            background: var(--cream);
+            outline: none;
+            transition: border-color .25s, box-shadow .25s, background .25s;
+        }
+
+        .rsvp-input:focus {
+            border-color: var(--green-bright);
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(82,183,136,.18);
+        }
+
+        .rsvp-input::placeholder { color: #bbb; font-weight: 400; }
+
+        .rsvp-btn {
+            padding: 15px 28px;
+            background: linear-gradient(135deg, var(--green-bright), var(--green-mid));
+            color: #fff;
+            border: none;
+            border-radius: var(--radius-md);
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.1rem;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: transform .25s, box-shadow .25s;
+            box-shadow: 0 4px 18px rgba(82,183,136,.45);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .rsvp-btn::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,.2), transparent);
+            pointer-events: none;
+        }
+
+        .rsvp-btn:hover  { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(82,183,136,.55); }
+        .rsvp-btn:active { transform: translateY(0); }
+
+        /* Feedback messages */
+        .feedback {
+            display: none;
+            align-items: center;
+            gap: 10px;
+            padding: 13px 18px;
+            border-radius: var(--radius-sm);
+            margin-top: 14px;
+            font-weight: 700;
+            font-size: .97rem;
+        }
+
+        .feedback.show { display: flex; }
+
+        .feedback--ok {
+            background: linear-gradient(135deg, var(--green-pale), #b7e4c7);
+            border: 2px solid var(--green-bright);
+            color: var(--green-dark);
+            animation: slide-down .35s ease;
+        }
+
+        .feedback--err {
+            background: #ffebee;
+            border: 2px solid #ef9a9a;
+            color: #b71c1c;
+            animation: shake .45s ease;
+        }
+
+        @keyframes slide-down {
+            from { opacity: 0; transform: translateY(-8px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes shake {
+            0%,100% { transform: translateX(0); }
+            20%,60% { transform: translateX(-8px); }
+            40%,80% { transform: translateX(8px); }
+        }
+
+        /* ── Attendees section ───────────────────── */
+        .card--attendees::after {
+            content: '🦖';
+            position: absolute;
+            bottom: -14px; right: -14px;
+            font-size: 7rem;
+            opacity: .07;
+            pointer-events: none;
+        }
+
+        .attendees-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: var(--green-bright);
+            color: #fff;
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-weight: 900;
+            font-size: .88rem;
+            margin-bottom: 20px;
+            transition: background .3s;
+        }
+
+        .attendees-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+            gap: 12px;
+        }
+
+        .attendee-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 13px 16px;
+            background: var(--green-pale);
+            border-radius: var(--radius-md);
+            border: 2px solid rgba(82,183,136,.18);
+            animation: slide-down .4s ease both;
+            transition: transform .2s;
+        }
+
+        .attendee-item:hover { transform: scale(1.03); }
+
+        .attendee-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--green-bright), var(--green-mid));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.15rem;
+            color: #fff;
+            flex-shrink: 0;
+            box-shadow: 0 3px 10px rgba(82,183,136,.35);
+        }
+
+        .attendee-name {
+            font-weight: 800;
+            color: var(--green-dark);
+            font-size: .97rem;
+            flex: 1;
+            min-width: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .attendee-emoji { font-size: 1.2rem; flex-shrink: 0; }
+
+        .empty-state {
+            text-align: center;
+            padding: 36px 20px;
+            color: #aaa;
+            grid-column: 1 / -1;
+        }
+
+        .empty-emoji {
+            font-size: 3.5rem;
+            display: block;
+            margin-bottom: 12px;
+            animation: ambient-float 3s ease-in-out infinite;
+        }
+
+        .empty-state p { font-weight: 600; }
+
+        /* ── Confetti ────────────────────────────── */
+        #confetti-root {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .cp {
+            position: absolute;
+            border-radius: 2px;
+            animation: cp-fall linear forwards;
+        }
+
+        @keyframes cp-fall {
+            0%   { top: -30px; opacity: 1;  transform: rotate(0deg)   translateX(0); }
+            100% { top: 110vh; opacity: 0;  transform: rotate(720deg) translateX(80px); }
+        }
+
+        /* ── Footer ──────────────────────────────── */
+        .footer {
+            text-align: center;
+            padding: 30px 16px 10px;
+            color: var(--green-pale);
+            opacity: .5;
+            font-size: .9rem;
+        }
+
+        /* ── Responsive ──────────────────────────── */
+        @media (max-width: 480px) {
+            .card { padding: 28px 18px; }
+            .rsvp-form { flex-direction: column; }
+            .rsvp-btn  { text-align: center; }
+            .attendees-grid { grid-template-columns: 1fr; }
+            .card-title { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Ambient decorations -->
+<div class="ambient-dino" style="top:8%;  left:2%;  animation-duration:7s;">🌿</div>
+<div class="ambient-dino" style="top:55%; right:2%; animation-duration:9s; animation-delay:-3s;">🌿</div>
+<div class="ambient-dino" style="top:30%; left:0.5%; font-size:2.8rem; animation-delay:-1.5s;">🍃</div>
+<div class="ambient-dino" style="top:75%; right:1%; font-size:3rem; animation-delay:-5s;">🍃</div>
+
+<!-- Confetti root -->
+<div id="confetti-root"></div>
+
+<div class="container">
+
+    <!-- ── Hero ── -->
+    <section class="hero">
+        <div class="hero-pill">🦖 UN ANNO DI RUGGITI! 🦕</div>
+
+        <div class="hero-dino-row">
+            <span class="hdino hdino--sm">🦕</span>
+            <span class="hdino hdino--md">🎂</span>
+            <span class="hdino hdino--sm-r">🦖</span>
+        </div>
+
+        <h1 class="hero-title">
+            Buon Primo Compleanno<br>
+            <span class="hero-name">Edoardo!</span>
+        </h1>
+
+        <div class="age-badge">1</div>
+
+        <p class="hero-sub">🎉 Unisciti a noi per festeggiare questo grande giorno! 🎉</p>
+        <div class="footprints">🐾🐾🐾🐾🐾</div>
+    </section>
+
+    <!-- ── Info cards ── -->
+    <div class="info-grid">
+        <div class="info-card">
+            <span class="info-icon">📅</span>
+            <div class="info-label">Quando</div>
+            <div class="info-value">13 Giugno 2026</div>
+            <div class="info-sub">Sabato — segnalo sul calendario!</div>
+        </div>
+        <div class="info-card">
+            <span class="info-icon">📍</span>
+            <div class="info-label">Dove</div>
+            <div class="info-value">Seconda Strada 11</div>
+            <div class="info-sub">20096 Pioltello (MI)</div>
+        </div>
+    </div>
+
+    <!-- ── RSVP ── -->
+    <section class="card card--rsvp">
+        <h2 class="card-title">🦕 Conferma la tua presenza!</h2>
+        <p class="card-sub">
+            Inserisci il tuo nome per far sapere che ci sarai.<br>
+            Non lasciare Edoardo solo con i dinosauri! 🦖
+        </p>
+
+        <div class="rsvp-form">
+            <input
+                type="text"
+                class="rsvp-input"
+                id="nameInput"
+                placeholder="Il tuo nome..."
+                maxlength="50"
+                autocomplete="off"
+            >
+            <button class="rsvp-btn" onclick="addAttendee()">
+                🎉 Ci sarò!
+            </button>
+        </div>
+
+        <div class="feedback feedback--ok" id="feedbackOk">
+            <span>🦕</span><span id="feedbackOkText"></span>
+        </div>
+        <div class="feedback feedback--err" id="feedbackErr">
+            <span>🦖</span><span id="feedbackErrText"></span>
+        </div>
+    </section>
+
+    <!-- ── Attendees ── -->
+    <section class="card card--attendees">
+        <h2 class="card-title">🎊 Chi ci sarà</h2>
+        <p class="card-sub">Questi dino-amici hanno già confermato la presenza!</p>
+
+        <div class="attendees-badge" id="attendeesBadge">🦕 0 partecipanti</div>
+
+        <div class="attendees-grid" id="attendeesGrid">
+            <div class="empty-state" id="emptyState">
+                <span class="empty-emoji">🦕</span>
+                <p>Ancora nessuno… sii il primo a confermare!</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footprints">🐾🐾🐾🐾🐾</div>
+        <p style="margin-top:8px;">Con amore per Edoardo 🦕❤️</p>
+    </footer>
+
+</div>
+
+<script>
+    const STORAGE_KEY = 'edoardo_festa_v1';
+    const EMOJIS = ['🦕','🦖','🎂','🎉','🎈','⭐','🌟','✨','🎊','🎁'];
+    let attendees = [];
+
+    /* ── Storage ── */
+    function load() {
+        try { attendees = JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
+        catch { attendees = []; }
+        render();
+    }
+
+    function save() {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(attendees));
+    }
+
+    /* ── Add ── */
+    function addAttendee() {
+        const input = document.getElementById('nameInput');
+        const name  = input.value.trim();
+
+        clearFeedback();
+
+        if (!name) {
+            showErr('Inserisci il tuo nome prima di confermare! 🦖');
+            input.focus();
+            return;
+        }
+
+        if (attendees.some(a => a.name.toLowerCase() === name.toLowerCase())) {
+            showErr(`${name} ha già confermato la presenza! 🦕`);
+            input.select();
+            return;
+        }
+
+        attendees.push({
+            name,
+            emoji: EMOJIS[Math.floor(Math.random() * EMOJIS.length)],
+            ts: Date.now()
+        });
+        save();
+        render();
+
+        showOk(`Evviva ${name}! A presto alla festa! 🎉`);
+        input.value = '';
+        input.focus();
+        launchConfetti();
+    }
+
+    /* ── Render ── */
+    function render() {
+        const grid  = document.getElementById('attendeesGrid');
+        const badge = document.getElementById('attendeesBadge');
+        const n     = attendees.length;
+
+        badge.textContent = `🦕 ${n} partecipant${n === 1 ? 'e' : 'i'}`;
+
+        if (n === 0) {
+            grid.innerHTML = `
+                <div class="empty-state" id="emptyState">
+                    <span class="empty-emoji">🦕</span>
+                    <p>Ancora nessuno… sii il primo a confermare!</p>
+                </div>`;
+            return;
+        }
+
+        grid.innerHTML = '';
+        attendees.forEach((a, i) => {
+            const el = document.createElement('div');
+            el.className = 'attendee-item';
+            el.style.animationDelay = `${i * 0.04}s`;
+            el.innerHTML = `
+                <div class="attendee-avatar">${esc(a.name.charAt(0).toUpperCase())}</div>
+                <span class="attendee-name">${esc(a.name)}</span>
+                <span class="attendee-emoji">${a.emoji}</span>`;
+            grid.appendChild(el);
+        });
+    }
+
+    /* ── Feedback ── */
+    function showOk(msg) {
+        const el = document.getElementById('feedbackOk');
+        document.getElementById('feedbackOkText').textContent = msg;
+        el.classList.add('show');
+        setTimeout(() => el.classList.remove('show'), 4500);
+    }
+
+    function showErr(msg) {
+        const el = document.getElementById('feedbackErr');
+        document.getElementById('feedbackErrText').textContent = msg;
+        el.style.animation = 'none';
+        el.offsetHeight;
+        el.style.animation = '';
+        el.classList.add('show');
+        setTimeout(() => el.classList.remove('show'), 3500);
+    }
+
+    function clearFeedback() {
+        document.getElementById('feedbackOk').classList.remove('show');
+        document.getElementById('feedbackErr').classList.remove('show');
+    }
+
+    /* ── Confetti ── */
+    function launchConfetti() {
+        const root   = document.getElementById('confetti-root');
+        const colors = ['#ffd60a','#52b788','#e76f51','#e63946','#ffffff','#95d5b2','#f4a261'];
+
+        for (let i = 0; i < 90; i++) {
+            setTimeout(() => {
+                const p = document.createElement('div');
+                p.className = 'cp';
+                p.style.cssText = [
+                    `left:${Math.random() * 100}vw`,
+                    `background:${colors[Math.floor(Math.random() * colors.length)]}`,
+                    `width:${Math.random() * 10 + 6}px`,
+                    `height:${Math.random() * 10 + 6}px`,
+                    `border-radius:${Math.random() > .5 ? '50%' : '2px'}`,
+                    `animation-duration:${Math.random() * 2 + 2}s`,
+                    `animation-delay:${Math.random() * .4}s`
+                ].join(';');
+                root.appendChild(p);
+                p.addEventListener('animationend', () => p.remove());
+            }, i * 18);
+        }
+    }
+
+    /* ── Helpers ── */
+    function esc(str) {
+        const d = document.createElement('div');
+        d.appendChild(document.createTextNode(str));
+        return d.innerHTML;
+    }
+
+    /* ── Enter key ── */
+    document.getElementById('nameInput').addEventListener('keydown', e => {
+        if (e.key === 'Enter') addAttendee();
+    });
+
+    /* ── Init ── */
+    load();
+</script>
+</body>
+</html>
