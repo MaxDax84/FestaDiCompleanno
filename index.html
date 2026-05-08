@@ -404,10 +404,12 @@
 
 <script>
     /* ─────────────── RSVP ─────────────── */
-    const RSVP_KEY = 'edoardo_rsvp_v1';
+    const RSVP_KEY      = 'edoardo_rsvp_v1';
+    const FORMSPREE_URL = 'https://formspree.io/f/xjgleqka';
 
-    function confirmRsvp() {
+    async function confirmRsvp() {
         const input = document.getElementById('nameInput');
+        const btn   = document.querySelector('.rsvp-btn');
         const name  = input.value.trim();
         clearFeedback();
 
@@ -417,20 +419,39 @@
             return;
         }
 
-        // Remember this device confirmed (prevents double-tap accident)
         const confirmed = JSON.parse(localStorage.getItem(RSVP_KEY) || '[]');
         if (confirmed.includes(name.toLowerCase())) {
             showErr(`${name} ha già confermato la presenza! 🦕`);
             input.select();
             return;
         }
-        confirmed.push(name.toLowerCase());
-        localStorage.setItem(RSVP_KEY, JSON.stringify(confirmed));
 
-        showOk(`Evviva ${name}! A presto alla festa! 🎉`);
-        input.value = '';
-        input.focus();
-        launchConfetti();
+        btn.disabled    = true;
+        btn.textContent = '⏳ Invio…';
+
+        try {
+            const res = await fetch(FORMSPREE_URL, {
+                method:  'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body:    JSON.stringify({ name, _subject: `RSVP Festa Edoardo — ${name}` })
+            });
+
+            if (res.ok) {
+                confirmed.push(name.toLowerCase());
+                localStorage.setItem(RSVP_KEY, JSON.stringify(confirmed));
+                showOk(`Evviva ${name}! A presto alla festa! 🎉`);
+                input.value = '';
+                input.focus();
+                launchConfetti();
+            } else {
+                showErr('Ops, qualcosa è andato storto. Riprova! 🦖');
+            }
+        } catch (_) {
+            showErr('Errore di rete. Controlla la connessione e riprova! 🦖');
+        } finally {
+            btn.disabled    = false;
+            btn.textContent = '🎉 Ci sarò!';
+        }
     }
 
     function showOk(msg) {
