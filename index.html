@@ -492,6 +492,24 @@
     let speechIdx = 0;
     let isRoaring = false;
 
+    /* AudioContext e curva di distorsione creati una sola volta (lazy) */
+    let _audioCtx = null;
+    let _wsCurve  = null;
+
+    function _ensureAudio() {
+        const AC = window.AudioContext || window.webkitAudioContext;
+        if (!AC) return false;
+        if (!_audioCtx) {
+            _audioCtx = new AC();
+            _wsCurve  = new Float32Array(512);
+            for (let i = 0; i < 512; i++) {
+                const x    = (i * 2) / 512 - 1;
+                _wsCurve[i] = (Math.PI + 180) * x / (Math.PI + 180 * Math.abs(x));
+            }
+        }
+        return true;
+    }
+
     function roarDino() {
         if (isRoaring) return;
         isRoaring = true;
@@ -503,10 +521,12 @@
         bubble.textContent = SPEECHES[speechIdx % SPEECHES.length];
         speechIdx++;
 
+        /* Aggiorna il DOM — il browser può disegnare il frame prima che
+           l'audio parta. rAF garantisce il paint, setTimeout cede il
+           main thread al browser prima di avviare l'audio. */
         wrap.classList.add('roaring');
         hint.style.opacity = '0';
-
-        playRoar();
+        requestAnimationFrame(() => setTimeout(playRoar, 0));
 
         setTimeout(() => {
             wrap.classList.remove('roaring');
@@ -515,25 +535,16 @@
         }, 1800);
     }
 
-    /* Synthesized roar via Web Audio API */
     function playRoar() {
-        const AC = window.AudioContext || window.webkitAudioContext;
-        if (!AC) return;
+        if (!_ensureAudio()) return;
         try {
-            const ctx = new AC();
+            const ctx = _audioCtx;
+            const ws  = ctx.createWaveShaper();
+            ws.curve  = _wsCurve;
 
             const o1 = ctx.createOscillator();
             const o2 = ctx.createOscillator();
             const mg = ctx.createGain();
-
-            // Distortion-like waveshaper for growl texture
-            const ws = ctx.createWaveShaper();
-            const curve = new Float32Array(512);
-            for (let i = 0; i < 512; i++) {
-                const x = (i * 2) / 512 - 1;
-                curve[i] = (Math.PI + 180) * x / (Math.PI + 180 * Math.abs(x));
-            }
-            ws.curve = curve;
 
             o1.type = 'sawtooth';
             o1.frequency.setValueAtTime(85,  ctx.currentTime);
@@ -545,9 +556,9 @@
             o2.frequency.linearRampToValueAtTime(125, ctx.currentTime + 0.1);
             o2.frequency.exponentialRampToValueAtTime(28,  ctx.currentTime + 0.9);
 
-            mg.gain.setValueAtTime(0,   ctx.currentTime);
+            mg.gain.setValueAtTime(0,    ctx.currentTime);
             mg.gain.linearRampToValueAtTime(0.28, ctx.currentTime + 0.07);
-            mg.gain.setValueAtTime(0.28, ctx.currentTime + 0.4);
+            mg.gain.setValueAtTime(0.28,  ctx.currentTime + 0.4);
             mg.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 1.05);
 
             o1.connect(ws); o2.connect(ws);
