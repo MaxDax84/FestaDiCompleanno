@@ -339,11 +339,11 @@
         }
         @keyframes balloon-rise {
             0%   { opacity:0;    transform:translateY(0) translateX(0) rotate(-3deg); }
-            6%   { opacity:0.70; }
-            25%  { transform:translateY(-25vh) translateX(var(--sway)) rotate(3deg); opacity:0.70; }
-            50%  { transform:translateY(-50vh) translateX(calc(var(--sway)*-.7)) rotate(-2deg); opacity:0.70; }
-            75%  { transform:translateY(-75vh) translateX(calc(var(--sway)*.85)) rotate(2deg); opacity:0.60; }
-            92%  { opacity:0.35; }
+            6%   { opacity:0.38; }
+            25%  { transform:translateY(-25vh) translateX(var(--sway)) rotate(3deg); opacity:0.38; }
+            50%  { transform:translateY(-50vh) translateX(calc(var(--sway)*-.7)) rotate(-2deg); opacity:0.38; }
+            75%  { transform:translateY(-75vh) translateX(calc(var(--sway)*.85)) rotate(2deg); opacity:0.28; }
+            92%  { opacity:0.14; }
             100% { opacity:0;    transform:translateY(-120vh) translateX(0) rotate(0deg); }
         }
 
@@ -382,21 +382,43 @@
 <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
      style="position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;opacity:0.55;filter:blur(0.5px)">
   <defs>
-    <pattern id="dp" width="380" height="380" patternUnits="userSpaceOnUse">
+    <pattern id="dp" width="480" height="480" patternUnits="userSpaceOnUse">
 
-      <!-- 1. MAX (dino-max.png) — top-left -->
-      <g transform="rotate(-6, 38, 38)">
-        <image href="dino-max.png" x="2" y="2" width="72" height="72" opacity="0.55"/>
+      <g transform="rotate(-8, 43, 46)">
+        <image href="dino-max.png" x="5"   y="8"   width="76" height="76" opacity="0.55"/>
+      </g>
+      <g transform="rotate(7, 245, 30)">
+        <image href="dino-ele.png" x="220" y="5"   width="50" height="50" opacity="0.52"/>
+      </g>
+      <g transform="rotate(-5, 416, 46)">
+        <image href="dino-edo.png" x="385" y="15"  width="62" height="62" opacity="0.54"/>
       </g>
 
-      <!-- 3. ELE (dino-ele.png) — top-right -->
-      <g transform="rotate(-4, 305, 36)">
-        <image href="dino-ele.png" x="271" y="2" width="68" height="68" opacity="0.55"/>
+      <g transform="rotate(10, 99, 189)">
+        <image href="dino-ele.png" x="65"  y="155" width="68" height="68" opacity="0.50"/>
+      </g>
+      <g transform="rotate(-9, 322, 172)">
+        <image href="dino-max.png" x="280" y="130" width="84" height="84" opacity="0.56"/>
+      </g>
+      <g transform="rotate(5, 452, 182)">
+        <image href="dino-edo.png" x="430" y="160" width="44" height="44" opacity="0.51"/>
       </g>
 
-      <!-- 7. EDO (dino-edo.png) — bottom-left -->
-      <g transform="rotate(5, 36, 304)">
-        <image href="dino-edo.png" x="2" y="270" width="68" height="68" opacity="0.55"/>
+      <g transform="rotate(7, 38, 338)">
+        <image href="dino-edo.png" x="10"  y="310" width="56" height="56" opacity="0.53"/>
+      </g>
+      <g transform="rotate(-6, 214, 314)">
+        <image href="dino-max.png" x="190" y="290" width="48" height="48" opacity="0.50"/>
+      </g>
+      <g transform="rotate(4, 385, 335)">
+        <image href="dino-ele.png" x="345" y="295" width="80" height="80" opacity="0.55"/>
+      </g>
+
+      <g transform="rotate(-10, 127, 442)">
+        <image href="dino-max.png" x="100" y="415" width="54" height="54" opacity="0.52"/>
+      </g>
+      <g transform="rotate(9, 318, 423)">
+        <image href="dino-edo.png" x="295" y="400" width="46" height="46" opacity="0.51"/>
       </g>
 
     </pattern>
